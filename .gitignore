@@ -1,0 +1,6 @@
+node
+express
+async
+axios
+body-parser
+http
