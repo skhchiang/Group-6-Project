@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+
+    <link rel="stylesheet" href="styles.css">
+    <title>Daytrip Planner</title>
+</head>
+
+<body id="home" class="scrollspy" >
+    <!--navbar-->
+        <div class="navbar-fixed">
+                <nav class="teal">
+                    <div class="nav-wrapper">
+                        <a href="#home" class="brand-logo">Daytrip Planner</a>
+                        <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+                            <i class="material-icons">more_horiz </i>
+                        </a>
+                        <ul class="right hide-on-med-and-down">
+                            <li>
+                                <a href="#popDestinations">Signup</a>
+                            </li>
+                            <li>
+                                <a href="#">Login</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+    <!--MAIN SEARCH BAR-->
+    <div class="container center-align">
+        <form action="" method="get">
+            <input id="search" type="text" name="city-input" class="section-search center scrollspy">
+            <label>Search</label>
+        </form>
+        <div class="container">
+            <div class="input-field col m6">
+                <select>
+                    <option value="" disabled selected>Select Activity Type</option>
+                    <option value="1">Historical</option>
+                    <option value="2">Active</option>
+                    <option value="3">Gastronomical</option>
+                    <label>Activity Select</label>
+                </select>
+            </div>
+        </div>
+        <form>
+            <input for="search" class="submitButton btn waves-effect waves-light btn-large" type="submit" value="Submit">
+        </form>
+    </div>
+
+    <!--FEATURED ITINERARIES-->
+    <section class="container center-align" >
+        <h3>Featured Itineraries</h3>
+        <div class="row featured_itins">
+            <!--Itinerary vue render-->
+            {{{featured_itins}}}
+
+            
+        </div>
+    </section>
+    <footer class="page-footer teal">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="white-text">Contact Us</h5>
+                        <i class="small fab fa-facebook-square"> &nbsp </i>
+                        <i class="small  fab fa-weixin"> &nbsp </i>
+                        <i class="small fab fa-instagram"> &nbsp </i>
+                        <i class="small far fa-envelope"> &nbsp </i>
+                        <i class="small fab fa-google-plus-g"> &nbsp </i>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright teal darken-4">
+                <div class="container">
+                    © 2018 Copyright
+                    <a class="white-text right" href="#">Back to top</a>
+                </div>
+            </div>
+        </footer>
+
+    <!-- Latest compiled and minified Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.js"></script>
+    <!-- <script src="index.js"></script> -->
+    <script>
+        const selector = document.querySelector('select');
+        M.FormSelect.init(selector, {});
+
+
+        // $(document).ready(function () {
+        //     $('select').formSelect();
+        // });
+    </script>
+</body>
+
+</html>
