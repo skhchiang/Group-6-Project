@@ -16,7 +16,7 @@ fs.readFile("./output.json", "utf-8", function read(err, data) {
   }
 
   for (var x = 0; x < attractionTypes.length; x++) {
-    attractionTypesObjectArray.push({typeOfActivities: attractionTypes[x]});
+    attractionTypesObjectArray.push({typeOfActivities: attractionTypes[x], is_active: true});
   }
 
   console.log(attractionTypesObjectArray);
