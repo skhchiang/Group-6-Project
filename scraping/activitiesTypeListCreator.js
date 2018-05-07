@@ -20,7 +20,7 @@ fs.readFile("./output.json", "utf-8", function read(err, data) {
   }
 
   console.log(attractionTypesObjectArray);
-  fs.writeFile("attractionTypeList.json", JSON.stringify(attractionTypesObjectArray), function(err) {
+  fs.writeFile("activitiesTypeList.json", JSON.stringify(attractionTypesObjectArray), function(err) {
     console.log("File written");
   });
 });

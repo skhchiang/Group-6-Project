@@ -96,7 +96,7 @@ async function scrapeLoop() {
     allCityInfo = allCityInfo.concat(value);
     console.log("Complete scrape for " + citiesName[counter]);
   }
-  fs.writeFile("outputText.json", JSON.stringify(allCityInfo), function(err) {
+  fs.writeFile("output.json", JSON.stringify(allCityInfo), function(err) {
     console.log("File written");
   });
 }
