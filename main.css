@@ -1,0 +1,59 @@
+*,
+*:before,
+*:after {
+   box-sizing: border-box;
+}
+
+form {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    overflow: hidden;
+    width: 600px;
+  }
+
+
+form>div{
+
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8em 5em 12em 5em; 
+
+}
+
+input {
+    border-radius: 5px;
+    font: 2em/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 0;
+  }
+
+form>div>div{
+
+    padding: 0.5em;
+}
+
+p{
+    font-size: 2.5em;
+
+}
+
+#fbwords{
+    font-size: 1.5em;
+}
+
+#or{
+    font-size:1em;
+    color: grey;
+}
+
+#fbwords{
+
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
+
+}
+
+
