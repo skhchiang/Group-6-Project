@@ -15,7 +15,7 @@ const config = {
 }
 
 const client = new pg.Client(config);
-const inputStream = fs.createReadStream("cityList.json",'utf-8');
+const inputStream = fs.createReadStream('cityList.json','utf-8');
 
 async function run(){
     await client.connect();
@@ -28,45 +28,35 @@ async function run(){
             rows.push(row);
             console.log(rows);
         })
-        // .on('end',async (data)=>{
-            // knex.transaction(async (trx)=>{
-            //     for(let row of rows){
-            //         let {city:value} = row;
-            //         if(action === "SELL"){
-            //             let rows = await trx.select('quantity').from('stock')
-            //                     .innerJoin('citrus','stock.citrus_id','citrus.id')
-            //                     .where('citrus.name',name).groupBy('quantity');
-            //             if(rows[0].quantity < quantity){
-            //                 throw new Error(`Not enough stocks for ${name}!`);
-            //             }    
-            //         }
-            //         if(action === "BUY"){
-            //             await trx('stock')
-            //                     .whereIn('citrus_id',function(){
-            //                                 return this.select('id')
-            //                                         .from('citrus')
-            //                                         .where('name','=',name);
-            //                     })
-            //                     .increment('quantity',quantity);
-            //         }else{
-            //             await trx('stock')
-            //                     .whereIn('citrus_id',function(){
-            //                                 return this.select('id')
-            //                                         .from('citrus')
-            //                                         .where('name','=',name);
-            //                     })
-            //                     .decrement('quantity',quantity);
-            //         }
-            //     }
-            //     let knexResult = await knex.select('*').from('stock')
-            //                         .innerJoin('citrus','stock.citrus_id','citrus.id');
-            //     console.log(knexResult);
+        .on('end',async (data)=>{
+            knex.transaction(async (trx)=>{
+                for(let row of rows){      
+                        await trx('city')
+                                .whereIn('citrus_id',function(){
+                                            return this.select('id')
+                                                    .from('citrus')
+                                                    .where('name','=',name);
+                                })
+                                .increment('quantity',quantity);
+                    
+                        await trx('stock')
+                                .whereIn('citrus_id',function(){
+                                            return this.select('id')
+                                                    .from('citrus')
+                                                    .where('name','=',name);
+                                })
+                                .decrement('quantity',quantity);
+                            }
+            
+                let knexResult = await knex.select('*').from('stock')
+                                    .innerJoin('citrus','stock.citrus_id','citrus.id');
+                console.log(knexResult);
 
-            //     let trxResult = await trx.select('*').from('stock')
-            //                         .innerJoin('citrus','stock.citrus_id','citrus.id');
-            //     console.log(trxResult);
-            // });          
-       // });
+                let trxResult = await trx.select('*').from('stock')
+                                    .innerJoin('citrus','stock.citrus_id','citrus.id');
+                console.log(trxResult);
+            });          
+       });
 }
 
 
