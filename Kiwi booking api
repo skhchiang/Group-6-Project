@@ -1,0 +1,15 @@
+
+https://www.skypicker.com/deep?type=default&from=HKG&to=NRT&departure=11-06-2018&return=18-06-2018&affilid=picky&lang=en&currency=USD&booking_token=b1i0QNOaFyZit4qd6BA0ve6PRVV4dxoqy1iVNP1vB/bEgQPL60woKMvbrW3mFSJFru0CHbg4AW8pYjKWynbALVUex/B5KHE2GCKqxMdB8igRDvlH/4iO4ei0MwcgLW/aivZad9GAtsc237ezjL3lZPlcT81W02nTdJCVeduvjXMBGTss2WSGrIwy+hEBi7xazHukg49E7b/wMdy8q/EaV6iMKQXTNiYKsEhI3H14SF5b0XplfWVV+nCujjYuAYyChPTIhhszqCYnTTgL0AtLC+TQDwznaDa+0WoyCp8+iu8NKNTb+G9JTAnPEB32flNUjlUYFWxwXi1UIv6H/m3fV4ljuomV50uFeFiGUjabHMaz35Z9W+VaA9TLmLZ4LcC4XtRZU8VAAkEt524HODqZbC9kuoxJqt0jaJ3y3WLAw7rWHKZByNuv171257lpzmCEdkYpiHZUowKOeT9EPVvEkA==
+
+
+https://www.skypicker.com/deep?type=default&from=LAX&to=JFK&departure=11-06-2018&affilid=picky&lang=en&currency=USD&booking_token=b1i0QNOaFyZit4qd6BA0ve6PRVV4dxoqy1iVNP1vB/bEgQPL60woKMvbrW3mFSJFru0CHbg4AW8pYjKWynbALVUex/B5KHE2GCKqxMdB8igRDvlH/4iO4ei0MwcgLW/aivZad9GAtsc237ezjL3lZPlcT81W02nTdJCVeduvjXMBGTss2WSGrIwy+hEBi7xazHukg49E7b/wMdy8q/EaV6iMKQXTNiYKsEhI3H14SF5b0XplfWVV+nCujjYuAYyChPTIhhszqCYnTTgL0AtLC+TQDwznaDa+0WoyCp8+iu8NKNTb+G9JTAnPEB32flNUjlUYFWxwXi1UIv6H/m3fV4ljuomV50uFeFiGUjabHMaz35Z9W+VaA9TLmLZ4LcC4XtRZU8VAAkEt524HODqZbC9kuoxJqt0jaJ3y3WLAw7rWHKZByNuv171257lpzmCEdkYpiHZUowKOeT9EPVvEkA==
+
+
+parameters
+
+from={airport_code}  (required)
+to={airport_code}   (required)
+type=default   (required)
+affilid={affiliation_id  default:picky}   (required) (a legitimate affiliation will produce a deep link that leads to kiwi.com in the results)
+currency={default:GBP}
+booking_token={acquired from flights_multi POST request}   (required)
