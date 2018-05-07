@@ -11,7 +11,7 @@ fs.readFile("./cities.json", "utf-8", function read(err, data) {
     cityName = JSON.parse(data).city[i];
     cityName = cityName.replace("-", " ");
     cityName = cityName.replace(/\b\w/g, l => l.toUpperCase());
-    cityList.push({city:cityName});
+    cityList.push({name:cityName});
   }
   console.log(cityList);
   fs.writeFile("cityList.json", JSON.stringify(cityList), function(err) {
