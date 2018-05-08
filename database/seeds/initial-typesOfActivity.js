@@ -1,5 +1,16 @@
+<<<<<<< HEAD
 const fs = require("fs-extra");
 const path = require("path");
+=======
+
+const fs = require ('fs-extra');
+
+const path = require ('path');
+
+const knex = require('knex');
+
+
+>>>>>>> master
 
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries

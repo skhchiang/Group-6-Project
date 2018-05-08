@@ -31,7 +31,7 @@ exports.up = function(knex, Promise) {
     itineraries.increments();
     itineraries.string("name");
     itineraries.string("image");
-    itineraries.string("description");
+    itineraries.text("description");
     itineraries.boolean("itineraries-save");
     itineraries.boolean("itineraries-create");
     itineraries.string("reviewing-status");
