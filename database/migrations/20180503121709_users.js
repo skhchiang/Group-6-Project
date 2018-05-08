@@ -18,15 +18,15 @@ exports.up = function(knex, Promise) {
 
     }).then(()=>{
     return knex.schema.createTable("itineraries",(itineraries)=>{
-    itineraries.increments();
-    itineraries.string("name");
-    itineraries.text("photo");
-    itineraries.text("description");
-    itineraries.string("reviewing-status");
-    itineraries.integer("cities_id").unsigned();
-    itineraries.foreign("cities_id").references("cities.id");
-    itineraries.boolean("is_active");
-    itineraries.timestamps(false,true);
+    // itineraries.increments();
+    // itineraries.string("name");
+    // itineraries.text("photo");
+    // itineraries.text("description");
+    // itineraries.string("reviewing-status");
+    // itineraries.integer("cities_id").unsigned();
+    // itineraries.foreign("cities_id").references("cities.id");
+    // itineraries.boolean("is_active");
+    // itineraries.timestamps(false,true);
     });
     }).then(()=>{
     return knex.schema.createTable("users_itineraries",(usersItineraries)=>{
