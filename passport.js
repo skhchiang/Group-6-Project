@@ -1,36 +1,49 @@
+//passport.js
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const users = require('./users');
+const knex = require('knex')({
+    client: 'postgresql',
+    connection: {
+        database: "accelerate",
+        user: "accelerate",
+        password: "password"
+    }
+});
 
 module.exports = (app) => {
     app.use(passport.initialize());
     app.use(passport.session());
 
     passport.use('local-login', new LocalStrategy(
-        (email, password, done) => {
-            let user = users.find((user)=> user.email == email);
-            if (user == null) {
-                return done(null, false, { message: 'Incorrect credentials.' });
+        async (email, password, done) => {
+            try{
+                let users = await knex('users').where({email:email});
+                if (users.length == 0) {
+                    return done(null, false, { message: 'Incorrect credentials.' });
+                }
+                let user = users[0];
+                if (user.password === password) {
+                    return done(null, user);
+                }else{
+                    return done(null, false, { message: 'Incorrect credentials.' });
+                }
+            }catch(err){
+                return done(err);
             }
-
-            if (user.password === password) {
-                return done(null, user);
-            }
-
-            return done(null, false, { message: 'Incorrect credentials.' });
         }
     ));
 
     passport.serializeUser((user, done) => {
-        done(null, user.email);
+        done(null, user.id);
     });
 
-    passport.deserializeUser((email, done) => {
-        let user = users.find((user)=> user.email == email);
-        if (user == null) {
-            done(new Error('Wrong user email.'));
+    passport.deserializeUser(async (id, done) => {
+        let users = await knex('users').where({id:id});
+        if (users.length == 0) {
+            return done(new Error(`Wrong user id ${id}`));
         }
-
-        done(null, user);
+        let user = users[0];
+        return done(null, user);
     });
 };
+

@@ -1,7 +1,6 @@
 const fs = require("fs-extra");
 const path = require("path");
 
-<<<<<<< HEAD
 exports.seed = function (knex, Promise) {
   // Deletes ALL existing entries
   // return knex("cities")
@@ -69,34 +68,6 @@ const createActivity = function (knex, activity, typeOfActivity) {
         address: activity.address,
         description: activity.description,
         typeOfActivity_id: typeOfActivityRecord.id
-=======
-exports.seed = (knex, Promise) => {
-  // Deletes ALL existing entries
-  let Activities = fs.readJsonSync(path.join(__dirname, "/activities.json"));
-  return knex("cities")
-    .del()
-    .then(() => {
-      return knex("typeOfActivities").del();
-    })
-    .then(() => {
-      return knex("cities").del();
-    })
-    .then(() => {
-      let Cities = fs.readJsonSync(path.join(__dirname, "/cityList.json"));
-      return knex("cities").insert(Cities);
-    })
-    .then(() => {
-      let TypesOfActivities = fs.readJsonSync(
-        path.join(__dirname, "/attractionTypeList.json")
-      );
-      return knex("typeOfActivities").insert(TypesOfActivities);
-    })
-    .then(() => {
-      let activityArray = [];
-      Activities.forEach(activity => {
-        let typeOfActivity = activity.type;
-        activityArray.push(createActivity(knex, activity, typeOfActivity));
->>>>>>> 38436d386dd6ee258901f0256094d5c65a923bb1
       });
     });
 };

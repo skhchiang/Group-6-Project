@@ -11,6 +11,10 @@ module.exports = (express) => {
         res.redirect('/login');
     }
 
+    router.get('/profile',  isLoggedIn, (req, res) => {
+        res.send(__dirname+'/profile.html');
+    });
+
     router.get('/', (req, res) => {
         res.sendFile(__dirname + '/login.html');
     });
