@@ -74,10 +74,11 @@ exports.up = function(knex, Promise) {
         });   
 
     }).then(()=>{
-        return knex.schema.createTable("typesOfActivity",(typesOfActivity)=>{
-            typesOfActivity.increments();
-            typesOfActivity.string("name");
-            typesOfActivity.timestamps(false,true);
+        return knex.schema.createTable("typeOfActivities",(typeOfActivities)=>{
+            typeOfActivities.increments();
+            typeOfActivities.string("name");
+            typeOfActivities.boolean("is_active");
+            typeOfActivities.timestamps(false,true);
         });   
 
     }).then(()=>{
@@ -86,8 +87,8 @@ exports.up = function(knex, Promise) {
             activities.increments();
             activities.string("name");
             activities.boolean("is_active");
-            activities.integer("typesOfActivity_id").unsigned();
-            activities.foreign("typesOfActivity_id").references("typesOfActivity.id");
+            activities.integer("typeOfActivities_id").unsigned();
+            activities.foreign("typeOfActivities_id").references("typeOfActivities.id");
             activities.string("address");
             activities.string("description");
             activities.string("photo");
@@ -109,7 +110,7 @@ exports.up = function(knex, Promise) {
     exports.down = function(knex,Promise){
         return knex.schema.dropTable('cities_activities')
                 .then(()=>knex.schema.dropTable('activities'))
-                .then(()=>knex.schema.dropTable('typesOfActivity'))
+                .then(()=>knex.schema.dropTable('typeOfActivities'))
                 .then(()=>knex.schema.dropTable('rating'))
                 .then(()=>knex.schema.dropTable('questionsBank'))
                 .then(()=>knex.schema.dropTable('users_itineraries'))
