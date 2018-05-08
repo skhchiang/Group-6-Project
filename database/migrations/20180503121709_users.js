@@ -32,8 +32,6 @@ exports.up = function(knex, Promise) {
     itineraries.string("name");
     itineraries.string("image");
     itineraries.text("description");
-    itineraries.boolean("itineraries-save");
-    itineraries.boolean("itineraries-create");
     itineraries.string("reviewing-status");
     itineraries.integer("cities_id").unsigned();
     itineraries.foreign("cities_id").references("cities.id");
