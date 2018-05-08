@@ -7,8 +7,6 @@ const path = require ('path');
 const knex = require('knex');
 
 
-
-
 exports.seed = function(knex, Promise) {
 //  Deletes ALL existing entries
   return knex("typeOfActivities")
