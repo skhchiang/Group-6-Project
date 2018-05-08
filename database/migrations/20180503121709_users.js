@@ -8,21 +8,11 @@ exports.up = function(knex, Promise) {
     users.boolean("is_active")
     users.timestamps(false,true);
     }).then(()=>{
-        return knex.schema.createTable("countries",(countries)=>{
-            countries.increments();
-            countries.string("name");
-            countries.boolean("is_active");
-            countries.timestamps(false,true);
-            });
-
-    }).then(()=>{
 
         return knex.schema.createTable("cities",(cities)=>{
             cities.increments();
             cities.string("name");
             cities.boolean("is_active");
-            cities.integer("countries_id").unsigned();
-            cities.foreign("countries_id").references("countries.id");
             cities.timestamps(false,true);
             });
 
@@ -30,10 +20,8 @@ exports.up = function(knex, Promise) {
     return knex.schema.createTable("itineraries",(itineraries)=>{
     itineraries.increments();
     itineraries.string("name");
-    itineraries.string("image");
-    itineraries.string("description");
-    itineraries.boolean("itineraries-save");
-    itineraries.boolean("itineraries-create");
+    itineraries.text("photo");
+    itineraries.text("description");
     itineraries.string("reviewing-status");
     itineraries.integer("cities_id").unsigned();
     itineraries.foreign("cities_id").references("cities.id");
@@ -47,6 +35,7 @@ exports.up = function(knex, Promise) {
     usersItineraries.foreign("users_id").references("users.id");
     usersItineraries.integer("itineraries_id").unsigned();
     usersItineraries.foreign("itineraries_id").references("itineraries.id");
+    usersItineraries.boolean("is_create")
     usersItineraries.timestamps(false,true);
     });
     }).then(()=>{
@@ -85,36 +74,24 @@ exports.up = function(knex, Promise) {
         return knex.schema.createTable("activities",(activities)=>{
             activities.increments();
             activities.string("name");
-            activities.boolean("is_active");
             activities.integer("typeOfActivities_id").unsigned();
             activities.foreign("typeOfActivities_id").references("typeOfActivities.id");
             activities.string("address");
             activities.text("description");
             activities.text("photo");
+            activities.boolean("is_active");
             activities.timestamps(false,true);
         });   
-    }).then(()=>{
-
-        return knex.schema.createTable("cities_activities",(cities_activities)=>{
-            cities_activities.increments();
-            cities_activities.integer("cities_id").unsigned();
-            cities_activities.foreign("cities_id").references("cities.id");
-            cities_activities.integer("activities_id").unsigned();
-            cities_activities.foreign("activities_id").references("activities.id");
-            cities_activities.timestamps(false,true);
-    });
     })
     }
     
     exports.down = function(knex,Promise){
-        return knex.schema.dropTable('cities_activities')
-                .then(()=>knex.schema.dropTable('activities'))
+        return knex.schema.dropTable('activities')
                 .then(()=>knex.schema.dropTable('typeOfActivities'))
                 .then(()=>knex.schema.dropTable('rating'))
                 .then(()=>knex.schema.dropTable('questionsBank'))
                 .then(()=>knex.schema.dropTable('users_itineraries'))
                 .then(()=>knex.schema.dropTable('itineraries'))
                 .then(()=>knex.schema.dropTable('cities'))
-                .then(()=>knex.schema.dropTable('countries'))
                 .then(()=>knex.schema.dropTable('users'));
     }
