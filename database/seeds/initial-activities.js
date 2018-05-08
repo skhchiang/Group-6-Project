@@ -13,6 +13,9 @@ exports.seed = (knex, Promise) => {
       return knex("cities").del();
     })
     .then(() => {
+        return knex("activities").del();
+      })
+    .then(() => {
       let Cities = fs.readJsonSync(path.join(__dirname, "/cityList.json"));
       return knex("cities").insert(Cities);
     })
@@ -28,6 +31,7 @@ exports.seed = (knex, Promise) => {
         let typeOfActivity = activity.type;
         activityArray.push(createActivity(knex, activity, typeOfActivity));
       });
+      return Promise.all(activityArray);
     });
 };
 
@@ -38,9 +42,11 @@ const createActivity = (knex, activity, typeOfActivity) => {
     .then(typeOfActivityRecord => {
       return knex("activities").insert({
         name: activity.name,
+        is_active: activity.is_active,
+        typeOfActivities_id: typeOfActivityRecord.id,
         address: activity.address,
         description: activity.description,
-        typeOfActivity_id: typeOfActivityRecord.id
+        photo: activity.photo
       });
     });
 };
