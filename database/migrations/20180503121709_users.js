@@ -76,6 +76,8 @@ exports.up = function(knex, Promise) {
             activities.string("name");
             activities.integer("typeOfActivities_id").unsigned();
             activities.foreign("typeOfActivities_id").references("typeOfActivities.id");
+            activities.integer("cities_id").unsigned();
+            activities.foreign("cities_id").references("cities.id");
             activities.string("address");
             activities.text("description");
             activities.text("photo");
