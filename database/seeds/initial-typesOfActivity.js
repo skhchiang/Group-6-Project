@@ -3,6 +3,8 @@ const fs = require ('fs-extra');
 
 const path = require ('path');
 
+const knex = require('knex');
+
 
 
 exports.seed = function(knex, Promise) {

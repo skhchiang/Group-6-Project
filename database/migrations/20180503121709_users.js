@@ -32,7 +32,7 @@ exports.up = function(knex, Promise) {
     itineraries.increments();
     itineraries.string("name");
     itineraries.string("image");
-    itineraries.string("description");
+    itineraries.text("description");
     itineraries.boolean("itineraries-save");
     itineraries.boolean("itineraries-create");
     itineraries.string("reviewing-status");
@@ -90,8 +90,8 @@ exports.up = function(knex, Promise) {
             activities.integer("typeOfActivities_id").unsigned();
             activities.foreign("typeOfActivities_id").references("typeOfActivities.id");
             activities.string("address");
-            activities.string("description");
-            activities.string("photo");
+            activities.text("description");
+            activities.text("photo");
             activities.timestamps(false,true);
         });   
     }).then(()=>{
