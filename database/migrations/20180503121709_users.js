@@ -1,4 +1,3 @@
-
 exports.up = function(knex, Promise) {
     return knex.schema.createTable('users',(users)=>{
     users.increments();
@@ -119,6 +118,3 @@ exports.up = function(knex, Promise) {
                 .then(()=>knex.schema.dropTable('countries'))
                 .then(()=>knex.schema.dropTable('users'));
     }
-
-
-    
