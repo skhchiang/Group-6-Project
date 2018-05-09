@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="itinBody"></div>
+
+    <script type="text/x-handlebars-template">
+    <div class="itinTemplate">
+        <div class="row">
+            <div class="col m8">
+                <span>{{itin_name}}</span>
+                <span>{{city}}</span>
+                <img src={{activity_img}}/>
+                <img src={{activity_img}}/>
+                <img src={{activity_img}}/>
+            </div>
+            <div class="col m4">
+                <div class="rating">{{rating}}</div>
+                <div class="activity_tags">{{activity_tag}}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class ="col m11">
+                <div class="itin_description">{{itin_description}}</div>
+            </div>
+            <div class="col m1">
+                <div class="btn btn-large" type="submit">ADD</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col m6">{{activity}}</div>
+        </div>
+    </div>
+    
+    </script>
+</body>
+
+</html>
