@@ -20,9 +20,7 @@ exports.up = function(knex, Promise) {
     return knex.schema.createTable("itineraries",(itineraries)=>{
     itineraries.increments();
     itineraries.string("name");
-    itineraries.text("photo");
     itineraries.text("description");
-    itineraries.string("reviewing-status");
     itineraries.integer("cities_id").unsigned();
     itineraries.foreign("cities_id").references("cities.id");
     itineraries.boolean("is_active");
@@ -67,28 +65,41 @@ exports.up = function(knex, Promise) {
             typeOfActivities.string("name");
             typeOfActivities.boolean("is_active");
             typeOfActivities.timestamps(false,true);
-        });   
+        });
 
     }).then(()=>{
-
         return knex.schema.createTable("activities",(activities)=>{
             activities.increments();
             activities.string("name");
+            activities.string("address");
+            activities.text("description");
+            activities.text("photo");
+            activities.boolean("reviewing_status");
             activities.integer("typeOfActivities_id").unsigned();
             activities.foreign("typeOfActivities_id").references("typeOfActivities.id");
             activities.integer("cities_id").unsigned();
             activities.foreign("cities_id").references("cities.id");
-            activities.string("address");
-            activities.text("description");
-            activities.text("photo");
             activities.boolean("is_active");
             activities.timestamps(false,true);
+
+        });
+
+    }).then(()=>{
+
+        return knex.schema.createTable("itineraries_activities",(itinerariesActivities)=>{
+            itinerariesActivities.increments();
+            itinerariesActivities.integer("itineraries_id").unsigned();
+            itinerariesActivities.foreign("itineraries_id").references("itineraries.id");
+            itinerariesActivities.integer("activities_id").unsigned();
+            itinerariesActivities.foreign("activities_id").references("activities.id");
+            itinerariesActivities.timestamps(false,true);
         });   
     })
     }
     
     exports.down = function(knex,Promise){
-        return knex.schema.dropTable('activities')
+        return knex.schema.dropTable('itineraries_activities')
+                .then(()=>knex.schema.dropTable('activities'))
                 .then(()=>knex.schema.dropTable('typeOfActivities'))
                 .then(()=>knex.schema.dropTable('rating'))
                 .then(()=>knex.schema.dropTable('questionsBank'))
