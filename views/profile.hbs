@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/stylesheets/styles.css" />
+
+
+<!--SAVED ITINERARIES-->
+<section class="container center-align">
+    <h3>Saved Itineraries</h3>
+
+    {{!-- #each iterates new templates based on sets of available data --}} {{#each data}} {{!-- Beginning of template --}}
+    <div class="test-template">
+
+        <div class="row">
+            <div class="col l6">
+                <ul class="list-unstyled">
+                    <h3>{{title}}</h3>
+                    <li>{{city}}</li>
+                </ul>
+            </div>
+            <div class="col l6">
+                <div>Rating</div>
+                <div>{{>activityTagPartial}}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col l6">
+                <span>{{description}}</span>
+            </div>
+            <div class="col l6">
+                <div class="add-btn btn waves-effect waves-light btn-large" type="submit">REMOVE</div>
+            </div>
+        </div>
+        <div class="row">
+            {{!-- Output partial to template --}} {{> activityPartial}}
+        </div>
+    </div>
+    {{!-- End of Template --}} {{/each}}
+
+</section>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<!-- Compiled and minified Materialize -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.js"></script>

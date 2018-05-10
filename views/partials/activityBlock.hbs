@@ -1,0 +1,15 @@
+ {{!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" /> --}}
+<link rel="stylesheet" href="/stylesheets/styles.css" />
+ 
+ {{#each blockData}}
+<div class="activity-template col l3">
+<div style="background:url({{activity_img}})" class="bgimg">
+<h3>{{name}}</h3>
+  </div>
+<span>{{address}}</span>
+<p>{{octime}}</p>
+<p>{{description}}</p>
+<div class="chip">{{activity_tag}}</div>
+<div class="add-btn btn btn-large" type="submit">ADD</div>
+  </div>
+{{/each}}

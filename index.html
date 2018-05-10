@@ -9,7 +9,9 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
     <title>Daytrip Planner</title>
 </head>
@@ -60,12 +62,26 @@
     <section class="container center-align" >
         <h3>Featured Itineraries</h3>
         <div class="row featured_itins">
-            <!--Itinerary vue render-->
-            {{{featured_itins}}}
+            <!--ITIN HANDLEBAR VIEW PLACEHOLDER-->
+<div id="content-placeholder" class="content"></div>
 
             
         </div>
     </section>
+
+    <div class="fixed-action-btn">
+            <a class="btn-floating btn-large red">
+              <i class="large material-icons">mode_edit</i>
+            </a>
+            <!-- <ul>
+              <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+              <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+              <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+              <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+            </ul> -->
+          </div>
+
+
     <footer class="page-footer teal">
             <div class="container">
                 <div class="row">
@@ -79,6 +95,8 @@
                     </div>
                 </div>
             </div>
+
+        
             <div class="footer-copyright teal darken-4">
                 <div class="container">
                     © 2018 Copyright
@@ -87,6 +105,9 @@
             </div>
         </footer>
 
+    <script type="text/javascript" src="index.js"></script>
+    <!-- Handlebars minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <!-- Latest compiled and minified Bootstrap JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
@@ -98,12 +119,72 @@
     <script>
         const selector = document.querySelector('select');
         M.FormSelect.init(selector, {});
+        
+        const action_btn = document.querySelector('fixed-action-btn');
+        M.FloatingActionButton.init(action_btn, {});
 
-
-        // $(document).ready(function () {
-        //     $('select').formSelect();
-        // });
     </script>
+
+<!-- ITINERARY HANDLEBAR TEMPLATE -->
+<script id="testbar" type="text/x-handlebars-template">
+    <!--#each iterates new templates based on sets of available data-->
+    {{#each tasks}}
+    <!--Beginning of template-->
+    <div class="test-template">
+  
+      <div class="row">
+        <div class="col-6">
+          <ul class="list-unstyled">
+            <h3>{{title}}</h3>
+            <li>{{city}}</li>
+          </ul>
+        </div>
+        <div class="col-6">
+          <div>Rating</div>
+          <div>{{>tagPartial}}</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <span>{{description}}</span>
+        </div>
+        <div class="col-6">
+          <div class="add-btn btn btn-large" type="submit">ADD</div>
+        </div>
+      </div>
+      <div class="row">
+        <!--   Output partial to template -->
+        {{> activityPartial}}
+      </div>
+    </div>
+    <!--End of template-->
+    {{/each}}
+  
+  </script>
+  
+  <!-- Create template of partial -->
+  <script id="activity-partial" type="text/x-handlebars-template">
+    <!-- Format |#each [name of objects with arrays]| -->
+    {{#each each_activity}}
+    <div class="col-6 actBox">
+      <!--           Use nested array objects to pass parameters -->
+      <img src={{img_url}}/>
+      <h4>{{this.act_name}}</h4>
+      <span>{{this.address}}</span>
+      <p>{{this.activity_description}}</p>
+    </div>
+    {{/each}}
+  </script>
+  
+  <!-- Tag Partial Template -->
+  <script id="tag-partial" type="text/x-handlebars-template">
+    {{#each activity_tags}}
+  <div class="chip">
+    {{this}}
+  </div>
+   {{/each}}
+  </script>
+
 </body>
 
 </html>

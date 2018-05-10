@@ -11,7 +11,8 @@
     "reviewing_status": true
   },
   {
-    "name": "The Grand Palace",
+    "name": "The Grand Palace", 
+    
     "type": "Religious Sites",
     "address": "Na Phra Lan Rd, Phra Nakhon, Bangkok, 10200, Thailand",
     "description":
@@ -2786,8 +2787,12 @@
       "The Ben Thanh Traditional Market (Cho Ben Thanh) is the most famous shopping destination in the city. This is not the cheapest market in the city but it has a good reputation, a central location and a history.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/296793",
     "city": "Ho Chi Minh City",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Notre Dame Cathedral",
@@ -2798,8 +2803,12 @@
       "Ho Chi Minh City has quite a large Catholic community who worship at this historic cathedral. The Saigon Basilica of Our Lady of the Immaculate Conception was built between 1863 and 1880 under the French colonists.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/296838",
     "city": "Ho Chi Minh City",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Reunification Palace",
@@ -2809,8 +2818,12 @@
       "The present palace on this site was designed by Ngo Viet Thu and completed in 1966. The history of grand palaces on this site goes back to 1858 when the French invaded Vietnam (then Cochinchina) and the foundation stone of the palace was laid in 1968.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/296843",
     "city": "Ho Chi Minh City",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Central Post Office",
@@ -2820,8 +2833,12 @@
       "The central post office building has become a tourist attraction because of its beautiful architecture and history. It is Vietnam’s largest post office. The building was completed in 1891 when Vietnam was part of French Indochina.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/296848",
     "city": "Ho Chi Minh City",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "War Remnants Museum",
@@ -2831,8 +2848,12 @@
       "The main focus of this museum is the Vietnam War (1955-1975) but there are also exhibits about other conflicts in the region including the First Indochina War (1946-1954) which involved the French colonialists.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/296873",
     "city": "Ho Chi Minh City",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Bitexco Financial Tower - Saigon Skydeck",
@@ -2842,8 +2863,12 @@
       "This impressive tower stands 262 meters high with 68 floors and is the tallest building in Ho Chi Minh City. The building was designed by American architect Carlos Zapata; construction began in 2007 and was completed in 2010.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/296798",
     "city": "Ho Chi Minh City",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Ho Chi Minh Square",
@@ -2854,8 +2879,12 @@
       "This central square can be reached from the Ben Thanh Market along Le Thanh Ton Street going north-east. The square is bordered by Ly Tu Trong Street, Pasteur Street, Le Thanh Ton Street and Dong Khoi Street.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/296876",
     "city": "Ho Chi Minh City",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Ho Chi Minh City Museum",
@@ -2866,8 +2895,12 @@
       "This museum (formerly The Museum of the Revolution) is housed in a beautiful French colonial palace called Gia Long Palace which was the former home of the French Governor and the final residence of the South Vietnamese President Ngo Dinh Diem.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/296833",
     "city": "Ho Chi Minh City",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Saigon Opera House",
@@ -2877,8 +2910,12 @@
       "The Opera House is also called the Municipal Theatre of Ho Chi Minh City. The theatre auditorium can seat 500 in the audience. There are no official tours of the Opera House so the only way to see inside is by attending a show. The building was designed by Eugene Ferret and built in 1898 in the French colonial style.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/296853",
     "city": "Ho Chi Minh City",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Emperor Jade Pagoda",
@@ -2888,8 +2925,12 @@
       "Chua Ngoc Hoang, Phuoc Hai Tu, the Lucky Sea Temple or the Tortoise Pagoda is a Taoist pagoda built by the city’s Chinese immigrants from Guangzhou Province in China in 1909. It is one of the five most important Taoist shrines in the city. The temple is still in use and visited by followers of the Taoist faith.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/296808",
     "city": "Ho Chi Minh City",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Cu Chi Tunnels",
@@ -2900,8 +2941,12 @@
       "About 40km northwest of Ho Chi Minh City in the Cu Chi District is this labyrinth of underground tunnels and rooms which covers 250km. During the French occupation in the 1940s the tunnels were dug using elementary tools and bare hands.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/296803",
     "city": "Ho Chi Minh City",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Giac Lam Pagoda",
@@ -2912,8 +2957,12 @@
       "This is one of the oldest pagodas in the city; it was built in 1744 by Ly Thuy Long as a gathering place for the Lunar New Year. The temple overlooked the Gia Dinh Market (before it was overdeveloped) and was named after Monk Thich Lam Quang who visited the pagoda.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/296823",
     "city": "Ho Chi Minh City",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Museum of Traditional Vietnamese Medicine",
@@ -2924,8 +2973,12 @@
       "Saigon’s museum of traditional Vietnamese medicine takes a look at traditional healing which is influenced by Chinese medicine and philosophy. The museum displays potions and remedies through the centuries and through several ethnic Vietnamese cultures including the Cham.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/296818",
     "city": "Ho Chi Minh City",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Vietnam History Museum",
@@ -2936,8 +2989,12 @@
       "Until 1979 this museum was called The National Museum of Vietnam in Saigon. Auguste Delaval designed the beautiful French-era building which houses the museum and it was built in 1926 by the Societe des Etudes. The architecture is typical of the Indochinese era.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/296863",
     "city": "Ho Chi Minh City",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Old Town",
@@ -9839,8 +9896,12 @@
       "The Corcovado is the name given to the 2,330 ft mountain located in central Rio de Janeiro in the Tijuca Forest national park.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/275815",
     "city": "Rio De Janeiro",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Selaron Steps",
@@ -9851,8 +9912,12 @@
       "The Selaron Steps or Escadaria Selaron were created by the Chilean-born artist Jorge Selaron as a tribute to the Brazilian people, and have become world-famous for their vivid colors and symbol of the artist’s tenacity and passion.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/275939",
     "city": "Rio De Janeiro",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Botanical Garden",
@@ -9863,8 +9928,12 @@
       "Rio de Janeiro's botanical gardens, Jardim Botancio is the ideal showcase for Brazil’s vast range of flora. The 54 hectare gardens, located in the city’s South Zone, is home to over 6,500 species. The garden has multiple greenhouses, as well as works of artistic, historical and archaeological importance.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/275910",
     "city": "Rio De Janeiro",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Santa Teresa",
@@ -9874,8 +9943,12 @@
       "Perched on the top of the Santa Teresa Hill, this neighborhood originated around the Carmelite Santa Teresa Convent which was built in the 1750s. Up until the early 20th century, the area was considered an upper class neighborhood and some of the original grand mansions are still standing.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/275934",
     "city": "Rio De Janeiro",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Copacabana",
@@ -9885,8 +9958,12 @@
       "The beach best associated with Rio de Janeiro is undoubtedly Copacabana Beach - a 4 km stretch of sand hugging the Atlantic, flanked by two forts on either side and running parallel to one of the world's most famous promenades.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/275810",
     "city": "Rio De Janeiro",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Ipanema Beach",
@@ -9896,8 +9973,12 @@
       "Adjacent to the famous Copacabana Beach in Rio de Janeiro is Ipanema Beach, within the distinct and upmarket neighborhood of Ipanema. The beach is characterized by the two mountains - the Dois Irmaos, or Two Brothers - which rise at its western end.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/275835",
     "city": "Rio De Janeiro",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Rio de Janeiro Cathedral",
@@ -9906,8 +9987,12 @@
     "description": ".",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/275882",
     "city": "Rio De Janeiro",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Parque Lage",
@@ -9918,8 +10003,12 @@
       "Parque Enrique Lage, known more locally as Parque Lage, is located in Rio de Janeiro’s Botanical Gardens neighborhood at the foot of the Corcovado Mountain.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/275870",
     "city": "Rio De Janeiro",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Ruins Park",
@@ -9930,8 +10019,12 @@
       "Located in the hillside neighborhood of Santa Teresa in Rio de Janeiro, Parque das Ruinas incorporates the ruins of the mansion which once belonged to the Brazilian heiress Laurinda Santos Lobo.  The house set the tone for the ambiance of Santa Teresa at the beginning of the 20th century.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/275953",
     "city": "Rio De Janeiro",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Sugarloaf Mountain",
@@ -9942,8 +10035,12 @@
       "The peak situated at the mouth of Guanabara Bay in Rio de Janeiro is known as Sugarloaf Mountain, so named for its resemblance to the conical molds of clay used to transport blocks of sugar by the Portuguese during the 16th century.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/275897",
     "city": "Rio De Janeiro",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Municipal Theater",
@@ -9954,8 +10051,12 @@
       "Rio de Janeiro’s Municipal Theatre (Teatro Municipal) is known as one of the most impressive theaters in Brazil.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/275902",
     "city": "Rio De Janeiro",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Tijuca National Park",
@@ -9965,8 +10066,12 @@
       "Rio de Janeiro's famous Tijuca National Park incorporates the world's largest urban forest, as well as the Cordova mountain peak, home to the iconic Christ the Redeemer statue.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/275907",
     "city": "Rio De Janeiro",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Church of Our Lady of the Candelaria",
@@ -9977,8 +10082,12 @@
       "One of Rio de Janeiro's top attractions is the Church of our Lady Candelaria, which was built over a long span of time, beginning in 1775 and ending in the late 19th century. The church is notable for its Baroque façade and different interior architectural elements, combining Neoclassical and Neo-Renaissance styles.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/275944",
     "city": "Rio De Janeiro",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Morro da Urca",
@@ -9988,8 +10097,12 @@
       "While most tourists are familiar with Rio’s iconic mount Sugar Loaf Mountain, its smaller relative Morro da Urca is no less impressive.  This turtle shaped rock is a point of stop over for the cable car which takes visitors to the top of Sugar Loaf Mountain, and at 720 feet high is fully deserving of its popularity.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/275845",
     "city": "Rio De Janeiro",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "National Museum of Fine Arts",
@@ -9999,8 +10112,12 @@
       "The Rio-based National Museum of Fine Arts (Meseu Nacional de Belas Artes, or MNBA), was established by then-minister Gustavo Capanema in 1937. The core of the museum’s permanent collection, however, is part of the Portuguese Royal Collection, transferred by King John VI to Brazil in the early 19th century.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/275855",
     "city": "Rio De Janeiro",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Centro Cultural Banco do Brasil",
@@ -10010,8 +10127,12 @@
       "The Bank of Brazil Cultural Center (or Centro Cultural Banco do Brasil) has several centers across Brazil, including Rio de Janeiro. The Rio center is considered one of the top hundred most visited art museums around the globe and around 2 million visitors pass through its doors each year.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/275800",
     "city": "Rio De Janeiro",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Maracanã Stadium",
@@ -10022,8 +10143,12 @@
       "One of Rio de Janeiro’s icons, the Maracanã Stadium was originally opened to host the 1950 FIFA World Cup. The government-owned stadium has since hosted football matches between top clubs in Rio, as well as a number of concerts and other sporting events.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/275917",
     "city": "Rio De Janeiro",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "National Library",
@@ -10034,8 +10159,12 @@
       "Located in Rio de Janeiro’s Cinelandia Square, the Biblioteca Nacional do Brasil – or the National Library of Brazil – is the world’s seventh largest library and by far the largest in Latin America.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/275865",
     "city": "Rio De Janeiro",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Rio Art Museum",
@@ -10045,8 +10174,12 @@
     "description": ".",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/275850",
     "city": "Rio De Janeiro",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Joa Beach",
@@ -10055,8 +10188,12 @@
     "description": ".",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/275840",
     "city": "Rio De Janeiro",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "National Historical Museum",
@@ -10067,8 +10204,12 @@
       "Rio de Janeiro’s Museu Historico Nacional – the National  History Museum – was founded in 1922 and is considered one of the most important cultural institutes in Brazil. The museum is home to nearly 350,000 items, including the largest numismatic collection on the continent.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/275924",
     "city": "Rio De Janeiro",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Rio Zoo",
@@ -10079,8 +10220,12 @@
       "The Zoological Gardens of Rio de Janeiro City – better known as Rio Zoo – is located inside the Quinta da Boa Vista Gardens next to the National Museum of Natural History. The zoo brings visitors a real taste of the Amazon with its green and leafy feel.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/275887",
     "city": "Rio De Janeiro",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Museum of Modern Art",
@@ -10091,8 +10236,12 @@
       "Rio de Janeiro’s Museum of Modern Art (also known as Museu de Art Moderno or MAM), is based in Flamengo Park, an urban planning project near the city’s coast which was built during the 50s and 60s.  MAM was designed by Alfonso Eduardo Reidy as a Modernist concrete building and was completed in 1955.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/275860",
     "city": "Rio De Janeiro",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Arpoador Beach",
@@ -10102,8 +10251,12 @@
       "Considered the birthplace of surfing in Brazil, Arpoador Beach is strategically located between the Copacabana and Ipanema beaches in Rio de Janeiro. Compared to its famous neighbors, Arpoador – at just a 500 m stretch – is considered small, although it has some of the best waves and finest views in Rio.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/275795",
     "city": "Rio De Janeiro",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Imperial Museum",
@@ -10114,8 +10267,12 @@
       "One of the most visited museums in Brazil is the Museu Imperial de Petropolis or the Imperial Museum of Brazil.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/275830",
     "city": "Rio De Janeiro",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Old San Juan",
@@ -19637,8 +19794,12 @@
       "The Tyne Bridge is a beautiful through arch bridge that spans the River Tyne between Swing Bridge and Gateshead Millennium Bridge connecting the city of Newcastle to the town of Gateshead. It is a steel arch bridge with concrete towers on each bank of the river. The bridge spans 162m with a total length of 389m.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/358624",
     "city": "Newcastle Upon Tyne",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Quayside",
@@ -19648,8 +19809,12 @@
       "Quayside in Newcastle runs along the north bank of the River Tyne and the south bank in Gateshead across the water. Quayside played an important role in Newcastle’s industrial history and was once a busy commercial dock. Today Quayside has been gentrified and offers visitors a street market; cultural venues and new housing.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/358634",
     "city": "Newcastle Upon Tyne",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Newcastle Cathedral",
@@ -19659,8 +19824,12 @@
       "The first church to be built on the Newcastle Cathedral site was during the Norman era (11th century) and probably made of wood. It was rebuilt in stone in the 12th century and damaged by fire in the following years. Changes were made to the structure in the 14th century allowing more natural light to enter the church.",
     "photo": "https://d2sdiix1bd21d9.cloudfront.net/images/uploaded-new/358644",
     "city": "Newcastle Upon Tyne",
+<<<<<<< HEAD
     "is_active": true,
     "reviewing_status": true
+=======
+    "is_active": true
+>>>>>>> frontend
   },
   {
     "name": "Leeds City Museum",
