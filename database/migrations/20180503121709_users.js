@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
     users.string("name");
     users.string("email");
     users.integer("password");
-    users.integer("fbid");
+    users.text("fbid");
     users.boolean("is_active")
     users.timestamps(false,true);
     }).then(()=>{

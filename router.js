@@ -32,9 +32,9 @@ module.exports = (express) => {
         res.send('You are not logged in!');
     });
 
-    // router.get('/index', (req, res) => {
-    //     res.sendFile(__dirname + '/index.html');
-    // });
+    router.get('/index', (req, res) => {
+        res.sendFile(__dirname + '/index.html');
+    });
 
     router.get('/signup', (req, res) => {
         res.sendFile(__dirname + '/signup.html');
@@ -53,7 +53,7 @@ module.exports = (express) => {
         passport.authenticate('another-strategy', { failureRedirect: '/login' }),
         function (req, res) {
             // Successful authentication, redirect home.
-            res.redirect('/index');
+            res.redirect('/profile');
         });
 
     return router;

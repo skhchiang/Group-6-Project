@@ -25,16 +25,19 @@ module.exports = (app) => {
     passport.use('local-login', new LocalStrategy(
         async (email, password, done) => {
             try{
-                let users = await knex('users').where({email:email});
-                if (users.length == 0) {
-                    return done(null, false, { message: 'Incorrect credentials.' });
-                }
-                let user = users[0];
-                if (user.password === password) {
-                    return done(null, user);
-                }else{
-                    return done(null, false, { message: 'Incorrect credentials.' });
-                }
+                let users = await knex('users').where({email:email})
+
+                    if (users.length == 0) {
+                        return done(null, false, { message: 'Incorrect credentials.' });
+                    }
+                    let user=users[0];
+                    let result = await bcrypt.checkPassword(password, user.password);
+                    if(result){
+                        return done(null,user);
+                    }else{
+                        return done(null,false,{message:'INcorrect credentials'});
+                    }
+                
             }catch(err){
                 return done(err);
             }
@@ -54,35 +57,36 @@ module.exports = (app) => {
         // if no, create a user, and then return the user
 
         try{
-            let users = await knex('users').where({fbid:fbid})
+            let users = await knex('users').where({fbid:profile.id})
             let user = users.find(u=> u.fbid===profile.id);
             if(user){
                 //you might put accessToken to the users database
                 done(null,user);
             }else{
-
-                knex('users').insert([
-                    {id: users.length + 1},
-                    {name:undefined},
-                    {email: email},
-                    {password: undefined},
-                    {fbid:profile.id}
-                  ]);
+                 const newUser = {
             
+                    id: users.length + 1,
+                    name:undefined,
+                    email:undefined,
+                    password: undefined,
+                    fbid:profile.id
+                 };
+                 knex ('users').insert (newUser)
+                 .then((user)=>{
                 done(null,user);
+             })
             }
-
-        }catch(err){
+            }catch(err){
             done(err);
         }
-      
-        }
-    
-    )); 
+
+    })
+);
 
 
     passport.use('local-signup', new LocalStrategy(
-        async (email, password, done) => {
+        async (name, email, password, done) => {
+            
             try{
                 let users = await knex('users').where({email:email});
                 if (users.length > 0) {
@@ -94,11 +98,13 @@ module.exports = (app) => {
                     name:name,
                     email:email,
                     password: hash,
-                    fbId:undefined
+                    fbId:undefined,
+                    is_active:TRUE
 
                 };
                 let userId = await knex('users').insert(newUser).returning('id');
                 done(null,newUser);
+             
             }catch(err){
                 done(err);
             }
