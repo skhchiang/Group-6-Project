@@ -4,14 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ajax": "0.0.4",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
-    "handlebars": "^4.0.11",
-    "materialize-css": "^1.0.0-rc.1"
+    "fs": "0.0.1-security",
+    "jquery": "^3.3.1",
+    "knex": "^0.14.6",
+    "materialize-css": "^1.0.0-rc.1",
+    "path": "^0.12.7"
   }
 }

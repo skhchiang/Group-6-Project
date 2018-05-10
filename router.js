@@ -25,7 +25,7 @@ module.exports = (express) => {
     });
 
     router.get('/index', (req, res) => {
-        res.sendFile(__dirname + '/index.html');
+        res.render( );
     });
 
     return router;
