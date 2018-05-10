@@ -11,10 +11,7 @@ module.exports = (express) => {
         res.redirect('/login');
     }
 
-    // router.get('/profile',  isLoggedIn, (req, res) => {
-    //     res.send(__dirname+'/profile.html');
-    // });
-
+    
     router.get('/login', (req, res) => {
         res.sendFile(__dirname + '/login.html');
     });
@@ -38,7 +35,9 @@ module.exports = (express) => {
 
     router.get('/signup', (req, res) => {
         res.sendFile(__dirname + '/signup.html');
-    });
+    router.get('/index', (req, res) => {
+        res.render( );
+    })});
     
     router.post('/signup', passport.authenticate('local-signup', {
         successRedirect: '/login',
