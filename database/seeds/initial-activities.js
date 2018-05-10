@@ -29,18 +29,26 @@ exports.seed = function (knex, Promise) {
         return knex("typeOfActivities").select('*').then((types) => {
 
           Activities.forEach((obj) => {
-            // console.log(types);
+          
             let foundActivity = types.find((element) => {
               return element.name == obj.type;
             })
+            //console.log(foundActivity);
+            
+             
+            
             
             let foundCity = cities.find((element) => {
               return element.name == obj.city;
             })
+            // console.log(foundCity);
 
-            console.log(obj);
+            
+             
+
+            // console.log(obj);
             // obj.typeOfActivites_id = foundObj.id;
-            // activityPromise.push(createActivity(knex, activity, foundObj))
+          
             return knex('activities').insert({
               name: obj.name,
               address: obj.address,
@@ -50,6 +58,7 @@ exports.seed = function (knex, Promise) {
               is_active: obj.is_active,
               typeOfActivities_id: foundActivity.id
             }).then(() => {
+            
 
             })
 
@@ -60,17 +69,17 @@ exports.seed = function (knex, Promise) {
     })
 };
 
-const createActivity = function (knex, activity, typeOfActivity) {
-  return knex('typeOfActivities').where('type', typeOfActivity).first()
-    .then(function (typeOfActivityRecord) {
-      return knex('activities').insert({
-        name: activity.name,
-        address: activity.address,
-        description: activity.description,
-        typeOfActivity_id: typeOfActivityRecord.id
-      });
-    });
-};
+// const createActivity = function (knex, activity, typeOfActivity) {
+//   return knex('typeOfActivities').where('type', typeOfActivity).first()
+//     .then(function (typeOfActivityRecord) {
+//       return knex('activities').insert({
+//         name: activity.name,
+//         address: activity.address,
+//         description: activity.description,
+//         typeOfActivity_id: typeOfActivityRecord.id
+//       });
+//     });
+// };
 
 // let Activities = fs.readJsonSync(path.join(__dirname, "/activities.json"));
 // console.log(Activities.length); //result 1958
