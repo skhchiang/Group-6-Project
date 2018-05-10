@@ -16,6 +16,7 @@
     "https": "^1.0.0",
     "knex": "^0.14.6",
     "materialize-css": "^1.0.0-rc.1",
+    "nodemon": "^1.17.4",
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
     "passport-local": "^1.0.0",
