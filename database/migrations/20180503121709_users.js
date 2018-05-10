@@ -3,8 +3,8 @@ exports.up = function(knex, Promise) {
     users.increments();
     users.string("name");
     users.string("email");
-    users.integer("password");
-    users.text("fbid");
+    users.text("password");
+    users.bigInteger("fbid");
     users.boolean("is_active")
     users.timestamps(false,true);
     }).then(()=>{
