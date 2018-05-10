@@ -9,9 +9,22 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^2.0.1",
     "express": "^4.16.3",
+<<<<<<< HEAD
     "express-handlebars": "^3.0.0",
     "handlebars": "^4.0.11",
     "materialize-css": "^1.0.0-rc.1"
+=======
+    "express-https": "0.0.2",
+    "express-session": "^1.15.6",
+    "https": "^1.0.0",
+    "knex": "^0.14.6",
+    "materialize-css": "^1.0.0-rc.1",
+    "passport": "^0.4.0",
+    "passport-facebook": "^2.1.1",
+    "passport-local": "^1.0.0",
+    "pg": "^7.4.3"
+>>>>>>> bad9eb43093aa5c8071700730c545041b458d5b2
   }
 }
