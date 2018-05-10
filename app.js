@@ -1,8 +1,12 @@
 const express = require('express');
 const app = express();
-const session = require('express-session');
+const fs = require ('fs');
+const session = require ('express-session');
 const setupPassport = require('./passport');
 const bodyParser = require('body-parser');
+const knex = require('knex');
+const http = require('http').Server(app);
+const https = require('https');
 const router = require('./router')(express);
 const port = process.env.PORT || 3030;
 
@@ -12,16 +16,17 @@ const ItiRouter = require('./routers/itiRouter');
 const ItiService = require('./services/itiService');
 
 app.use(session({
-    secret: 'supersecret'
+    secret: 'supersecret',
+    resave: true,
+    saveUninitialized: true
 }));
 
-app.use(express.static('public'));
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/login.html');
 });
 
-app.use(bodyParser());
+app.use(bodyParser.urlencoded({extended: false}));
 
 setupPassport(app);
 
@@ -32,5 +37,7 @@ app.use('/iti', itiRouter.route());               // at route /iti, will call it
 
 
 
-app.listen(port);
-console.log('listening on port ', port);
+https.createServer({
+    key: fs.readFileSync('domain.key'),
+    cert: fs.readFileSync('domain.crt')
+  }, app).listen(port);

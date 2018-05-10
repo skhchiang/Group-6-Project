@@ -14,3 +14,5 @@ class ItiService {
     // set
     // delete
 }
+
+module.exports = ItiService;
