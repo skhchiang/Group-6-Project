@@ -23,8 +23,10 @@ app.use(
   })
 );
 
+
+
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/login.html");
+  res.sendFile(__dirname + "/index.html");
 });
 
 app.use(bodyParser.urlencoded({ extended: false }));
