@@ -1,6 +1,5 @@
 const express = require('express');
 
-
 class ItiRouter {
 
     constructor(itiService) {                     // before constructor, there should be let itService = null? and this.itiService is getting the itiService variable
@@ -12,7 +11,6 @@ class ItiRouter {
         let router = express.Router();
         // for searching
         router.get('/', this.get.bind(this));
-
         // add a iti
         // router.post("/", this.post.bind(this));
 
@@ -24,9 +22,7 @@ class ItiRouter {
 
         // get by id
         //router.get('/:id', this.getById);
-
         return router;
-        
     }
 
     async get(req, res) {
@@ -39,13 +35,11 @@ class ItiRouter {
     }
 
 //   async post(req, res) {
-
 //     }
 
- }
+}
 
 module.exports = ItiRouter;
-
 
 // ItiRouter 
 //  - itiService

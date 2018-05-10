@@ -37,7 +37,8 @@ const createActivity = (knex, activity, typeOfActivity, cities) => {
             address: activity.address,
             description: activity.description,
             photo: activity.photo,
-            is_active: activity.is_active
+            is_active: activity.is_active,
+            reviewing_status: activity.reviewing_status
           });
         });
     });
