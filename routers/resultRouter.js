@@ -10,11 +10,8 @@ class ResultRouter {
         route() {
         
             let router = express.Router();
-            
             router.get('/',this.get.bind(this));
             router.post('/',this.post.bind(this));
-          
-
             return router;
         }
     

@@ -1,0 +1,110 @@
+[
+  {
+    "name": "Bangkok One Day",
+    "description":
+      "One day in Bangkok! Enjoy all the local cuisine and exciting activities. Dine at local cuisines and sample the exotic dining scence.",
+    "activities": [
+      "The Grand Palace",
+      "Wat Arun",
+      "Wat Pho",
+      "Wat Benchamabophit"
+    ],
+    "is_active": true
+  },
+  {
+    "name": "Chiang Mai One Day",
+    "description":
+      "One day in Chiang Mai! Enjoy all the local cuisine and exciting activities. Dine at local cuisines and sample the exotic dining scence.",
+    "activities": [
+      "Wat Phra Singh",
+      "Wat Chedi Luang",
+      "Wat Suan Dok",
+      "Warorot"
+    ],
+    "is_active": true
+  },
+  {
+    "name": "Dubai One Day",
+    "description":
+      "One day in Dubai! Enjoy all the local cuisine and exciting activities. Dine at local cuisines and sample the exotic dining scence.",
+    "activities": [
+      "Dubai Gold Souk",
+      "Dubai Mall",
+      "Dubai Aquarium",
+      "Grand Mosque"
+    ],
+    "is_active": true
+  },
+  {
+    "name": "Chiang Mai One Day",
+    "description":
+      "One day in Chiang Mai! Enjoy all the local cuisine and exciting activities. Dine at local cuisines and sample the exotic dining scence.",
+    "activities": [
+      "Wat Phra Singh",
+      "Wat Chedi Luang",
+      "Wat Suan Dok",
+      "Warorot"
+    ],
+    "is_active": true
+  },
+  {
+    "name": "Osaka One Day",
+    "description":
+      "One day in Osaka! Enjoy all the local cuisine and exciting activities. Dine at local cuisines and sample the exotic dining scence.",
+    "activities": [
+      "Osaka Castle",
+      "Osaka Aquarium",
+      "Universal Studios Japan",
+      "Osaka Aquarium"
+    ],
+    "is_active": true
+  },
+  {
+    "name": "Tokyo One Day",
+    "description":
+      "One day in Tokyo! Enjoy all the local cuisine and exciting activities. Dine at local cuisines and sample the exotic dining scence.",
+    "activities": [
+      "The Imperial Palace",
+      "Sensoji Temple",
+      "Tokyo Tower",
+      "Harajuku"
+    ],
+    "is_active": true
+  },
+  {
+    "name": "Kyoto One Day",
+    "description":
+      "One day in Kyoto! Enjoy all the local cuisine and exciting activities. Dine at local cuisines and sample the exotic dining scence.",
+    "activities": [
+      "Fushimi Inari-taisha Shrine",
+      "Chion-in",
+      "Nishiki Market",
+      "Sanjusangendo Hall"
+    ],
+    "is_active": true
+  },
+  {
+    "name": "Kuala Lumpur One Day",
+    "description":
+      "One day in Kuala Lumpur! Enjoy all the local cuisine and exciting activities. Dine at local cuisines and sample the exotic dining scence.",
+    "activities": [
+      "Merdeka Square",
+      "National Mosque",
+      "Islamic Art Museum Kuala Lumpur",
+      "Petronas Twin Towers"
+    ],
+    "is_active": true
+  },
+  {
+    "name": "Istanbul One Day",
+    "description":
+      "One day in Istanbul! Enjoy all the local cuisine and exciting activities. Dine at local cuisines and sample the exotic dining scence.",
+    "activities": [
+      "Blue Mosque (Sultan Ahmed)",
+      "Grand Bazaar",
+      "Galata Tower",
+      "Spice Bazaar"
+    ],
+    "is_active": true
+  }
+]
