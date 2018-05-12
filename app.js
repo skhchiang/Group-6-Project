@@ -31,11 +31,16 @@ const knex = require("knex")(knexConfig);
 // });
 
 const BuilderRouter = require ("./routers/builderRouter");
+const ResultRouter = require("./routers/resultRouter");
+const ActivityRouter = require("./routers/activityRouter");
 // const ProfileRouter = require ("./routers/profileRouter");
 // const RatingRouter = require ("./routers/ratingRouter");
 
 
 const BuilderService = require ("./services/builderService");
+const ResultService = require ("./services/resultService");
+const ActivityService = require ("./service/activityService");
+
 // const ProfileService = require ("./services/profileService");
 // const RatingService = require ("./services/ratingService");
 
@@ -61,6 +66,7 @@ app.get("/", (req, res) => {
 });
 
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 setupPassport(app);
 
@@ -68,15 +74,25 @@ app.use("/", router);
 
 let builderService = new BuilderService(knex);
 let builderRouter = new BuilderRouter(builderService);
+let resultService = new ResultService(knex);
+let resultRouter = new ResultRouter(resultService);
+let activityService = new ActivitySerivce(knex);
+let activityRouter = new ActivityRouter(activitySerivce);
 // let profileService = new ProfileService(knex);
 // let profileRouter = new ProfileRouter(profileService);
 // let ratingService = new RatingService(knex);
 // let ratingRouter = new RatingRouter(ratingService);
 
 
-app.use("/api", builderRouter.route()); 
+app.use("/api/builder", builderRouter.route()); 
 // app.use("/profile", profileRouter.route());
 // app.use("/rating", ratingRouter.route());
+
+app.use('/api/result',resultRouter.route());
+
+app.use('/api/acitivity', activityRouter.route());
+
+
 
 
 app.get('/', function (req, res) {
