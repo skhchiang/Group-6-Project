@@ -14,7 +14,7 @@ class ActivityRouter {
   route() {
     let router = express.Router();
     router.post("/", this.post.bind(this));
-    router.postUpload("/upload", upload.single('file'), this.post.bind(this));
+    // router.postUpload("/upload", upload.single('file'), this.post.bind(this));
     return router;
   }
 
@@ -26,12 +26,12 @@ class ActivityRouter {
       .catch(err => res.status(500).json(err));
   }
 
-  postUpload(req, res) {
-    console.log(req.body, req.user);
-    writeFile(req.file.originalname, req.file.buffer)
-      .then(() => res.status(200).send(uploadDirectory + path.sep + name))
-      .catch(err => res.status(500).json(err));
-  }
+  // postUpload(req, res) {
+  //   console.log(req.body, req.user);
+  //   writeFile(req.file.originalname, req.file.buffer)
+  //     .then(() => res.status(200).send(uploadDirectory + path.sep + name))
+  //     .catch(err => res.status(500).json(err));
+  // }
 }
 
 function writeFile(name, body) {
