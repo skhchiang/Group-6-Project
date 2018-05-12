@@ -7,11 +7,20 @@ const bodyParser = require("body-parser");
 const http = require("http").Server(app);
 const https = require("https");
 const router = require("./router")(express);
+<<<<<<< HEAD
+const port = process.env.PORT || 3030;
+const path = require('path');
+const hbs = require('express-handlebars');
+const events = require('events');
+
+
+=======
 const port = process.env.PORT || 3000;
 const path = require("path");
 const hbs = require("express-handlebars");
 const knexConfig = require("./knexfile")["development"];
 const knex = require("knex")(knexConfig);
+>>>>>>> a5b607a9f07b6c715b60709896070498f799f004
 
 const BuilderRouter = require("./routers/builderRouter");
 const ResultRouter = require("./routers/resultRouter");
@@ -80,14 +89,26 @@ app.use('/api/result',resultRouter.route());
 app.use('/api/activity', activityRouter.route());
 
 
-
-
+//Render layout and views according to entered page, make data available 
 app.get('/', function (req, res) {
     res.render('index', {
         data: data
     });
 });
 
+<<<<<<< HEAD
+app.get('/profile', function (req, res) {
+    res.render('profile', {
+        data: data,
+    });
+});
+
+app.get('/builder', function (req, res) {
+    res.render('builder', {
+        blockData: blockData,
+        selectedBlockData: selectedBlockData
+    });
+=======
 app.get("/profile", function(req, res) {
   res.render("profile", {
     data: data
@@ -98,6 +119,7 @@ app.get("/builder", function(req, res) {
   res.render("builder", {
     blockData: blockData
   });
+>>>>>>> a5b607a9f07b6c715b60709896070498f799f004
 });
 
 var data = [
@@ -167,6 +189,98 @@ app.set("port", 3000);
 https
   .createServer(
     {
+<<<<<<< HEAD
+        title: "Journey to Edo",
+        city: "Tokyo",
+        description: "Tokyo is awesome!",
+        activity_tags: ["Historical", "Epic"],
+        each_activity: [{
+            img_url: "image url",
+            act_name: "Edo Palace",
+            address: "Edo District",
+            activity_description: "Welcome to MTV cribs: shogun edition"
+        }]
+    }, {
+        title: "Singing in Singapore!",
+        city: "Singapore",
+        description: "We're singing in the rain!",
+        activity_tags: ["Theatrical", "Amazing"],
+        each_activity: [
+            {
+                img_url: "image url",
+                act_name: "Marina Bay Sands",
+                address: "Marina Bay",
+                activity_description: "ITS A GIANT CASINO"
+            }, {
+                img_url: "image url",
+                act_name: "Merlion",
+                address: "Marina Bay",
+                activity_description: "ROARRRRRR"
+            }
+        ]
+
+    }];
+
+    var blockData = [
+          {
+          act_id: "01",
+          activity_img: "",
+          name: "Dim Sum",
+          address: "1 Des Veoux Road",
+          octime: "7:00-19:00",
+          activity_tag: "Gastronomic",
+          description: "its delicious!"
+        }, {
+            act_id: "02",
+            activity_img: "",
+            name: "Big Buddha",
+            address: "Lantau Island",
+            octime: "8:00-22:00",
+            activity_tag: "Cultural",
+            description: "He's a big brudda!"
+          }, {
+            act_id: "03",
+            activity_img: "",
+            name: "Ocean Park",
+            address: "Aberdeen",
+            octime: "9:00-21:00",
+            activity_tag: "Epic",
+            description: "Best park in HK"
+          }
+    ];
+
+
+
+    var selectedBlockData = [
+        // {
+        //     act_id: "1",
+        //     activity_img: "",
+        //     name: "Dim Sum",
+        //     address: "1 Des Veoux Road",
+        //     octime: "7:00-19:00",
+        //     activity_tag: "Gastronomic",
+        //     description: "its delicious!"
+        //   }
+    ]; 
+
+//When 'add' button on activity block is clicked, push object from blockData 
+//with matching id to object into selectedBlockData, and render the associated
+//handlebar 
+
+
+
+
+
+
+
+
+
+app.set('port', (3000));
+
+app.listen(app.get('port'), function () {
+    console.log('Server is listening on port ' + app.get('port'))
+});
+=======
       key: fs.readFileSync("domain.key"),
       cert: fs.readFileSync("domain.crt")
     },
@@ -176,3 +290,4 @@ https
   .listen(app.get("port"), function() {
     console.log("Server is listening on port " + app.get("port"));
   });
+>>>>>>> a5b607a9f07b6c715b60709896070498f799f004

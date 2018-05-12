@@ -1,15 +1,37 @@
- {{!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" /> --}}
-<link rel="stylesheet" href="/stylesheets/styles.css" />
- 
+
  {{#each blockData}}
-<div class="activity-template col l3">
-<div style="background:url({{activity_img}})" class="bgimg">
-<h3>{{name}}</h3>
+
+  <div data-activity="{{act_id}}" class="activity-template col l3">
+    <div style="background:url({{activity_img}})" class="bgimg">
+      <h4 class="activity-name">{{name}}</h4>
+    </div>
+    <span class="activity-address">{{address}}</span>
+    <p class="activity-octime">{{octime}}</p>
+    <p class="activity-description">{{description}}</p>
+    <div class="chip">{{activity_tag}}</div>
+    <div class="add-btn btn btn-large blockBtn" id={{act_id}} type="submit">ADD</div>
   </div>
-<span>{{address}}</span>
-<p>{{octime}}</p>
-<p>{{description}}</p>
-<div class="chip">{{activity_tag}}</div>
-<div class="add-btn btn btn-large" type="submit">ADD</div>
+
+{{/each}} {{!-- Turn into a form with text input and read only, on submit click, push form inputs into array --}} {{!--
+<form
+  method="POST" action="#">
+  {{#each blockData}}
+  <h4>
+    <input type="text" id="name" value="{{name}}" readonly/>
+  </h4>
+  <span>
+    <input type="text" id="address" value="{{address}}" readonly/>
+  </span>
+  <p>
+    <input type="text" id="octime" value="{{octime}}" readonly/>
+  </p>
+  <p>
+    <input type="text" id="description" value="{{description}}" readonly/>
+  </p>
+  <div class="chip">
+    <input type="text" id="activity_tag" value="{{activity_tag}}" readonly/>
   </div>
-{{/each}}
+  <input class="add-btn btn btn-large" type="submit" value="ADD"></input>
+  </div>
+  {{/each}}
+  </form> --}}

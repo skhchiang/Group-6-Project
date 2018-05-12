@@ -10,6 +10,14 @@
     
   } 
   
+  #activity-selector {
+    border: 1px dotted black;
+  }
+
+  #itin-builder {
+    border: 1px dotted black;
+  }
+
   .test-template {
     border: 1px dotted black;
      margin: 5% 10%;
@@ -32,4 +40,14 @@
       background-color: #f1f1f1;
   }
   
+  .activity-template {
+    border: 1px dotted blue;
+  }
   
+  .activity-selector {
+    border: 1px solid black;
+  }
+
+  .itin-builder {
+    border: 1px solid black;
+  }

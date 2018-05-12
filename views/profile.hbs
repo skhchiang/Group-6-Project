@@ -6,7 +6,9 @@
 <section class="container center-align">
     <h3>Saved Itineraries</h3>
 
-    {{!-- #each iterates new templates based on sets of available data --}} {{#each data}} {{!-- Beginning of template --}}
+    {{!-- #each iterates new templates based on sets of available data --}} 
+    {{#each data}} 
+    {{!-- Beginning of template --}}
     <div class="test-template">
 
         <div class="row">
@@ -30,10 +32,12 @@
             </div>
         </div>
         <div class="row">
-            {{!-- Output partial to template --}} {{> activityPartial}}
+            {{!-- Output partial to template --}} 
+            {{> activityPartial}}
         </div>
     </div>
-    {{!-- End of Template --}} {{/each}}
+    {{!-- End of Template --}} 
+    {{/each}}
 
 </section>
 
