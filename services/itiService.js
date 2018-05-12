@@ -1,18 +1,18 @@
 
-class ItiService {
-    constructor(knex){
-        this.knex = knex                      //class ItiService use knex !!
-    }
+// class ItiService {
+//     constructor(knex){
+//         this.knex = knex                      //class ItiService use knex !!
+//     }
 
-    list() {
-        return this.knex('iti').select({               //select sth from 'iti'table
-            id
-        });
-    }
+//     list() {
+//         return this.knex('iti').select({               //select sth from 'iti'table
+//             id
+//         });
+//     }
 
-    // get
-    // set
-    // delete
-}
+//     // get
+//     // set
+//     // delete
+// }
 
-module.exports = ItiService;
+// module.exports = ItiService;

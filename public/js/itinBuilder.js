@@ -8,8 +8,9 @@ class ItinBuilder {
         $('.selected-template').map((index, element)=>{
             console.log(index);
 
-            
-            const activityId = element.querySelector(".blockBtn").id;
+          
+            const activityId =  $(element).data('activity');
+            // element.querySelector(".blockBtn").id;
             // const activityName = element.querySelector('.activity-name').innerHTML;
             // const activityAddress = element.querySelector('.activity-address').innerHTML;
             // const activityOctime = element.querySelector('.activity-octime').innerHTML;
@@ -38,8 +39,9 @@ class ItinBuilder {
         }
        
     )
-
+        
         console.log(itinBlock);
+        return itinBlock;
 
 
     }

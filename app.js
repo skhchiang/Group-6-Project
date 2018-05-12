@@ -4,19 +4,49 @@ const fs = require("fs");
 const session = require("express-session");
 const setupPassport = require("./passport");
 const bodyParser = require("body-parser");
-const knex = require("knex");
+// const knex = require("knex");
 const http = require("http").Server(app);
 const https = require("https");
 const router = require("./router")(express);
-const port = process.env.PORT || 3030;
+const port = process.env.PORT || 3000;
 const path = require('path');
 const hbs = require('express-handlebars');
 const events = require('events');
 
 
 
-// INITIALIZE BODY PARSER
-app.use(bodyParser.urlencoded({ extended: false }));
+const knexConfig = require("./knexfile")["development"];
+const knex = require("knex")(knexConfig);
+
+
+
+
+
+// const knex = require("knex")
+// ({
+//     client: 'postgresql',
+//     connections: {
+//         database: 'project2',
+//         user: 'luk',
+//         password: '12345678'
+//     }
+// });
+
+const BuilderRouter = require ("./routers/builderRouter");
+const ResultRouter = require("./routers/resultRouter");
+const ActivityRouter = require("./routers/activityRouter");
+// const ProfileRouter = require ("./routers/profileRouter");
+// const RatingRouter = require ("./routers/ratingRouter");
+
+
+const BuilderService = require ("./services/builderService");
+const ResultService = require ("./services/resultService");
+const ActivityService = require ("./services/activityService");
+
+// const ProfileService = require ("./services/profileService");
+// const RatingService = require ("./services/ratingService");
+
+
 
 //Set HANDLEBARS View Engine
 app.set('views', path.join(__dirname, 'views'));
@@ -25,33 +55,44 @@ app.set('view engine', 'hbs');
 app.set('partials', path.join(__dirname, '/views/partials'));
 app.use(express.static(path.join(__dirname, '/public')));
 
-
-
-// Import Routers
-const ItiRouter = require("./routers/itiRouter");
-// Import Services
-const ItiService = require("./services/itiService");
-
-// Create Session
 app.use(
-    session({
-      secret: "supersecret",
-      resave: true,
-      saveUninitialized: true
-    })
-  );
+  session({
+    secret: "supersecret",
+    resave: true,
+    saveUninitialized: true
+  })
+);
 
-app.use("/", router); //'/'is used as mother route and app.use to use router.get,post.delete... to control the  subsidiary route
-let itiService = new ItiService(knex);
-let itiRouter = new ItiRouter(itiService);
-app.use("/iti", itiRouter.route()); // at route /iti, will call itRouter's route()method
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/index.html");
+});
 
-https.createServer(
-    {
-      key: fs.readFileSync("domain.key"),
-      cert: fs.readFileSync("domain.crt")
-    }, app).listen(port);
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
+setupPassport(app);
+
+app.use("/", router); 
+
+let builderService = new BuilderService(knex);
+let builderRouter = new BuilderRouter(builderService);
+let resultService = new ResultService(knex);
+let resultRouter = new ResultRouter(resultService);
+let activityService = new ActivityService(knex);
+let activityRouter = new ActivityRouter(activityService);
+// let profileService = new ProfileService(knex);
+// let profileRouter = new ProfileRouter(profileService);
+// let ratingService = new RatingService(knex);
+// let ratingRouter = new RatingRouter(ratingService);
+
+
+app.use("/api/builder", builderRouter.route()); 
+// app.use("/profile", profileRouter.route());
+// app.use("/rating", ratingRouter.route());
+
+app.use('/api/result',resultRouter.route());
+
+app.use('/api/activity', activityRouter.route());
 
 
 //Render layout and views according to entered page, make data available 
@@ -70,7 +111,7 @@ app.get('/profile', function (req, res) {
 app.get('/builder', function (req, res) {
     res.render('builder', {
         blockData: blockData,
-        selectedBlockData: selectedBlockData
+
     });
 });
 
@@ -138,32 +179,15 @@ var data = [
 
 
 
-    var selectedBlockData = [
-        // {
-        //     act_id: "1",
-        //     activity_img: "",
-        //     name: "Dim Sum",
-        //     address: "1 Des Veoux Road",
-        //     octime: "7:00-19:00",
-        //     activity_tag: "Gastronomic",
-        //     description: "its delicious!"
-        //   }
-    ]; 
-
-//When 'add' button on activity block is clicked, push object from blockData 
-//with matching id to object into selectedBlockData, and render the associated
-//handlebar 
-
-
-
-
-
-
-
-
-
 app.set('port', (3000));
 
-app.listen(app.get('port'), function () {
+https.createServer(
+    {
+      key: fs.readFileSync("domain.key"),
+      cert: fs.readFileSync("domain.crt")
+    }, app)
+    
+    .listen(app.get('port'), function () {
     console.log('Server is listening on port ' + app.get('port'))
 });
+
