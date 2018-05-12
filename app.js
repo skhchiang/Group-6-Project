@@ -75,10 +75,17 @@ app.use("/api/profile", profileRouter.route());
 app.use("/api/result", resultRouter.route());
 app.use("/api/activity", activityRouter.route());
 
-app.get("/", function(req, res) {
-  res.render("index", {
-    data: data
-  });
+app.use('/api/result',resultRouter.route());
+
+app.use('/api/activity', activityRouter.route());
+
+
+
+
+app.get('/', function (req, res) {
+    res.render('index', {
+        data: data
+    });
 });
 
 app.get("/profile", function(req, res) {

@@ -12,9 +12,8 @@ class ProfileService {
       .from("users_itineraries")
       .join("users", "users_itineraries.users_id", "users.id")
       .join("itineraries", "users_itineraries.itineraries_id", "itineraries.id")
-      .where("cities.name", cities)
-      .where("typeOfActivities.name", typeOfActivities);
-
+      .where("users.name", user.name)
+      
     return query.then(rows => {
       return rows.map(r => ({
         id: r.id,

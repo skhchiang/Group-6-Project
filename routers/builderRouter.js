@@ -18,7 +18,7 @@ class BuilderRouter {
 
     return this.builderService
       .search(req.query.cities, req.query.typeOfActivities)
-      .then(data => res.json(data))
+      .then((arr) => res.json(arr))
       .catch(err => res.status(500).json(err));
   }
 
@@ -32,4 +32,6 @@ class BuilderRouter {
   }
 }
 
-module.exports = BuilderRouter;
+    
+    
+    module.exports = BuilderRouter;
