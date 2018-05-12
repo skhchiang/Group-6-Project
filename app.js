@@ -39,7 +39,7 @@ const ActivityRouter = require("./routers/activityRouter");
 
 const BuilderService = require ("./services/builderService");
 const ResultService = require ("./services/resultService");
-const ActivityService = require ("./service/activityService");
+const ActivityService = require ("./services/activityService");
 
 // const ProfileService = require ("./services/profileService");
 // const RatingService = require ("./services/ratingService");
@@ -76,8 +76,8 @@ let builderService = new BuilderService(knex);
 let builderRouter = new BuilderRouter(builderService);
 let resultService = new ResultService(knex);
 let resultRouter = new ResultRouter(resultService);
-let activityService = new ActivitySerivce(knex);
-let activityRouter = new ActivityRouter(activitySerivce);
+let activityService = new ActivityService(knex);
+let activityRouter = new ActivityRouter(activityService);
 // let profileService = new ProfileService(knex);
 // let profileRouter = new ProfileRouter(profileService);
 // let ratingService = new RatingService(knex);
@@ -90,7 +90,7 @@ app.use("/api/builder", builderRouter.route());
 
 app.use('/api/result',resultRouter.route());
 
-app.use('/api/acitivity', activityRouter.route());
+app.use('/api/activity', activityRouter.route());
 
 
 

@@ -24,7 +24,7 @@ class BuilderRouter {
             console.log(req.query);
 
             return this.builderService.search(req.query.cities,req.query.typeOfActivities)
-                .then(() => res.status(200))
+            .then((arr) => res.json(arr))
                 .catch((err) => res.status(500).json(err));
         }
 
