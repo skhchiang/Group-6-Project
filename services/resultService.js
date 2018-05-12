@@ -3,7 +3,7 @@ class ResultService {
     this.knex = knex; //class BuilderService use knex !!
   }
 
-  results(cities, typeOfActivities) {
+  result(cities, typeOfActivities) {
     if (
       typeof cities !== "undefined" &&
       typeof typeOfActivities !== "undefined"
@@ -17,7 +17,13 @@ class ResultService {
         .from("typeOfActivities")
         .where("name", typeOfActivities);
 
-      this.knex("cities")
+      // let query = this.knex.select('itineraries.id', 'itineraries.name', 'itineraries.description').from('itineraries')
+      // .innerJoin('cities','itineraries.cities_id','cities.id')
+      // .innerJoin('','typeOfActivities.id', 'activities.typeOfActivities_id')
+      // .whereIn('cities_id',subquery1)
+      // .andWhere('typeOfActivities_id',subquery2)
+
+      let query = this.knex("cities")
         .innerJoin("activities", "activitie.cities_id", "cities.id")
         .leftJoin("itineraries", "itineraries.cities_id", "cities.id")
         .leftJoin(
@@ -27,6 +33,10 @@ class ResultService {
         )
         .where("cities.id", subquery1)
         .andWhere("typeOfActivities.id", subquery2);
+
+      // console.log(query.toSQL());
+      // console.log(subquery1.toSQL());
+      // console.log(subquery2.toSQL());
 
       return query.then(rows => {
         console.log(rows);
@@ -44,10 +54,10 @@ class ResultService {
     }
   }
 
-  save(data, user) {
+  save(user, body) {
     return this.knex("users_itineraries").insert({
       users_id: 1,
-      itineraries_id: data.id,
+      itineraries_id: body.id,
       is_create: false
     });
   }

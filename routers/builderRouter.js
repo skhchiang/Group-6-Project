@@ -5,29 +5,42 @@ class BuilderRouter {
     this.builderService = builderService;
   }
 
-  route() {
-    let router = express.Router();
-    //router.get("/builder/:id", this.getById.bind(this));
-    router.get("/", this.get.bind(this));
-    router.post("/", this.post.bind(this));
-    return router;
-  }
+    constructor(builderService) {  
+              
+        this.builderService = builderService;                   
+    }                                                               
+                                                                    
+        route() {
+            let router = express.Router();
+    
+            // router.get('/builder/:id', this.getById.bind(this));
+            router.get('/',this.get.bind(this));
+            router.post('/',this.post.bind(this));
+          
 
-  get(req, res) {
-    console.log(req.query);
-    return this.builderService
-      .search(req.query.cities, req.query.typeOfActivities)
-      .then(arr => res.json(arr))
-      .catch(err => res.status(500).json(err));
-  }
+            return router;
+        }
+    
+       
+        get(req,res){
+            console.log(req.query);
 
-  post(req, res) {
-    console.log(req.body);
-    return this.builderService
-      .create(req.body, req.user)
-      .then(data => res.status(200))
-      .catch(err => res.status(500).json(err));
-  }
-}
+            return this.builderService.search(req.query.cities,req.query.typeOfActivities)
+                .then(() => res.status(200))
+                .catch((err) => res.status(500).json(err));
+        }
 
-module.exports = BuilderRouter;
+        post(req,res){
+            console.log("Hello World");
+            console.log(req.body);
+            return this.builderService
+            .create(req.body,req.user)
+            .then(arr=> {
+                res.json({status: "success"})
+            })
+            .catch(err => res.status(500).json({status: "failed"}));
+        }
+        
+    }
+    
+    module.exports = BuilderRouter;
