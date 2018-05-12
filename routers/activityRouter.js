@@ -3,18 +3,20 @@ const multer = require("multer");
 const fs = require("fs");
 const path = require("path");
 
-const upload = multer();
-const UploadDirectory = __dirname + path.sep + "files";
+const upload = multer({ dest: '../files' });
 
 class ActivityRouter {
+  
   constructor(activityService) {
+      this.uploadDirectory = path.join(__dirname, '../', "files");
     this.activityService = activityService;
   }
 
   route() {
     let router = express.Router();
     router.post("/", this.post.bind(this));
-    // router.postUpload("/upload", upload.single('file'), this.post.bind(this));
+    router.get("/",this.get.bind(this));
+    router.post("/upload", upload.single('profile'), this.upload.bind(this));
     return router;
   }
 
@@ -26,23 +28,42 @@ class ActivityRouter {
       .catch(err => res.status(500).json(err));
   }
 
-  // postUpload(req, res) {
-  //   console.log(req.body, req.user);
-  //   writeFile(req.file.originalname, req.file.buffer)
-  //     .then(() => res.status(200).send(uploadDirectory + path.sep + name))
-  //     .catch(err => res.status(500).json(err));
-  // }
-}
+  get(req,res){
+        res.sendFile(path.join(__dirname,'activity.html'));
+  }
 
-function writeFile(name, body) {
+  upload(req, res) {
+   this.writeFile(req.file.originalname, req.file.buffer)
+      .then((pathName) =>{
+          res.json({path: pathName})
+        })
+      .catch(err => res.status(500).json(err));
+  }
+
+
+ writeFile(name, body) {
   return new Promise((resolve, reject) => {
-    fs.writeFile(uploadDirectory + path.sep + name, body, err => {
+      const pathName = path.join(this.uploadDirectory, name);
+    fs.writeFile(pathName, body, err => {
       if (err) {
         return reject(err);
       }
-      resolve(name);
+      resolve(pathName);
     });
-  }).then(readFile);
+  });
+}
+
+ readFile(file) {
+    return (new Promise((resolve, reject) => {
+        fs.readFile(path.join(this.uploadDirectory, file), (err, body) => {
+            if (err) {
+                console.log(err);
+                return reject(err);
+            }
+            resolve(body);
+        });
+    }));
+    }
 }
 
 module.exports = ActivityRouter;

@@ -7,10 +7,8 @@ class BuilderRouter {
 
   route() {
     let router = express.Router();
-
-    // router.get('/builder/:id', this.getById.bind(this));
     router.get("/", this.get.bind(this));
-    router.post("/", this.post.bind(this));
+    // router.post("/", this.post.bind(this));
 
     return router;
   }
@@ -20,13 +18,11 @@ class BuilderRouter {
 
     return this.builderService
       .search(req.query.cities, req.query.typeOfActivities)
-      .then(() => res.status(200))
+      .then(data => res.json(data))
       .catch(err => res.status(500).json(err));
   }
 
   post(req, res) {
-    console.log("Hello World");
-    console.log(req.body);
     return this.builderService
       .create(req.body, req.user)
       .then(arr => {

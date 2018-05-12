@@ -46,11 +46,11 @@ class BuilderService {
   create(data, user) {
     return this.knex.transaction(function(trx) {
       return trx
-        .insert([{ name: data.name }], "id") //"id" = return  the new iti's id
+        .insert([{ name: data.itinName, description: data.itinDesc }], "id") //"id" = return  the new iti's id
         .into("itineraries")
         .then(function(ids) {
           console.log("ids", ids);
-          return Promise.map(data.activities, function(activity) {
+          return Promise.map(data["activities[]"], function(activity) {
             let itinAct = {
               itineraries_id: ids[0], // assume inserted 2/3 itin, ids[0] is the id of first itin
               activities_id: activity
@@ -63,7 +63,6 @@ class BuilderService {
         })
         .then(function(ids) {
           console.log(ids);
-
           let itiUser = {
             itineraries_id: ids[0][0],
             users_id: user,
