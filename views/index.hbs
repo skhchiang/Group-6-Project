@@ -8,13 +8,16 @@
         <label>Search</label>
     </form>
     <div class="container">
-        <div class="input-field col m6">
+        <div class="input-field col m6" id="activity-dropdown">
             <select>
-                <option value="" disabled selected>Select Activity Type</option>
-                <option value="1">Historical</option>
-                <option value="2">Active</option>
-                <option value="3">Gastronomical</option>
-                <label>Activity Select</label>
+                 <option value="" disabled selected>Select Activity Type</option>
+                <option value="Museums">Museums</option>
+                <option value="Religious Sites">Religious Sites</option>
+                <option value="Square">Squares and Plazas</option>
+                <option value="Parks & Gardens">Parks and Gardens</option>
+                <option value="Markets">Markets</option>
+                <option value="Natural Attractions">Natural Attractions</option>
+                <label>Select Activity Type</label>
             </select>
         </div>
     </div>
@@ -35,19 +38,16 @@
 
         <div class="row">
             <div class="col l6">
-                <ul class="list-unstyled">
                     <h4>{{title}}</h4>
                     <div>{{city}}</div>
-                </ul>
             </div>
             <div class="col l6">
-                <div>Rating</div>
                 <div>{{>activityTagPartial}}</div>
             </div>
         </div>
         <div class="row">
             <div class="col l6">
-                <span>{{description}}</span>
+                <p>{{description}}</p>
             </div>
             <div class="col l6">
                 <div class="add-btn  btn waves-effect waves-light btn-large" type="submit">ADD</div>
@@ -60,6 +60,12 @@
     </div>
     {{!-- End of Template --}} 
     {{/each}}
+
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large red">
+            <i class="large material-icons">mode_edit</i>
+        </a>
+    </div>
 
 </section>
 
