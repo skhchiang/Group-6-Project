@@ -1,14 +1,47 @@
 {{!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" /> --}}
-<link rel="stylesheet" href="/stylesheets/styles.css" />
+<link rel="stylesheet" href="stylesheets/styles.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.js"></script>
 
+{{!-- Activity Pool --}}
+ <h3 class="center-align" >Explore Your Options</h3>
+ <div class="container">
+        <div class="input-field col m6" id="activity-dropdown">
+            <select>
+                <option value="" disabled selected>Select Activity Type</option>
+                <option value="Museums">Museums</option>
+                <option value="Religious Sites">Religious Sites</option>
+                <option value="Square">Open Plazas and Squares</option>
+                <option value="Parks & Gardens">Parks and Gardens</option>
+                <option value="Markets">Markets</option>
+                <option value="Natural Attractions">Natural Attractions</option>
+                <label>Select Activity Type</label>
+            </select>
+        </div>
+    </div>
+<section class="center-align section row container " id="activity-selector">
+    
 
-<section class=" center-align section row container activity-selector">
 {{>activityBlock}}
 
-
 </section>
 
-<section class="itin-builder section row center-align">
+<h3 class="center-align">Build Your Adventure</h3>
+<section class="section row center-align container" id="itin-builder">
+
+{{>activitySelectedBlock}}
+
+
+</section>
+<section class="section row center-align container" id="detail-builder">
+    <div class="input-field col s8">
+        <textarea id="itin-description" type="text" name="itin-description" class="materialize-textarea"></textarea>
+        <label for="itin-description">Describe your Adventure,</label>
+    </div>
+    <div class="input-field col s8">
+          <input id="itin-name" type="text" class="validate" required="" aria-required="true">
+          <label for="itin-name">and finally, give it a name!</label>
+        </div>
+        <div class="btn btn-large teal" id="saveBtn" type="submit">SAVE ITINERARY</div>
 </section>
 
 
@@ -19,17 +52,56 @@
 
 
 
-
-
-
-
-
-
-
-{{!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script> --}}
 <!-- Compiled and minified JavaScript -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
 <!-- Compiled and minified Materialize -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.js"></script>
+
+<script>
+    
+    $('body').on('change', '#activity-dropdown', function() {
+        console.log("selectedValues", $('select').val());
+        act_type = $('select').val();
+        city = "Hong%20Kong";
+        $.getJSON('https://localhost:3000/api/builder?cities=' + city + '&typeOfActivities=' + act_type, function(data){
+            console.log(data);
+        });
+    })
+</script>
+
+
+<script>
+    $('#detail-builder').on('click', '#saveBtn', function() {
+            let itinBuilder = new ItinBuilder();
+            itinBuilder.addOn();
+    })
+</script>
+
+{{!-- <script>
+  $('.activity-block').on('click', '.blockBtn', function() {
+    btn = $(this).data(something);
+    btnId = $(this).id;
+  const itinBuilder = new ItinBuilder(btnId);
+  console.log(btnId);
+  itinBuilder.addOn();
+  });
+</script> --}}
+
+<script>
+    //when activity moves to selected box, add identifier class
+    $('body').on('click', '.add-btn', function(){
+        if ($(this).parent().parent()[0].id == 'activity-selector') {
+            $('#itin-builder').append('<div class="selected-template col l3">'+$(this).parent().html()+'</div>');
+            $(this).parent().remove();
+        } else if ($(this).parent().parent()[0].id == 'itin-builder'){
+            console.log("itin-builder");
+            $('#activity-selector').append('<div class="activity-template col l3">'+$(this).parent().html()+'</div>');
+            $(this).parent().remove();
+        }
+
+    }) 
+
+$('.add-btn').click(function() {
+
+})
+</script>

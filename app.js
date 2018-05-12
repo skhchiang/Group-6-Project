@@ -11,7 +11,9 @@ const router = require("./router")(express);
 const port = process.env.PORT || 3030;
 const path = require('path');
 const hbs = require('express-handlebars');
-const routes = require('./routes/index');
+const events = require('events');
+
+
 
 // INITIALIZE BODY PARSER
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -52,8 +54,7 @@ https.createServer(
 
 
 
-
-
+//Render layout and views according to entered page, make data available 
 app.get('/', function (req, res) {
     res.render('index', {
         data: data
@@ -62,13 +63,14 @@ app.get('/', function (req, res) {
 
 app.get('/profile', function (req, res) {
     res.render('profile', {
-        data: data
+        data: data,
     });
 });
 
 app.get('/builder', function (req, res) {
     res.render('builder', {
-        blockData: blockData
+        blockData: blockData,
+        selectedBlockData: selectedBlockData
     });
 });
 
@@ -108,12 +110,15 @@ var data = [
 
     var blockData = [
           {
+          act_id: "01",
+          activity_img: "",
           name: "Dim Sum",
           address: "1 Des Veoux Road",
           octime: "7:00-19:00",
           activity_tag: "Gastronomic",
           description: "its delicious!"
         }, {
+            act_id: "02",
             activity_img: "",
             name: "Big Buddha",
             address: "Lantau Island",
@@ -121,6 +126,8 @@ var data = [
             activity_tag: "Cultural",
             description: "He's a big brudda!"
           }, {
+            act_id: "03",
+            activity_img: "",
             name: "Ocean Park",
             address: "Aberdeen",
             octime: "9:00-21:00",
@@ -128,6 +135,30 @@ var data = [
             description: "Best park in HK"
           }
     ];
+
+
+
+    var selectedBlockData = [
+        // {
+        //     act_id: "1",
+        //     activity_img: "",
+        //     name: "Dim Sum",
+        //     address: "1 Des Veoux Road",
+        //     octime: "7:00-19:00",
+        //     activity_tag: "Gastronomic",
+        //     description: "its delicious!"
+        //   }
+    ]; 
+
+//When 'add' button on activity block is clicked, push object from blockData 
+//with matching id to object into selectedBlockData, and render the associated
+//handlebar 
+
+
+
+
+
+
 
 
 
