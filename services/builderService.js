@@ -67,7 +67,7 @@ class BuilderService {
 
           let itiUser = {
             itineraries_id: ids[0][0],
-            users_id: user,
+            users_id: user.id,
             is_create: true
           };
           return trx.insert(itiUser).into("users_itineraries");

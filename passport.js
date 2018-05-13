@@ -1,43 +1,26 @@
 //passport.js
 const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 const bcrypt = require('./bcrypt');
-const express = require ('express');
-const session = require ('express-session');
-const https = require ('https');
-const app = express();
 
-
-const LocalStrategy = require('passport-local').Strategy;
-const knex = require('knex')({
-    client: 'postgresql',
-    connection: {
-        database: 'project2',
-        user:     process.env.DB_USERNAME,
-        password: process.env.DB_PASSWORD
-    }
-});
-
-module.exports = (app) => {
+module.exports = (app, knex) => {
     app.use(passport.initialize());
     app.use(passport.session());
 
     passport.use('local-login', new LocalStrategy(
         async (email, password, done) => {
             try{
-                let users = await knex('users').where({email:email})
-
-                    if (users.length == 0) {
-                        return done(null, false, { message: 'Incorrect credentials.' });
-                    }
-                    let user=users[0];
-                    let result = await bcrypt.checkPassword(password, user.password);
-                    if(result){
-                        return done(null,user);
-                    }else{
-                        return done(null,false,{message:'Incorrect credentials'});
-                    }
-                
+                const user = await knex('users').first().where({email:email});
+                if (!user) {
+                    return done(null, false, { message: 'Incorrect credentials.' });
+                }
+                const result = await bcrypt.checkPassword(password, user.password);
+                if(result){
+                    return done(null, user);
+                } else {
+                    return done(null, false, { message: 'Incorrect credentials.' });
+                }
             }catch(err){
                 return done(err);
             }
@@ -119,12 +102,11 @@ module.exports = (app) => {
     });
 
     passport.deserializeUser(async (id, done) => {
-        let users = await knex('users').where({id:id});
-        if (users.length == 0) {
-            return done(new Error(`Wrong user id ${id}`));
+        let user = await knex('users').first().where({id:id});
+        if (user) {
+            return done(null, user);
         }
-        let user = users[0];
-        return done(null, user);
+        return done(new Error(`Wrong user id ${id}`));
     });
 };
 

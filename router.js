@@ -17,11 +17,6 @@ module.exports = (express) => {
         });
     });
 
-    router.get('/profile',  isLoggedIn, (req, res) => {
-        res.render("profile", {
-        });
-    });
-
     router.post('/login', passport.authenticate('local-login', {
         successRedirect: '/profile',
         failureRedirect: '/error'
@@ -34,15 +29,7 @@ module.exports = (express) => {
     // router.get('/index', (req, res) => {
     //     res.sendFile(__dirname + '/index');
     // });
-
-    router.get('/signup', (req, res) => {
-        res.render("signup", {
-        });
-
-    router.get('/index', (req, res) => {
-        res.render( );
-    })});
-    
+   
     router.post('/signup', passport.authenticate('local-signup', {
         successRedirect: '/login',
         failureRedirect: '/error'

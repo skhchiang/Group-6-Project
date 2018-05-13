@@ -50,7 +50,7 @@ app.use(
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-setupPassport(app);
+setupPassport(app, knex);
 
 app.use("/", router);
 

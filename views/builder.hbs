@@ -59,54 +59,44 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.js"></script>
 
 <script>
-      const selector = document.querySelector('select');
-        M.FormSelect.init(selector, {});
-</script>
+    const windowURL = new URL(window.location.href);
+    const CITY = windowURL.searchParams.get("city");
+    const selector = document.querySelector('select');
 
-<script>
+    M.FormSelect.init(selector, {});
 
     $('body').on('change', '#activity-dropdown', function() {
-        //console.log("selectedValues", $('select').val());
         act_type = $('select').val();
-        city = getUrlParameter('cities');
-        console.log(city);
-        $.get('https://localhost:3000/api/builder?cities=' + city + '&typeOfActivities=' + act_type, function(data){
+        $.get('https://localhost:3000/api/builder?cities=' + CITY + '&typeOfActivities=' + act_type, function(data){
             if (data.length == 0) {
                 alert("No Matches Found");
             }
-            //console.log(data);
+            $('#activity-selector').html('');
 
-        $('#activity-selector').html('');
+            data.forEach((activity) =>{
+                $('#activity-selector').append(
+                `<div data-activity="${activity.id}" class="activity-template col l3">
+                    <div style="background:url(${activity.photo})" class="bgimg">
+                            <h4 class="activity-name">${activity.name}</h4>
+                    </div>
+                    <span class="activity-address">${activity.address}</span>
+                    <p class="activity-description">${activity.description}</p>
 
-        data.forEach((activity) =>{
-            $('#activity-selector').append(
-            `<div data-activity="${activity.id}" class="activity-template col l3">
-                 <div style="background:url(${activity.photo})" class="bgimg">
-                        <h4 class="activity-name">${activity.name}</h4>
-                 </div>
-                <span class="activity-address">${activity.address}</span>
-                <p class="activity-description">${activity.description}</p>
-
-                <div class="add-btn btn-flat blockBtn waves-light" type="submit">ADD</div>
-            </div>`
-            )
-        })
+                    <div class="add-btn btn-flat blockBtn waves-light" type="submit">ADD</div>
+                </div>`
+                )
+            })
         });
     })
-</script>
 
-
-<script>
     $('#detail-builder').on('click', '#saveBtn', function() {
-            let itinBuilder = new ItinBuilder();
-          console.log(itinBuilder.addOn());
-            $.post('/api/builder',  itinBuilder.addOn()).done(function(data) {
-                alert("Itinerary Saved!");
-            })
+        let itinBuilder = new ItinBuilder();
+        console.log(itinBuilder.addOn());
+        $.post('/api/builder',  itinBuilder.addOn()).done(function(data) {
+            alert("Itinerary Saved!");
+        })
     })
-</script>
-
-<script>
+    
     //when activity moves to selected box, add identifier class
     $('body').on('click', '.add-btn', function(){
         if ($(this).parent().parent()[0].id == 'activity-selector') {
@@ -131,24 +121,4 @@
 
     }) 
 
-$('.add-btn').click(function() {
-
-})
-</script>
-
-<script>
-    var getUrlParameter = function getUrlParameter(sParam) {
-    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-        sURLVariables = sPageURL.split('&'),
-        sParameterName,
-        i;
-
-    for (i = 0; i < sURLVariables.length; i++) {
-        sParameterName = sURLVariables[i].split('=');
-
-        if (sParameterName[0] === sParam) {
-            return sParameterName[1] === undefined ? true : sParameterName[1];
-        }
-    }
-};
 </script>
