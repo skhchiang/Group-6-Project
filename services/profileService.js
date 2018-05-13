@@ -6,7 +6,8 @@ class ProfileService {
   search(users) {
     return this.knex("users_itineraries")
       .select("itineraries_id")
-      .where("users_id", 1)
+      .join("users", "users_itineraries.users_id", "users.id")
+      .where("users_name", users.name)
       .then(itinIdArray => {
         itinIdArray = itinIdArray.map(ele => ele.itineraries_id);
         return this.knex("itineraries")
