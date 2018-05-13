@@ -12,11 +12,11 @@ class ProfileRouter {
   }
 
   get(req, res) {
-    console.log(req.user);
-    return this.profileService
-      .search(req.user)
+    return this.profileService  
+      .search(1)
       .then(data => res.json(data))
       .catch(err => res.status(500).json(err));
+      console.log(data);
   }
 }
 

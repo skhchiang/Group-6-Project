@@ -8,15 +8,15 @@ class BuilderRouter {
   route() {
     let router = express.Router();
     router.get("/", this.get.bind(this));
+    router.post("/", this.post.bind(this));
     return router;
   }
 
   get(req, res) {
     console.log(req.query);
-
     return this.builderService
       .search(req.query.cities, req.query.typeOfActivities)
-      .then((arr) => res.json(arr))
+      .then(arr => res.json(arr))
       .catch(err => res.status(500).json(err));
   }
 
@@ -30,6 +30,4 @@ class BuilderRouter {
   }
 }
 
-    
-    
-    module.exports = BuilderRouter;
+module.exports = BuilderRouter;
