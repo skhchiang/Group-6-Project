@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="/stylesheets/styles.css" />
 
 <!--MAIN SEARCH BAR and ACTIVITY DROPDOWN SELECTION-->
-<div class="container center-align">
+<div class="container center-align" id="search-form">
     <form action="" method="get">
         <input id="search" type="text" name="city-input" class="section-search center scrollspy">
         <label>Search</label>
@@ -22,13 +22,13 @@
         </div>
     </div>
     <form>
-        <input for="search" class="submitButton btn waves-effect waves-light btn-large" type="submit" value="Submit">
+        <input for="search" class="submitButton btn waves-effect waves-light btn-large" type="submit" id="search-btn" value="SEARCH">
     </form>
 </div>
 <div class="divider"></div>
 
 <!--FEATURED ITINERARIES-->
-<section class="container ">
+<section class="container" id="result-selector" >
     <h3 class="center-align">Featured Itineraries</h3>
 
     {{!-- #each iterates new templates based on sets of available data --}} 
@@ -50,7 +50,7 @@
                 <p>{{description}}</p>
             </div>
             <div class="col l6">
-                <div class="add-btn  btn waves-effect waves-light btn-large" type="submit">ADD</div>
+                <div class="add-btn  btn waves-effect waves-light btn-large"  type="submit">ADD</div>
             </div>
         </div>
         <div class="row">
@@ -76,3 +76,10 @@
     crossorigin="anonymous"></script>
 <!-- Compiled and minified Materialize -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.js"></script>
+
+<script>
+    $('search-form').on('click', '#searchBtn', function() {
+        $.get(req)
+    })
+
+</script> 
