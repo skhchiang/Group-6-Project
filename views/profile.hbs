@@ -21,7 +21,7 @@
 
 <script>
     $(document).ready(function () {
-        $.get('https://localhost:3000/api/profile'), function (data) {
+        $.get('https://localhost:3000/api/profile', function (data) {
 
             data.forEach((itin) => {
                 $('#profile-itins').append(
@@ -46,7 +46,7 @@
                 </div>
             </div>`
                 )
-            }
+            
                 itin.typeOfActivities.forEach((type) => {
                     $('[data-chip="${itin.id}"]').append(
                         `<div class="chip" >${type}</div>`
@@ -63,8 +63,8 @@
                     </div>`
                     )
                 })
-            )
-        }
+            })
+        })
     })
 
 
