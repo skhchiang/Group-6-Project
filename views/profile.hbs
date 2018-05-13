@@ -24,13 +24,13 @@
         $.get('https://localhost:3000/api/profile', function (data) {
 
             data.forEach((itin) => {
+                console.log(data);
                 $('#profile-itins').append(
                     `<div data-itin="${itin.id}" class="row">
                         <div style="background:url(${itin.photo})" class="col l6 bgimg" >
                             <h4>${itin.name}</h4>
-                            <div>${itin.city}</div>
                         </div>
-                    <div class="col l6" data-chip="${itin.id}">
+                    <div class="col l6" data-chip="chipper">
            
                     </div>
   
@@ -42,24 +42,23 @@
                         <div class="add-btn  btn waves-effect waves-light btn-large" type="submit" id="itin-saver">SAVE</div>
                     </div>
                 </div>
-                <div class="row activity-partial" data-activity="${itin.id}">
+                <div class="row activity-partial" data-activity="hello">
                 </div>
             </div>`
                 )
-            
-                itin.typeOfActivities.forEach((type) => {
-                    $('[data-chip="${itin.id}"]').append(
-                        `<div class="chip" >${type}</div>`
-                    )
-                })
+               // itin.activities.forEach((activity) => {
+                 //   $('[data-chip="chipper"]').append(
+                  //   `<div class="chip" >${activity.activity_type}</div>`
+                   // )
+               // })
 
                  itin.activities.forEach((activity) => {
-                    $('[data-activity="${itin.id}"]').append(
+                    $('[data-activity="hello"]').append(
                         `<div class="col m6 actBox section">
-                        <img src=${activity.photo}/>
-                        <h4>${activity.name}</h4>
-                        <span>${activity.address}</span>
-                        <p>${activity.description}</p>
+                        <img src=${activity.activity_photo}/>
+                        <h4>${activity.activity_name}</h4>
+                        <span>${activity.activity_address}</span>
+                        <p>${activity.activity_description}</p>
                     </div>`
                     )
                 })

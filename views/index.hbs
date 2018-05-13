@@ -3,10 +3,10 @@
 <link rel="stylesheet" href="/stylesheets/styles.css" />
 
 <!--MAIN SEARCH BAR and ACTIVITY DROPDOWN SELECTION-->
-<div class="container center-align" id="search-form">
+<div class="container center-align" id="search-form"  >
     <form action="" method="get">
-        <input id="search" type="text" name="city-input" class="section-search center scrollspy">
-        <label>Search</label>
+        <input id="search" type="text" name="city-input" class="section-search center scrollspy" >
+        <label>Enter a City</label>
     </form>
     <div class="container">
         <div class="input-field col l6" id="search-dropdown">
@@ -26,11 +26,9 @@
         <div for="search" class="submitButton waves-effect waves-light btn-large btn-flat" type="submit" id="search-btn">SEARCH</div>
     </div>
 </div>
-<div class="divider"></div>
 
-<!--FEATURED ITINERARIES-->
 <section class="container" id="result-selector">
-    <h3 class="center-align">Featured Itineraries</h3>
+    
 
 
 
@@ -39,14 +37,15 @@
 
 
 
-    <div class="fixed-action-btn" id="fixed-panel">
+    
+
+ 
+</section>
+<div class="fixed-action-btn" id="fixed-panel">
         <a class="btn-floating btn-large red" id="create-itin" >
             <i class="large material-icons" >mode_edit</i>
         </a>
     </div>
-
- 
-</section>
 
 
 
@@ -79,21 +78,21 @@
             alert("Please fill out a destination and a an activity type")
         }
         $.get('https://localhost:3000/api/result?cities=' + city + '&typeOfActivities=' + act_type, function (data) {
-            if (data.length == 0) {
-                alert("No Matching Itineries Found");
-            }
+            //if (data.length == 0) {
+             //   alert("No Matching Itineries Found");
+            //}
             console.log(data);
             $('#result-selector').html('');
 
-            data.forEach((itin) => {
-                $('#result-selector').append(
+                   data.forEach((itin) => {
+                console.log(data);
+                $('#profile-itins').append(
                     `<div data-itin="${itin.id}" class="row">
                         <div style="background:url(${itin.photo})" class="col l6 bgimg" >
                             <h4>${itin.name}</h4>
-                            <div>${itin.city}</div>
                         </div>
-                    <div class="col l6" data-chip="${itin.id}">
-          
+                    <div class="col l6" data-chip="chipper">
+           
                     </div>
   
                     <div class="row">
@@ -104,23 +103,28 @@
                         <div class="add-btn  btn waves-effect waves-light btn-large" type="submit" id="itin-saver">SAVE</div>
                     </div>
                 </div>
-                <div class="row activity-partial" data-activity="${itin.id}">
+                <div class="row activity-partial" data-activity="hello">
                 </div>
             </div>`
-                
-                
                 )
-                console.log(itin.typeOfActivities);
-                }
-               
-                //ACTIVITY PARTIAL PLACEHOLDER
+               // itin.activities.forEach((activity) => {
+                 //   $('[data-chip="chipper"]').append(
+                  //   `<div class="chip" >${activity.activity_type}</div>`
+                   // )
+               // })
 
-                )
-                
-            }
-
-            
-        ) 
+                 itin.activities.forEach((activity) => {
+                    $('[data-activity="hello"]').append(
+                        `<div class="col m6 actBox section">
+                        <img src=${activity.activity_photo}/>
+                        <h4>${activity.activity_name}</h4>
+                        <span>${activity.activity_address}</span>
+                        <p>${activity.activity_description}</p>
+                    </div>`
+                    )
+                })
+            })        
+        }) 
     })
 
 </script>
