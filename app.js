@@ -48,10 +48,6 @@ app.use(
   })
 );
 
-app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/index.html");
-});
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -92,83 +88,33 @@ app.use('/api/activity', activityRouter.route());
 //Render layout and views according to entered page, make data available 
 app.get('/', function (req, res) {
     res.render('index', {
-        data: data
+       
     });
 });
 
 app.get("/profile", function(req, res) {
   res.render("profile", {
-    data: data
+
   });
 });
 
 app.get("/builder", function(req, res) {
   res.render("builder", {
-    blockData: blockData
   });
 });
 
-var data = [
-  {
-    title: "Journey to Edo",
-    city: "Tokyo",
-    description: "Tokyo is awesome!",
-    activity_tags: ["Historical", "Epic"],
-    each_activity: [
-      {
-        img_url: "image url",
-        act_name: "Edo Palace",
-        address: "Edo District",
-        activity_description: "Welcome to MTV cribs: shogun edition"
-      }
-    ]
-  },
-  {
-    title: "Singing in Singapore!",
-    city: "Singapore",
-    description: "We're singing in the rain!",
-    activity_tags: ["Theatrical", "Amazing"],
-    each_activity: [
-      {
-        img_url: "image url",
-        act_name: "Marina Bay Sands",
-        address: "Marina Bay",
-        activity_description: "ITS A GIANT CASINO"
-      },
-      {
-        img_url: "image url",
-        act_name: "Merlion",
-        address: "Marina Bay",
-        activity_description: "ROARRRRRR"
-      }
-    ]
-  }
-];
+app.get("/signup", function(req, res) {
+    res.render("signup", {
+    });
+  });
 
-var blockData = [
-  {
-    name: "Dim Sum",
-    address: "1 Des Veoux Road",
-    octime: "7:00-19:00",
-    activity_tag: "Gastronomic",
-    description: "its delicious!"
-  },
-  {
-    activity_img: "",
-    name: "Big Buddha",
-    address: "Lantau Island",
-    octime: "8:00-22:00",
-    activity_tag: "Cultural",
-    description: "He's a big brudda!"
-  },
-  {
-    name: "Ocean Park",
-    address: "Aberdeen",
-    octime: "9:00-21:00",
-    activity_tag: "Epic",
-    description: "Best park in HK"
-  }
-];
+  app.get("/login", function(req, res) {
+    res.render("login", {
+    });
+  });
+
+
+
 
 app.set("port", 3000);
 

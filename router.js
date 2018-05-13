@@ -13,11 +13,13 @@ module.exports = (express) => {
 
     
     router.get('/login', (req, res) => {
-        res.sendFile(__dirname + '/login.html');
+        res.render("login", {
+        });
     });
 
     router.get('/profile',  isLoggedIn, (req, res) => {
-        res.send(__dirname + '/profile.html');
+        res.render("profile", {
+        });
     });
 
     router.post('/login', passport.authenticate('local-login', {
@@ -29,12 +31,14 @@ module.exports = (express) => {
         res.send('You are not logged in!');
     });
 
-    router.get('/index', (req, res) => {
-        res.sendFile(__dirname + '/index.html');
-    });
+    // router.get('/index', (req, res) => {
+    //     res.sendFile(__dirname + '/index');
+    // });
 
     router.get('/signup', (req, res) => {
-        res.sendFile(__dirname + '/signup.html');
+        res.render("signup", {
+        });
+
     router.get('/index', (req, res) => {
         res.render( );
     })});

@@ -24,7 +24,7 @@ class ResultService {
       // .andWhere('typeOfActivities_id',subquery2)
 
       let query = this.knex("cities")
-        .innerJoin("activities", "activitie.cities_id", "cities.id")
+        .innerJoin("activities", "activities.cities_id", "cities.id")
         .leftJoin("itineraries", "itineraries.cities_id", "cities.id")
         .leftJoin(
           "typeOfActivities",
@@ -54,10 +54,10 @@ class ResultService {
     }
   }
 
-  save(user, body) {
+  save(userId, data) {
     return this.knex("users_itineraries").insert({
-      users_id: 1,
-      itineraries_id: body.id,
+      users_id: userId,
+      itineraries_id: data.id,
       is_create: false
     });
   }

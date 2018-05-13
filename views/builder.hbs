@@ -56,20 +56,27 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
 <!-- Compiled and minified Materialize -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.js"></script>
+
+<script>
+      const selector = document.querySelector('select');
+        M.FormSelect.init(selector, {});
+</script>
 
 <script>
 
     $('body').on('change', '#activity-dropdown', function() {
-        console.log("selectedValues", $('select').val());
+        //console.log("selectedValues", $('select').val());
         act_type = $('select').val();
-        city = "Tokyo";
-        $.getJSON('https://localhost:3000/api/builder?cities=' + city + '&typeOfActivities=' + act_type, function(data){
+        city = getUrlParameter('cities');
+        console.log(city);
+        $.get('https://localhost:3000/api/builder?cities=' + city + '&typeOfActivities=' + act_type, function(data){
             if (data.length == 0) {
                 alert("No Matches Found");
             }
-            console.log(data);
+            //console.log(data);
 
-    $('#activity-selector').html('');
+        $('#activity-selector').html('');
 
         data.forEach((activity) =>{
             $('#activity-selector').append(
@@ -127,4 +134,21 @@
 $('.add-btn').click(function() {
 
 })
+</script>
+
+<script>
+    var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
 </script>

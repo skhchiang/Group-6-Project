@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-/node_modules/
-.env
-/database/node_modules/
-=======
+
 /node_modules
 .env
 /database/node_modules
->>>>>>> a5b607a9f07b6c715b60709896070498f799f004

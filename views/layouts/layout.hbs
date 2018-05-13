@@ -28,16 +28,19 @@
     <div class="navbar-fixed">
         <nav class="teal">
             <div class="nav-wrapper">
-                <a href="#home" class="brand-logo">24hr Adventure</a>
+                <a href="/" class="brand-logo">24hr Adventure</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger">
                     <i class="material-icons">more_horiz </i>
                 </a>
                 <ul class="right hide-on-med-and-down">
                     <li>
-                        <a href="#popDestinations">Signup</a>
+                        <a href="/signup">Signup</a>
                     </li>
                     <li>
-                        <a href="#">Login</a>
+                        <a href="/login">Login</a>
+                    </li>
+                      <li>
+                        <a href="/profile" id="profile-link" >Profile</a>
                     </li>
 
                 </ul>
@@ -76,11 +79,9 @@
 
 <!-- Materialize Component Initialization -->
     <script>
-        const selector = document.querySelector('select');
-        M.FormSelect.init(selector, {});
+   
 
-        const action_btn = document.querySelector('fixed-action-btn');
-        M.FloatingActionButton.init(action_btn, {});
+    
     </script>
 
    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
@@ -92,6 +93,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.js"></script>
    
  
+  
+
 </body>
 
 </html>

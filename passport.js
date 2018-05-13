@@ -12,9 +12,9 @@ const LocalStrategy = require('passport-local').Strategy;
 const knex = require('knex')({
     client: 'postgresql',
     connection: {
-        database: "project2",
-        user: "luk",
-        password: "12345678"
+        database: 'project2',
+        user:     process.env.DB_USERNAME,
+        password: process.env.DB_PASSWORD
     }
 });
 

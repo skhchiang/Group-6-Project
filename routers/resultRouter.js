@@ -17,7 +17,7 @@ class ResultRouter {
     
 
         get(req,res){
-            //console.log(req.query);
+            console.log(req.query);
 
             return this.resultService.result(req.query.cities,req.query.typeOfActivities)
                 .then((arr) => res.json(arr))
