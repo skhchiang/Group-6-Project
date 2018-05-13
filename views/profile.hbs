@@ -3,11 +3,11 @@
 
 
 <!--SAVED ITINERARIES-->
-<section class="container center-align" id="profile-itins">
+<div class="container center-align" id="profile-itins">
     <h3>User's Saved Itineraries</h3>
 
 
-</section>
+</div>
 
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
@@ -22,8 +22,6 @@
 <script>
     $(document).ready(function () {
         $.get('https://localhost:3000/api/profile'), function (data) {
-
-            $('#profile-itins').html('');
 
             data.forEach((itin) => {
                 $('#profile-itins').append(
@@ -47,16 +45,27 @@
                 <div class="row activity-partial" data-activity="${itin.id}">
                 </div>
             </div>`
-                )            
-}
+                )
+            }
+                itin.typeOfActivities.forEach((type) => {
+                    $('[data-chip="${itin.id}"]').append(
+                        `<div class="chip" >${type}</div>`
+                    )
+                })
 
-                //ACTIVITY PARTIAL PLACEHOLDER
+                 itin.activities.forEach((activity) => {
+                    $('[data-activity="${itin.id}"]').append(
+                        `<div class="col m6 actBox section">
+                        <img src=${activity.photo}/>
+                        <h4>${activity.name}</h4>
+                        <span>${activity.address}</span>
+                        <p>${activity.description}</p>
+                    </div>`
+                    )
+                })
             )
         }
-
-
-
     })
-           
-        ) 
+
+
 </script>
