@@ -1,0 +1,29 @@
+
+data.forEach((itin) => {
+    $('#result-selector').append(
+ <div data-itin="${itin.id}" class="row">
+            <div style="background:url(${itin.photo})" class="col l6 bgimg" >
+                    <h4>${itin.name}</h4>
+                    <div>${itin.city}</div>
+            </div>
+            <div class="col l6">
+                <div class="chip">${itin.typeOfActivities}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col l6">
+                <p>${itin.description}</p>
+            </div>
+            <div class="col l6">
+                <div class="chip">${itin.reviewing_status}</div>
+                <div class="add-btn  btn waves-effect waves-light btn-large" type="submit">SAVE</div>
+            </div>
+        </div>
+        <div class="row activity-partial">
+            {{!-- Output partial to template --}} 
+            {{> activityPartial}}
+        </div>
+    </div>
+
+)
+    })
