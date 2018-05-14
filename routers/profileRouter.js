@@ -7,28 +7,17 @@ class ProfileRouter {
 
   route() {
     let router = express.Router();
-
     router.get("/", this.get.bind(this));
-    router.post("/", this.post.bind(this));
-
     return router;
   }
 
-  get(){
-
+  get(req, res) {
+    return this.profileService  
+      .search(req.user)
+      .then(data => res.json(data))
+      .catch(err => res.status(500).json(err));
+      console.log(data);
   }
-
-  post(){
-      
-  }
-
-
-
-
-
-  
 }
 
-    
-    
-    module.exports = ProfileRouter;
+module.exports = ProfileRouter;

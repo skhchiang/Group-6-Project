@@ -1,70 +1,149 @@
-{{!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" /> --}}
+{{!--
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" /> --}}
 <link rel="stylesheet" href="/stylesheets/styles.css" />
 
 <!--MAIN SEARCH BAR and ACTIVITY DROPDOWN SELECTION-->
-<div class="container center-align">
+<div class="container center-align" id="search-form"  >
     <form action="" method="get">
-        <input id="search" type="text" name="city-input" class="section-search center scrollspy">
-        <label>Search</label>
+        <input id="search" type="text" name="city-input" class="section-search center scrollspy" >
+        <label>Enter a City</label>
     </form>
     <div class="container">
-        <div class="input-field col m6">
+        <div class="input-field col l6" id="search-dropdown">
             <select>
                 <option value="" disabled selected>Select Activity Type</option>
-                <option value="1">Historical</option>
-                <option value="2">Active</option>
-                <option value="3">Gastronomical</option>
-                <label>Activity Select</label>
+                <option value="Museums">Museums</option>
+                <option value="Religious Sites">Religious Sites</option>
+                <option value="Square">Squares and Plazas</option>
+                <option value="Parks & Gardens">Parks and Gardens</option>
+                <option value="Markets">Markets</option>
+                <option value="Natural Attractions">Natural Attractions</option>
+                <label>Select Activity Type</label>
             </select>
         </div>
     </div>
-    <form>
-        <input for="search" class="submitButton btn waves-effect waves-light btn-large" type="submit" value="Submit">
-    </form>
-</div>
-<div class="divider"></div>
-
-<!--FEATURED ITINERARIES-->
-<section class="container ">
-    <h3 class="center-align">Featured Itineraries</h3>
-
-    {{!-- #each iterates new templates based on sets of available data --}} {{#each data}} {{!-- Beginning of template --}}
-    <div class="test-template section">
-
-        <div class="row">
-            <div class="col l6">
-                <ul class="list-unstyled">
-                    <h4>{{title}}</h4>
-                    <div>{{city}}</div>
-                </ul>
-            </div>
-            <div class="col l6">
-                <div>Rating</div>
-                <div>{{>activityTagPartial}}</div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col l6">
-                <span>{{description}}</span>
-            </div>
-            <div class="col l6">
-                <div class="add-btn  btn waves-effect waves-light btn-large" type="submit">ADD</div>
-            </div>
-        </div>
-        <div class="row">
-            {{!-- Output partial to template --}} {{> activityPartial}}
-        </div>
+    <div>
+        <div for="search" class="submitButton waves-effect waves-light btn-large btn-flat" type="submit" id="search-btn">SEARCH</div>
     </div>
-    {{!-- End of Template --}} {{/each}}
+</div>
 
+<section class="container" id="result-selector">
+    
+
+
+
+
+
+
+
+
+    
+
+ 
 </section>
+<div class="fixed-action-btn" id="fixed-panel">
+        <a class="btn-floating btn-large red" id="create-itin" >
+            <i class="large material-icons" >mode_edit</i>
+        </a>
+    </div>
 
-{{!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" --}}
-    {{!-- crossorigin="anonymous"></script> --}}
 
 
 <!-- Compiled and minified JavaScript -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
+     <!-- Compiled and minified Materialize -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.js"></script>
+
 <!-- Compiled and minified Materialize -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.js"></script>
+
+<script>
+         const selector = document.querySelector('select');
+        M.FormSelect.init(selector, {});
+
+            const action_btn = document.querySelector('fixed-action-btn');
+        M.FloatingActionButton.init(action_btn, {});
+</script>
+
+
+<script>
+
+    $('#search-form').on('click', '#search-btn', function () {
+         let act_type = $('#search-dropdown').find('select').val();
+         console.log(act_type);
+        var city = $('input').val();
+
+        if (act_type == '' || city == '') {
+            alert("Please fill out a destination and a an activity type")
+        }
+        $.get('https://localhost:3000/api/result?cities=' + city + '&typeOfActivities=' + act_type, function (data) {
+            //if (data.length == 0) {
+             //   alert("No Matching Itineries Found");
+            //}
+            console.log(data);
+            $('#result-selector').html('');
+
+                   data.forEach((itin) => {
+                console.log(data);
+                $('#profile-itins').append(
+                    `<div data-itin="${itin.id}" class="row">
+                        <div style="background:url(${itin.photo})" class="col l6 bgimg" >
+                            <h4>${itin.name}</h4>
+                        </div>
+                    <div class="col l6" data-chip="chipper">
+           
+                    </div>
+  
+                    <div class="row">
+                        <div class="col l6">
+                            <p>${itin.description}</p>
+                        </div>
+                    <div class="col l6">
+                        <div class="add-btn  btn waves-effect waves-light btn-large" type="submit" id="itin-saver">SAVE</div>
+                    </div>
+                </div>
+                <div class="row activity-partial" data-activity="hello">
+                </div>
+            </div>`
+                )
+               // itin.activities.forEach((activity) => {
+                 //   $('[data-chip="chipper"]').append(
+                  //   `<div class="chip" >${activity.activity_type}</div>`
+                   // )
+               // })
+
+                 itin.activities.forEach((activity) => {
+                    $('[data-activity="hello"]').append(
+                        `<div class="col m6 actBox section">
+                        <img src=${activity.activity_photo}/>
+                        <h4>${activity.activity_name}</h4>
+                        <span>${activity.activity_address}</span>
+                        <p>${activity.activity_description}</p>
+                    </div>`
+                    )
+                })
+            })        
+        }) 
+    })
+
+</script>
+
+<script>
+      $('#result-selector').on('click', '#itin-saver', function() {
+          var saved_itin = {};
+          var itinId = $(this).parent().parent().parent().data('itin');
+          console.log(itinId);
+          saved_itin.id = itinId;
+            $.post('/api/result',  saved_itin).done(function(data) {
+                alert("Itinerary Saved!");
+            })
+    })
+</script>
+
+<script>
+    $('#fixed-panel').on('click', '#create-itin', function() {
+        var city = $('input').val();
+        window.location.href = "/builder?cities=" + city;
+    } )
+</script>

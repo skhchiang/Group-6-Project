@@ -1,0 +1,77 @@
+
+data.forEach((itin) => {
+    $('#result-selector').append(
+ `<div data-itin="${itin.id}" class="row">
+            <div style="background:url(${itin.photo})" class="col l6 bgimg" >
+                    <h4>${itin.name}</h4>
+                    <div>${itin.city}</div>
+            </div>
+            <div class="col l6">
+                <div class="chip">${itin.typeOfActivities}</div>
+            </div>
+  
+        <div class="row">
+            <div class="col l6">
+                <p>${itin.description}</p>
+            </div>
+            <div class="col l6">
+                <div class="chip">${itin.reviewing_status}</div>
+                <div class="add-btn  btn waves-effect waves-light btn-large" type="submit">SAVE</div>
+            </div>
+        </div>
+        <div class="row activity-partial" id="${itin.id}">
+     
+   
+        </div>
+    </div>`
+)
+
+
+
+    data.itin.activities.forEach((activity) => {
+                    $('[data-activity="${itin.id}"]').append(
+                        `<div class="col m6 actBox section">
+                        <img src=${activity.photo}/>
+                        <h4>${activity.name}</h4>
+                        <span>${activity.address}</span>
+                        <p>${activity.description}</p>
+                    </div>`
+                    )
+                })
+
+    data.itin.typeOfActivities.forEach((type) => {
+                    $('[data-chip="${itin.id}"]').append(
+                        `<div class="chip" >${type}</div>`
+                    )
+                })
+
+
+
+        #each iterates new templates based on sets of available data 
+    {{#each data}} 
+    {{!-- Beginning of template --}}
+    <div class="test-template section">
+
+        <div class="row">
+            <div class="col l6">
+                    <h4>{{title}}</h4>
+                    <div>{{city}}</div>
+            </div>
+            <div class="col l6">
+                <div>{{>activityTagPartial}}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col l6">
+                <p>{{description}}</p>
+            </div>
+            <div class="col l6">
+                <div class="add-btn  btn waves-effect waves-light btn-large"  type="submit">ADD</div>
+            </div>
+        </div>
+        <div class="row">
+            {{!-- Output partial to template --}} 
+            {{> activityPartial}}
+        </div>
+    </div>
+    {{!-- End of Template --}} {{/each}}

@@ -14,8 +14,12 @@
         crossorigin="anonymous">
     <!-- Bootstrap -->
     {{!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"> --}}
+      <!-- Compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
       <!-- Local Stylesheet -->
-    <link rel="stylesheet" href="../../public/stylesheets/styles.css"/>
+    <link rel="stylesheet" href="stylesheets/styles.css"/>
+    <script src="js/itinBuilder.js"></script>
   <title>24hr Adventures</title>
 </head>
 
@@ -24,34 +28,32 @@
     <div class="navbar-fixed">
         <nav class="teal">
             <div class="nav-wrapper">
-                <a href="#home" class="brand-logo">24hr Adventure</a>
+                <a href="/" class="brand-logo">24hr Adventure</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger">
                     <i class="material-icons">more_horiz </i>
                 </a>
                 <ul class="right hide-on-med-and-down">
                     <li>
-                        <a href="#popDestinations">Signup</a>
+                        <a href="/signup">Signup</a>
                     </li>
                     <li>
-                        <a href="#">Login</a>
+                        <a href="/login">Login</a>
+                    </li>
+                      <li>
+                        <a href="/profile" id="profile-link" >Profile</a>
                     </li>
 
                 </ul>
             </div>
         </nav>
     </div>
-
+    
 
 
   {{{body}}}
 
    
 
-    <div class="fixed-action-btn">
-        <a class="btn-floating btn-large red">
-            <i class="large material-icons">mode_edit</i>
-        </a>
-    </div>
 
     <!-- FOOTER -->
     <footer class="page-footer teal">
@@ -75,26 +77,19 @@
         </div>
     </footer>
 
-<!-- Materialize Component Initialization -->
-    <script>
-        const selector = document.querySelector('select');
-        M.FormSelect.init(selector, {});
 
-        const action_btn = document.querySelector('fixed-action-btn');
-        M.FloatingActionButton.init(action_btn, {});
-    </script>
 
    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <!-- Latest compiled and minified Bootstrap JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
+   
     <!-- Compiled and minified Materialize -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.js"></script>
    
-  <script src="../app.js"></script>
+ 
+  
+
 </body>
 
 </html>

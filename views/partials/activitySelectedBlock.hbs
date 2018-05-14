@@ -1,0 +1,16 @@
+<link rel="stylesheet" href="stylesheets/styles.css" />
+ 
+ {{#each selectedBlockData}}
+
+  <div class="activity-template col l3" >
+    <div style="background:url({{activity_img}})" class="bgimg">
+      <h4 class="activity-name">{{name}}</h4>
+    </div>
+    <span class="activity-address">{{address}}</span>
+    <p class="activity-octime">{{octime}}</p>
+    <p class="activity-description">{{description}}</p>
+    <div class="chip">{{activity_tag}}</div>
+    <div class="add-btn btn btn-large blockBtn" data-name={{act_id}} type="submit">REMOVE</div>
+  </div>
+
+{{/each}} 

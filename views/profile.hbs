@@ -3,39 +3,11 @@
 
 
 <!--SAVED ITINERARIES-->
-<section class="container center-align">
-    <h3>Saved Itineraries</h3>
+<div class="container center-align" id="profile-itins">
+    <h3>User's Saved Itineraries</h3>
 
-    {{!-- #each iterates new templates based on sets of available data --}} {{#each data}} {{!-- Beginning of template --}}
-    <div class="test-template">
 
-        <div class="row">
-            <div class="col l6">
-                <ul class="list-unstyled">
-                    <h3>{{title}}</h3>
-                    <li>{{city}}</li>
-                </ul>
-            </div>
-            <div class="col l6">
-                <div>Rating</div>
-                <div>{{>activityTagPartial}}</div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col l6">
-                <span>{{description}}</span>
-            </div>
-            <div class="col l6">
-                <div class="add-btn btn waves-effect waves-light btn-large" type="submit">REMOVE</div>
-            </div>
-        </div>
-        <div class="row">
-            {{!-- Output partial to template --}} {{> activityPartial}}
-        </div>
-    </div>
-    {{!-- End of Template --}} {{/each}}
-
-</section>
+</div>
 
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
@@ -45,3 +17,54 @@
     crossorigin="anonymous"></script>
 <!-- Compiled and minified Materialize -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+        $.get('https://localhost:3000/api/profile', function (data) {
+
+            data.forEach((itin) => {
+                console.log(data);
+                $('#profile-itins').append(
+                    `<div data-itin="${itin.id}" class="row">
+                        <div style="background:url(${itin.photo})" class="col l6 bgimg" >
+                            <h4>${itin.name}</h4>
+                        </div>
+                    <div class="col l6" data-chip="chipper">
+           
+                    </div>
+  
+                    <div class="row">
+                        <div class="col l6">
+                            <p>${itin.description}</p>
+                        </div>
+                    <div class="col l6">
+                        <div class="add-btn  btn waves-effect waves-light btn-large" type="submit" id="itin-saver">SAVE</div>
+                    </div>
+                </div>
+                <div class="row activity-partial" data-activity="hello">
+                </div>
+            </div>`
+                )
+               // itin.activities.forEach((activity) => {
+                 //   $('[data-chip="chipper"]').append(
+                  //   `<div class="chip" >${activity.activity_type}</div>`
+                   // )
+               // })
+
+                 itin.activities.forEach((activity) => {
+                    $('[data-activity="hello"]').append(
+                        `<div class="col m6 actBox section">
+                        <img src=${activity.activity_photo}/>
+                        <h4>${activity.activity_name}</h4>
+                        <span>${activity.activity_address}</span>
+                        <p>${activity.activity_description}</p>
+                    </div>`
+                    )
+                })
+            })
+        })
+    })
+
+
+</script>

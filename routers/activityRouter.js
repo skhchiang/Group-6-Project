@@ -2,6 +2,7 @@ const express = require("express");
 const multer = require("multer");
 const fs = require("fs");
 const path = require("path");
+<<<<<<< HEAD
 
 const upload = multer({ dest: './files' });
 
@@ -11,15 +12,28 @@ class ActivityRouter {
 
   constructor(activityService, knex) {
     this.uploadDirectory = path.join(__dirname, './', "files");
+=======
+const upload = multer({ dest: "../files" });
+
+class ActivityRouter {
+  constructor(activityService) {
+    this.uploadDirectory = path.join(__dirname, "../", "files");
+>>>>>>> ddcd6d22220961c369e1c5591c3d345352e52727
     this.activityService = activityService;
     this.knex = knex;
   }
 
   route() {
     let router = express.Router();
+<<<<<<< HEAD
     // router.post("/", this.post.bind(this));
     router.get("/", this.get.bind(this));
     router.post("/upload", upload.single('profile'), this.add.bind(this));
+=======
+    router.post("/", this.post.bind(this));
+    router.get("/", this.get.bind(this));
+    router.post("/upload", upload.single("profile"), this.upload.bind(this));
+>>>>>>> ddcd6d22220961c369e1c5591c3d345352e52727
     return router;
   }
 
@@ -32,6 +46,7 @@ class ActivityRouter {
   // }
 
   get(req, res) {
+<<<<<<< HEAD
     res.sendFile(path.join(__dirname, 'activity.html'));
   }
 
@@ -77,6 +92,19 @@ class ActivityRouter {
   }
 
 
+=======
+    res.sendFile(path.join(__dirname, "activity.html"));
+  }
+
+  upload(req, res) {
+    this.writeFile(req.file.originalname, req.file.buffer)
+      .then(pathName => {
+        res.json({ path: pathName });
+      })
+      .catch(err => res.status(500).json(err));
+  }
+
+>>>>>>> ddcd6d22220961c369e1c5591c3d345352e52727
   writeFile(name, body) {
     return new Promise((resolve, reject) => {
       const pathName = path.join(this.uploadDirectory, name);
@@ -84,6 +112,7 @@ class ActivityRouter {
         if (err) {
           return reject(err);
         }
+<<<<<<< HEAD
        // return this.knex("activities").insert({ photo: pathName}).then((result, err) => {
           if (err) {
             console.log(err);
@@ -110,5 +139,24 @@ class ActivityRouter {
 //     }));
 //   }
 // }
+=======
+        resolve(pathName);
+      });
+    });
+  }
+
+  readFile(file) {
+    return new Promise((resolve, reject) => {
+      fs.readFile(path.join(this.uploadDirectory, file), (err, body) => {
+        if (err) {
+          console.log(err);
+          return reject(err);
+        }
+        resolve(body);
+      });
+    });
+  }
+}
+>>>>>>> ddcd6d22220961c369e1c5591c3d345352e52727
 
 module.exports = ActivityRouter;
