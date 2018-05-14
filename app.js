@@ -17,21 +17,13 @@ const BuilderRouter = require("./routers/builderRouter");
 const ResultRouter = require("./routers/resultRouter");
 const ActivityRouter = require("./routers/activityRouter");
 const ProfileRouter = require ("./routers/profileRouter");
-<<<<<<< HEAD
 const RatingRouter = require ("./routers/ratingRouter");
-=======
-// const RatingRouter = require ("./routers/ratingRouter");
->>>>>>> ddcd6d22220961c369e1c5591c3d345352e52727
 
 const BuilderService = require("./services/builderService");
 const ResultService = require("./services/resultService");
 const ActivityService = require("./services/activityService");
 const ProfileService = require ("./services/profileService");
-<<<<<<< HEAD
 const RatingService = require ("./services/ratingService");
-=======
-// const RatingService = require ("./services/ratingService");
->>>>>>> ddcd6d22220961c369e1c5591c3d345352e52727
 
 //Set HANDLEBARS View Engine
 app.set("views", path.join(__dirname, "views"));
@@ -69,7 +61,6 @@ let resultService = new ResultService(knex);
 let resultRouter = new ResultRouter(resultService);
 
 let activityService = new ActivityService(knex);
-<<<<<<< HEAD
 let activityRouter = new ActivityRouter(activityService, knex);
 let profileService = new ProfileService(knex);
 let profileRouter = new ProfileRouter(profileService);
@@ -86,21 +77,6 @@ app.use('/api/activity', activityRouter.route());
 
 
 
-=======
-let activityRouter = new ActivityRouter(activityService);
-
-let profileService = new ProfileService(knex);
-let profileRouter = new ProfileRouter(profileService);
-
-// let ratingRouter = new RatingRouter(ratingService);
-// let ratingService = new RatingService(knex);
-
-app.use("/api/builder", builderRouter.route());
-app.use("/api/profile", profileRouter.route());
-// app.use("/rating", ratingRouter.route());
-app.use("/api/result", resultRouter.route());
-app.use("/api/activity", activityRouter.route());
->>>>>>> ddcd6d22220961c369e1c5591c3d345352e52727
 
 //Render layout and views according to entered page, make data available 
 app.get('/', function (req, res) {
