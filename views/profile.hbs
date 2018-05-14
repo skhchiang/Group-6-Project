@@ -22,7 +22,7 @@
 <script>
     $(document).ready(function () {
         $.get('https://localhost:3000/api/profile', function (data) {
-
+ let actSet = new Set();
             data.forEach((itin) => {
                 console.log(data);
                 $('#profile-itins').append(
@@ -46,11 +46,13 @@
                 </div>
             </div>`
                 )
-               // itin.activities.forEach((activity) => {
-                 //   $('[data-chip="chipper"]').append(
-                  //   `<div class="chip" >${activity.activity_type}</div>`
-                   // )
-               // })
+
+               
+                itin.activities.forEach((activity) => {
+                    actSet.add(activity.activity_type);
+                    
+                });
+
 
                  itin.activities.forEach((activity) => {
                     $('[data-activity="hello"]').append(
@@ -63,6 +65,13 @@
                     )
                 })
             })
+
+            Array.from(actSet).map(data => {
+                    console.log("data", data);
+                    $('[data-chip="chipper"]').append(
+                     `<div class="chip" >${data}</div>`
+                    ) 
+                })
         })
     })
 

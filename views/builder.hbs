@@ -31,6 +31,8 @@
 
 
 </section>
+<div id="cities-holder" data-city="" ></div> 
+
 <section class="section row center-align container" id="detail-builder">
     <div class="input-field col s8">
         <textarea id="itin-description" type="text" name="itin-description" class="materialize-textarea validate" required="" aria-required="true"></textarea>
@@ -59,17 +61,19 @@
 
 <script>
     const windowURL = new URL(window.location.href);
-    const CITY = windowURL.searchParams.get("city");
+    const city = windowURL.searchParams.get("cities");
     const selector = document.querySelector('select');
 
     M.FormSelect.init(selector, {});
 
+
+
     $('body').on('change', '#activity-dropdown', function() {
         act_type = $('select').val();
-        $.get('https://localhost:3000/api/builder?cities=' + CITY + '&typeOfActivities=' + act_type, function(data){
-            if (data.length == 0) {
-                alert("No Matches Found");
-            }
+        $.get('https://localhost:3000/api/builder?cities=' + city + '&typeOfActivities=' + act_type, function(data){
+            //if (data.length == 0) {
+              //  alert("No Matches Found");
+            //}
             $('#activity-selector').html('');
 
             data.forEach((activity) =>{

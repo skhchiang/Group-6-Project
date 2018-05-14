@@ -44,7 +44,7 @@ class ProfileService {
                 for (var i = 0; i < activityArray.length; i++) {
                   let newElement = {
                     activity_name: activityArray[i].name,
-                    activity_descripton: activityArray[i].description,
+                    activity_description: activityArray[i].description,
                     activity_address: activityArray[i].address,
                     activity_photo: activityArray[i].photo,
                     activity_type: activityArray[i].typeOfActivitiesName

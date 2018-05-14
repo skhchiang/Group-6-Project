@@ -71,8 +71,7 @@
 
     $('#search-form').on('click', '#search-btn', function () {
          let act_type = $('#search-dropdown').find('select').val();
-         console.log(act_type);
-        var city = $('input').val();
+        let city = $('input').val();
 
         if (act_type == '' || city == '') {
             alert("Please fill out a destination and a an activity type")
@@ -85,7 +84,7 @@
             $('#result-selector').html('');
 
                    data.forEach((itin) => {
-                console.log(data);
+
                 $('#profile-itins').append(
                     `<div data-itin="${itin.id}" class="row">
                         <div style="background:url(${itin.photo})" class="col l6 bgimg" >
