@@ -87,7 +87,6 @@ app.get('/', function (req, res) {
 
 app.get("/profile", function(req, res) {
   res.render("profile", {
-
   });
 });
 
@@ -106,6 +105,10 @@ app.get("/signup", function(req, res) {
     });
   });
 
+  app.get("/activity", function(req, res) {
+    res.render("activity", {
+    });
+  });
 
 
 
@@ -114,8 +117,8 @@ app.set("port", 3000);
 https
   .createServer(
     {
-      key: fs.readFileSync("domain.key"),
-      cert: fs.readFileSync("domain.crt")
+      key: fs.readFileSync(path.join(__dirname, "domain.key")),
+      cert: fs.readFileSync(path.join(__dirname, "domain.crt"))
     },
     app
   )

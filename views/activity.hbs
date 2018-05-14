@@ -1,0 +1,75 @@
+<form class="section row center-align container" id="activity-builder" action="/api/activity/upload" method="POST" encType="multipart/form-data">
+    <div class="input-field col l10" id="activity-dropdown">
+        <select name="typeOfActivities" >
+            <option value="" disabled selected>Select Activity Type</option>
+            <option value="Museums">Museums</option>
+            <option value="Religious Sites">Religious Sites</option>
+            <option value="Square">Squares and Plazas</option>
+            <option value="Parks & Gardens">Parks and Gardens</option>
+            <option value="Markets">Markets</option>
+            <option value="Natural Attractions">Natural Attractions</option>
+            <label>Select Activity Type</label>
+        </select>
+    </div>
+    <div class="input-field col l10 form-group">
+        <input id="acti-name" type="text" name="name" class="validate" required="" aria-required="true" placeholder="Activity Name">
+        <label for="acti-name">What is it?</label>
+    </div>
+
+    <div class="input-field col l10 form-group">
+        <textarea id="acti-city" type="text" name="cities" class="materialize-textarea validate" required="" aria-required="true"
+            placeholder="City"></textarea>
+
+        <textarea id="acti-address" type="text" name="address" class="materialize-textarea validate" required="" aria-required="true"
+            placeholder="Address"></textarea>
+        <label for="acti-address">Where is it?</label>
+    </div>
+
+    <div class="input-field col l10 form-group">
+        <textarea id="acti-description" type="text" name="description" class="materialize-textarea validate" required="" aria-required="true"
+            placeholder="Describe your Activity"></textarea>
+        <label for="acti-description">How is it?</label>
+    </div>
+
+
+
+    <div class="file-field input-field col l5">
+        <div class="btn">
+            <span>Upload</span>
+            <input type="file" name="profile" multiple>
+        </div>
+        <div class="file-path-wrapper">
+            <input class="file-path validate" type="text" placeholder="Upload a photo of it!">
+        </div>
+
+
+
+    </div>
+
+    <input class="btn btn-large teal btn-flat" id="saveBtn" type="submit" value="CREATE ACTIVITY" />
+
+</form>
+
+
+
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<!-- Compiled and minified Materialize -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.js"></script>
+
+<script>
+    const selector = document.querySelector('select');
+    M.FormSelect.init(selector, {});
+</script>
+
+{{!-- <script>
+     $('#activity-builder').on('click', '#saveBtn', function() {
+        let activityBuilder = new ActivityBuilder();
+
+        $.post('/api/activity/upload',  activityBuilder.addOn()).done(function(data) {
+            alert("Activity Saved!");
+        })
+    })
+</script> --}}

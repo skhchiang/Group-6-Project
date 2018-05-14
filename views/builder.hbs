@@ -1,6 +1,5 @@
-{{!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" /> --}}
+
 <link rel="stylesheet" href="stylesheets/styles.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.js"></script>
 
 {{!-- Activity Pool --}}
  <h3 class="center-align" >Checkout your options</h3>
@@ -63,7 +62,6 @@
     const windowURL = new URL(window.location.href);
     const city = windowURL.searchParams.get("cities");
     const selector = document.querySelector('select');
-
     M.FormSelect.init(selector, {});
 
 

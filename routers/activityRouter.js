@@ -3,14 +3,14 @@ const multer = require("multer");
 const fs = require("fs");
 const path = require("path");
 
-const upload = multer({ dest: './files' });
+const upload = multer({ dest: '../files' });
 
 
 class ActivityRouter {
 
 
   constructor(activityService, knex) {
-    this.uploadDirectory = path.join(__dirname, './', "files");
+    this.uploadDirectory = path.join(__dirname, '../', "files");
     this.activityService = activityService;
     this.knex = knex;
   }
@@ -32,43 +32,46 @@ class ActivityRouter {
   // }
 
   get(req, res) {
-    res.sendFile(path.join(__dirname, 'activity.html'));
+    res.render("activity", {});
   }
 
+  // post(req, res){
+  //   console.log(req.body);
+  //   res.json({status: 'success'});c
+  // }
 
 
   add(req, res) {
+    console.log(req.body, req.file)
     this.writeFile(req.file.originalname, req.file.buffer)
-
       .then((pathName)=>{
-
-        var subquery1 = this.knex
-          .select("id")
-          .from("cities")
-          .where("name", req.body.cities);
-        var subquery2 = this.knex
-          .select("id")
-          .from("typeOfActivities")
-          .where("name", req.body.typeOfActivities);
-
         console.log("path:", pathName)
-        console.log(req.body)
-
-        return this.knex("activities").insert({
-          name: req.body.name,
-          address: req.body.address,
-          description: req.body.description,
-          photo:pathName,
-          reviewing_status: false,
-          typeOfActivities_id: subquery2,
-          cities_id: subquery1,
-          is_active: true
+        this.knex
+          .first("id")
+          .from("cities")
+          .where("name", req.body.cities)
+          .then((city)=> {
+            this.knex
+            .first("id")
+            .from("typeOfActivities")
+            .where("name", req.body.typeOfActivities)
+            .then((type)=>{
+              console.log("city.id", city.id, "type.id", type.id);
+              return this.knex("activities").insert({
+                name: req.body.name,
+                address: req.body.address,
+                description: req.body.description,
+                photo:pathName,
+                reviewing_status: false,
+                typeOfActivities_id: type.id,
+                cities_id: city.id,
+                is_active: true
+              });
+            });
         });
-
       })
       .then((pathName) => {
-
-         res.redirect('../../')
+         res.redirect('/')
         // res.json({path: pathName,name:req.body.name,description:req.body.description,address:req.body.address,typeOfActivities:req.body.typeOfActivities,cities:req.body.cities})
       })
       .catch(err => {
