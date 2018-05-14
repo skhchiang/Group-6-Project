@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+        <meta charset="utf-8">
+    
+        <title>rating</title>
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+
+
+</head>
+
+<body>  
+        
+
+        <form action="/api/rating/rated" method="post">
+
+            <div>
+
+            <div>
+                <p>Rating for <input type='text' name="itineraryName" class="form-control" placeholder="Itinerary Name"/> </p>
+            </div>
+
+            <div class="form-group">
+                <div>
+                <label> Question 1: Is the Itinerary  funny enough? (Please give a score, 1 = the least, 5 = the most)
+                    <input type='number' name="question1" class="form-control" placeholder="Question 1 Scores"/>
+                </label>
+            </div> 
+               
+                <div>
+
+                <label> Question 2: Is the time spending on each activity long enough? (Please give a score, 1 = the least, 5 = the most)
+                    <input type='number' name="question2" class="form-control" placeholder="Question 2 Scores"/>
+                </label>
+
+                </div>
+
+                <div>
+
+                <label> Question 3: Is the Itinerary fulfilling different interest? (Please give a score, 1 = the least, 5 = the most)
+                    <input type='number' name="question3" class="form-control" placeholder="Question 3 Scores"/>
+                </label>
+                </div>
+
+                <div>
+
+                <label> Question 4: Is the food tasty? (Please give a score, 1 = the least, 5 = the most)
+                    <input type='number' name="question4" class="form-control" placeholder="Question 4 Scores"/>
+                </label>
+
+                <div>
+
+                <label> Question 5: Are the views beautiful? (Please give a score, 1 = the least, 5 = the most)
+                    <input type='number' name="question5" class="form-control" placeholder="Question 5 Scores"/>
+                </label>
+
+                </div>
+        
+
+            
+        
+            <div>
+                <input type="submit" value="Submit"/>
+            </div>
+
+            
+            </div>
+        </form>
+
+
+</body>
+
+</html>

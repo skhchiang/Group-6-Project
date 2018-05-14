@@ -13,6 +13,41 @@ class ResultService {
       .from("typeOfActivities")
       .where("name", typeOfActivities);
 
+<<<<<<< HEAD
+      // let query = this.knex.select('itineraries.id', 'itineraries.name', 'itineraries.description').from('itineraries')
+      // .join('cities','itineraries.cities_id','cities.id')
+      // .join('','typeOfActivities.id', 'activities.typeOfActivities_id')
+      // .whereIn('cities_id',subquery1)
+      // .andWhere('typeOfActivities_id',subquery2)
+
+      let query = this.knex("cities")
+        .innerJoin("activities", "activities.cities_id", "cities.id")
+        .leftJoin("itineraries", "itineraries.cities_id", "cities.id")
+        .leftJoin(
+          "typeOfActivities",
+          "typeOfActivities.id",
+          "activities.typeOfActivities_id"
+        )
+        .where("cities.id", subquery1)
+        .andWhere("typeOfActivities.id", subquery2);
+
+      // console.log(query.toSQL());
+      // console.log(subquery1.toSQL());
+      // console.log(subquery2.toSQL());
+
+      return query.then(rows => {
+        console.log(rows);
+        return rows.map(r => ({
+          id: r.id,
+          name: r.name,
+          city: cities,
+          typeOfActivities: typeOfActivities,
+          address: r.address,
+          description: r.description,
+          photo: r.photo,
+          reviewing_status: r.reviewing_status
+        }));
+=======
     return this.knex("itineraries")
       .select("itineraries.name", "itineraries.id as itineraries_id")
       .join("cities", "itineraries.cities_id", "cities.id")
@@ -84,6 +119,7 @@ class ResultService {
                 return result;
               });
           });
+>>>>>>> ddcd6d22220961c369e1c5591c3d345352e52727
       });
   }
 
