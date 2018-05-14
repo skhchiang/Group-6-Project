@@ -12,7 +12,6 @@ class ResultService {
       .select("id")
       .from("typeOfActivities")
       .where("name", typeOfActivities);
-
     return this.knex("itineraries")
       .select("itineraries.name", "itineraries.id as itineraries_id")
       .join("cities", "itineraries.cities_id", "cities.id")
@@ -64,7 +63,7 @@ class ResultService {
                 for (var i = 0; i < activityArray.length; i++) {
                   let newElement = {
                     activity_name: activityArray[i].name,
-                    activity_descripton: activityArray[i].description,
+                    activity_description: activityArray[i].description,
                     activity_address: activityArray[i].address,
                     activity_photo: activityArray[i].photo,
                     activity_type: activityArray[i].typeOfActivitiesName
@@ -87,10 +86,10 @@ class ResultService {
       });
   }
 
-  save(userId, data) {
+  save(user, data) {
     return this.knex("users_itineraries").insert({
-      users_id: user.id,
-      itineraries_id: body.id,
+      users_id: user,
+      itineraries_id: data.id,
       is_create: false
     });
   }
