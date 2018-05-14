@@ -80,7 +80,7 @@
             let actSet = new Set();
             
             data.forEach((itin) => {
-                console.log(itin);
+               // console.log(itin);
                 $('#result-selector').append(
                     `<div id="itin-${itin.id}" data-itin="${itin.id}" class="row">
                         <div style="background:url(${itin.photo})" class="col l6 bgimg" >
@@ -110,7 +110,7 @@
                 });
 
                 Array.from(actSet).map(data => {
-                  console.log("data", data);
+                 // console.log("data", data);
                     $(`#itin-${itin.id} div[data-chip=chipper]`).append(
                         `<div class="chip">${data}</div>`
                     )

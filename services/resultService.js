@@ -89,7 +89,7 @@ class ResultService {
   save(user, data) {
     return this.knex("users_itineraries").insert({
       users_id: user,
-      itineraries_id: data.id,
+      itineraries_id: data,
       is_create: false
     });
   }
