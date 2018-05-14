@@ -12,6 +12,7 @@ class ProfileRouter {
   }
 
   get(req, res) {
+    console.log("req.user", req.user);
     return this.profileService  
       .search(req.user)
       .then(data => res.json(data))

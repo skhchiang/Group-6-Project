@@ -3,11 +3,11 @@ class ProfileService {
     this.knex = knex; //class BuilderService use knex !!
   }
 
-  search(users) {
+  search(user) {
     return this.knex("users_itineraries")
       .select("itineraries_id")
       .join("users", "users_itineraries.users_id", "users.id")
-      .where("users.name", users.name)
+      .where("users.id", user.id)
       .then(itinIdArray => {
         itinIdArray = itinIdArray.map(ele => ele.itineraries_id);
         return this.knex("itineraries")

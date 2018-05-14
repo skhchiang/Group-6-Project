@@ -87,10 +87,10 @@ class ResultService {
       });
   }
 
-  save(userId, data) {
+  save(user, data) {
     return this.knex("users_itineraries").insert({
       users_id: user.id,
-      itineraries_id: body.id,
+      itineraries_id: data.id,
       is_create: false
     });
   }
