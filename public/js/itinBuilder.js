@@ -10,17 +10,7 @@ class ItinBuilder {
 
             
             const activityId =  $(element).data('activity');
-            // const activityName = element.querySelector('.activity-name').innerHTML;
-            // const activityAddress = element.querySelector('.activity-address').innerHTML;
-            // const activityOctime = element.querySelector('.activity-octime').innerHTML;
-            // const activityDesc = element.querySelector('.activity-description').innerHTML;
-            
-            // let activity = {
-            //     activityName: activityName,
-            //     activityAddress: activityAddress,
-            //     activityOctime: activityOctime,
-            //     activityDesc: activityDesc
-            // }
+   
   
             
             activities.push(activityId);

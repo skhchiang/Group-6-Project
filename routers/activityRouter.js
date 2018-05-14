@@ -2,15 +2,15 @@ const express = require("express");
 const multer = require("multer");
 const fs = require("fs");
 const path = require("path");
-
-const upload = multer({ dest: '../files' });
+const storage = multer.memoryStorage()
+const upload = multer({ dest: '../public/images', storage: storage });
 
 
 class ActivityRouter {
 
 
   constructor(activityService, knex) {
-    this.uploadDirectory = path.join(__dirname, '../', "files");
+    this.uploadDirectory = path.join(__dirname, '../', "public", "images");
     this.activityService = activityService;
     this.knex = knex;
   }
@@ -23,29 +23,16 @@ class ActivityRouter {
     return router;
   }
 
-  // post(req, res) {
-  //   console.log(req.body, req.user);
-  //   return this.activityService
-  //     .make(req.body, req.user)
-  //     .then(data => res.status(200).json({ data: data }))
-  //     .catch(err => res.status(500).json(err));
-  // }
-
   get(req, res) {
     res.render("activity", {});
   }
 
-  // post(req, res){
-  //   console.log(req.body);
-  //   res.json({status: 'success'});c
-  // }
-
-
+ 
   add(req, res) {
-    console.log(req.body, req.file)
+    console.log(req.body, "req.file", req.file.buffer)
     this.writeFile(req.file.originalname, req.file.buffer)
-      .then((pathName)=>{
-        console.log("path:", pathName)
+      .then((fileName)=>{
+        console.log("fileName:", fileName)
         this.knex
           .first("id")
           .from("cities")
@@ -61,7 +48,7 @@ class ActivityRouter {
                 name: req.body.name,
                 address: req.body.address,
                 description: req.body.description,
-                photo:pathName,
+                photo: `images/${fileName}`,
                 reviewing_status: false,
                 typeOfActivities_id: type.id,
                 cities_id: city.id,
@@ -81,6 +68,7 @@ class ActivityRouter {
 
 
   writeFile(name, body) {
+    console.log("writeFile Buffer", body);
     return new Promise((resolve, reject) => {
       const pathName = path.join(this.uploadDirectory, name);
       fs.writeFile(pathName, body, err => {
@@ -91,11 +79,11 @@ class ActivityRouter {
           if (err) {
             console.log(err);
             reject(err);
+          } else {
+            console.log(name)
+            resolve (name);
           }
-          else {
-            console.log(pathName)
-            resolve (pathName);
-          }return pathName;
+          //return pathName;
         });
       })
     };

@@ -71,16 +71,18 @@
             alert("Please fill out a destination and a an activity type")
         }
         $.get('https://localhost:3000/api/result?cities=' + city + '&typeOfActivities=' + act_type, function (data) {
-            //if (data.length == 0) {
-            //   alert("No Matching Itineries Found");
-            //}
-            console.log(data);
+            if (data.length == 0) {
+               alert("No Matching Itineries Found");
+            }
+            //console.log(data);
             $('#result-selector').html('');
 
+            let actSet = new Set();
+            
             data.forEach((itin) => {
-
+                console.log(itin);
                 $('#result-selector').append(
-                    `<div data-itin="${itin.id}" class="row">
+                    `<div id="itin-${itin.id}" data-itin="${itin.id}" class="row">
                         <div style="background:url(${itin.photo})" class="col l6 bgimg" >
                             <h4>${itin.name}</h4>
                         </div>
@@ -96,27 +98,37 @@
                         <div class="add-btn  btn waves-effect waves-light btn-large" type="submit" id="itin-saver">SAVE</div>
                     </div>
                 </div>
-                <div class="row activity-partial" data-activity="hello">
+                <div class="row activity-partial" data-id="${itin.id}">
                 </div>
             </div>`
                 )
-                // itin.activities.forEach((activity) => {
-                //   $('[data-chip="chipper"]').append(
-                //   `<div class="chip" >${activity.activity_type}</div>`
-                // )
-                // })
-
+                            let actSet = new Set();
+                
                 itin.activities.forEach((activity) => {
-                    $('[data-activity="hello"]').append(
+                    actSet.add(activity.activity_type);
+                    
+                });
+
+                Array.from(actSet).map(data => {
+                  console.log("data", data);
+                    $(`#itin-${itin.id} div[data-chip=chipper]`).append(
+                        `<div class="chip">${data}</div>`
+                    )
+                })
+
+                      itin.activities.forEach((activity) => {
+                      $(`[data-id=${itin.id}]`).append(
                         `<div class="col m6 actBox section">
-                        <img src=${activity.activity_photo}/>
+                        <img src=${activity.activity_photo}>
                         <h4>${activity.activity_name}</h4>
                         <span>${activity.activity_address}</span>
                         <p>${activity.activity_description}</p>
                     </div>`
                     )
                 })
+          
             })
+
         })
     })
 
@@ -136,9 +148,6 @@
 
 <script>
     $('#fixed-panel').on('click', '#create-itin', function () {
-
-
-
         var city = $('input').val();
         window.location.href = "/builder?cities=" + city;
     })

@@ -44,6 +44,12 @@
         <div class="btn btn-large teal btn-flat" id="saveBtn" type="submit" >SAVE ITINERARY</div>
 </section>
 
+<div class="fixed-action-btn" id="fixed-panel">
+    <a class="btn-floating btn-large blue" id="create-activity">
+        <i class="large material-icons">mode_edit</i>
+    </a>
+</div>
+
 
 
 
@@ -58,26 +64,31 @@
 <!-- Compiled and minified Materialize -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.js"></script>
 
+
 <script>
-    const windowURL = new URL(window.location.href);
-    const city = windowURL.searchParams.get("cities");
     const selector = document.querySelector('select');
     M.FormSelect.init(selector, {});
 
+    const action_btn = document.querySelector('fixed-action-btn');
+    M.FloatingActionButton.init(action_btn, {});
+</script>
 
-
+<script>
+    const windowURL = new URL(window.location.href);
+    const city = windowURL.searchParams.get("cities");
+    
     $('body').on('change', '#activity-dropdown', function() {
         act_type = $('select').val();
         $.get('https://localhost:3000/api/builder?cities=' + city + '&typeOfActivities=' + act_type, function(data){
-            //if (data.length == 0) {
-              //  alert("No Matches Found");
-            //}
+            if (data.length == 0) {
+                alert("No Matches Found");
+            }
             $('#activity-selector').html('');
 
             data.forEach((activity) =>{
                 $('#activity-selector').append(
                 `<div data-activity="${activity.id}" class="activity-template col l3">
-                    <div style="background:url(${activity.photo})" class="bgimg">
+                    <div style="background:url('${activity.photo}')" class="bgimg">
                             <h4 class="activity-name">${activity.name}</h4>
                     </div>
                     <span class="activity-address">${activity.address}</span>
@@ -95,6 +106,9 @@
         console.log(itinBuilder.addOn());
         $.post('/api/builder',  itinBuilder.addOn()).done(function(data) {
             alert("Itinerary Saved!");
+            $('#itin-builder').html('');
+            $('#itin-description').val('');
+             $('#itin-name').val('');
         })
     })
     
@@ -122,4 +136,12 @@
 
     }) 
 
+</script>
+
+
+<script>
+    $('#fixed-panel').on('click', '#create-activity', function () {
+        var city = $('input').val();
+        window.location.href = "/activity";
+    })
 </script>
