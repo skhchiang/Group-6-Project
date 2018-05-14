@@ -23,10 +23,9 @@
     $(document).ready(function () {
         $.get('https://localhost:3000/api/profile', function (data) {
             data.forEach((itin) => {
-                console.log(data);
                 $('#profile-itins').append(
                     `<div id="itin-${itin.id}" data-itin="${itin.id}" class="row">
-                        <div style="background:url(${itin.photo})" class="col l6 bgimg" >
+                        <div style="background:url('${itin.photo ? itin.photo : ''}')" class="col l6 bgimg" >
                             <h4>${itin.name}</h4>
                         </div>
                     <div class="col l6" data-chip="chipper">

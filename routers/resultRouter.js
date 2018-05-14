@@ -20,8 +20,8 @@ class ResultRouter {
   }
 
   post(req, res) {
-    return this.resultService.save(req.user, req.body);
-    console.log(req.user)
+    console.log(req.user, req.body)
+    return this.resultService.save(req.user, req.body)
       .then(data => {
         console.log("data", data);
         res.json({ data: data });

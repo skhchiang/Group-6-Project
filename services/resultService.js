@@ -88,8 +88,13 @@ class ResultService {
 
   save(user, data) {
     return this.knex("users_itineraries").insert({
+<<<<<<< HEAD
       users_id: user,
       itineraries_id: data,
+=======
+      users_id: user.id,
+      itineraries_id: data.id,
+>>>>>>> eeab0f4d5b88a7d31b6b878cfe7b777eef9b1e80
       is_create: false
     });
   }
