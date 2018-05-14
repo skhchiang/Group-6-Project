@@ -16,15 +16,14 @@ const knex = require("knex")(knexConfig);
 const BuilderRouter = require("./routers/builderRouter");
 const ResultRouter = require("./routers/resultRouter");
 const ActivityRouter = require("./routers/activityRouter");
-// const ProfileRouter = require ("./routers/profileRouter");
-// const RatingRouter = require ("./routers/ratingRouter");
+const ProfileRouter = require ("./routers/profileRouter");
+const RatingRouter = require ("./routers/ratingRouter");
 
 const BuilderService = require("./services/builderService");
 const ResultService = require("./services/resultService");
 const ActivityService = require("./services/activityService");
-
-// const ProfileService = require ("./services/profileService");
-// const RatingService = require ("./services/ratingService");
+const ProfileService = require ("./services/profileService");
+const RatingService = require ("./services/ratingService");
 
 //Set HANDLEBARS View Engine
 app.set("views", path.join(__dirname, "views"));
@@ -64,17 +63,15 @@ let builderRouter = new BuilderRouter(builderService);
 let resultService = new ResultService(knex);
 let resultRouter = new ResultRouter(resultService);
 let activityService = new ActivityService(knex);
-let activityRouter = new ActivityRouter(activityService);
-// let profileService = new ProfileService(knex);
-// let profileRouter = new ProfileRouter(profileService);
-// let ratingService = new RatingService(knex);
-// let ratingRouter = new RatingRouter(ratingService);
+let activityRouter = new ActivityRouter(activityService, knex);
+let profileService = new ProfileService(knex);
+let profileRouter = new ProfileRouter(profileService);
+let ratingService = new RatingService(knex);
+let ratingRouter = new RatingRouter(ratingService);
 
 app.use("/api/builder", builderRouter.route());
-// app.use("/profile", profileRouter.route());
-// app.use("/rating", ratingRouter.route());
-app.use("/api/result", resultRouter.route());
-app.use("/api/acitivity", activityRouter.route());
+app.use("/api/profile", profileRouter.route());
+app.use("/api/rating", ratingRouter.route());
 
 app.use('/api/result',resultRouter.route());
 

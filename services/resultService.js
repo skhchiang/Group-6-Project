@@ -18,13 +18,13 @@ class ResultService {
         .where("name", typeOfActivities);
 
       // let query = this.knex.select('itineraries.id', 'itineraries.name', 'itineraries.description').from('itineraries')
-      // .innerJoin('cities','itineraries.cities_id','cities.id')
-      // .innerJoin('','typeOfActivities.id', 'activities.typeOfActivities_id')
+      // .join('cities','itineraries.cities_id','cities.id')
+      // .join('','typeOfActivities.id', 'activities.typeOfActivities_id')
       // .whereIn('cities_id',subquery1)
       // .andWhere('typeOfActivities_id',subquery2)
 
       let query = this.knex("cities")
-        .innerJoin("activities", "activitie.cities_id", "cities.id")
+        .innerJoin("activities", "activities.cities_id", "cities.id")
         .leftJoin("itineraries", "itineraries.cities_id", "cities.id")
         .leftJoin(
           "typeOfActivities",
@@ -56,7 +56,7 @@ class ResultService {
 
   save(user, body) {
     return this.knex("users_itineraries").insert({
-      users_id: 1,
+      users_id: user.id,
       itineraries_id: body.id,
       is_create: false
     });
