@@ -69,6 +69,10 @@
 
 <script>
     $('#activity-builder').on('click', '#saveBtn', function() {
+        let activityBuilder = new ActivityBuilder();
+
+        $.post('/api/activity/upload',  activityBuilder.addOn()).done(function(data) {
          alert("Activity Saved! Please note we will require 1-2 days to validate your creation");
+    })
     })
 </script>
