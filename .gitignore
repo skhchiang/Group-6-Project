@@ -2,4 +2,3 @@
 /node_modules
 .env
 /database/node_modules
-/public/images

@@ -75,3 +75,49 @@ data.forEach((itin) => {
         </div>
     </div>
     {{!-- End of Template --}} {{/each}}
+
+
+
+
+    data.forEach((itin) => {
+                if (itin.description == undefined) {
+                    itin.description = "Not Available"
+                };
+                $('#result-selector').append(
+                    `<div data-itin="${itin.id}" class="row">
+                        <div class="col l6" >
+                            <h4>${itin.name}</h4>
+                            <button class="add-btn btn waves-effect" type="submit" id="itin-saver"> Save
+                                <i class="material-icons right">stars</i>
+                            </button>
+                        </div>
+                        <div class="row">
+                            <div class="col l6">
+                                <p>Itinerary Description:</p>
+                                <p>${itin.description}</p>
+                            </div>
+                        </div>
+                        <div class="row activity-partial" data-activity="hello" data-id="${itin.id}"></div>
+                    </div>`
+                )
+                itin.activities.forEach((activity) => {
+                    if (activity.activity_description == undefined) {
+                        activity.activity_description = "Not Available"
+                    };
+                    $(`[data-id=${itin.id}]`).append(`
+                        <div class="col l6 card large hoverable section row z-depth-2">
+                            <div class="container col l12 m12">
+                                <div class = "center-align actitiy_photo">
+                                    <img src=${activity.activity_photo} width="75%">
+                                </div>
+                                <br>
+                                <div class="chip">
+                                    ${activity.activity_type}
+                                </div>                                   
+                                <h6>${activity.activity_name} @ ${activity.activity_address}</h6>                                   
+                                <p>${activity.activity_description}</p>
+                            </div>                            
+                        </div>`
+                    )
+                })
+            })

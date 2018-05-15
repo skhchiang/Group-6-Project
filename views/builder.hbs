@@ -1,24 +1,25 @@
-
 <link rel="stylesheet" href="stylesheets/styles.css" />
-
 {{!-- Activity Pool --}}
- <h3 class="center-align" >Checkout your options</h3>
- <div class="container">
-        <div class="input-field col m6" id="activity-dropdown">
-            <select>
-                <option value="" disabled selected>Select Activity Type</option>
-                <option value="Museums">Museums</option>
-                <option value="Religious Sites">Religious Sites</option>
-                <option value="Square">Squares and Plazas</option>
-                <option value="Parks & Gardens">Parks and Gardens</option>
-                <option value="Markets">Markets</option>
-                <option value="Natural Attractions">Natural Attractions</option>
-                <label>Select Activity Type</label>
-            </select>
-        </div>
+<div class="container center-align">
+    <h2>Build your own adventure</h2>
+    <div class="ani-bounce">
+        <img src="/images/build.png">
     </div>
-<section class="center-align section row container " id="activity-selector">
-    
+    <div class="input-field col m6" id="activity-dropdown">
+        <select>
+            <option value="" disabled selected>Select Activity Type</option>
+            <option value="Museums">Museums</option>
+            <option value="Religious Sites">Religious Sites</option>
+            <option value="Square">Squares and Plazas</option>
+            <option value="Parks & Gardens">Parks and Gardens</option>
+            <option value="Markets">Markets</option>
+            <option value="Natural Attractions">Natural Attractions</option>
+            <label>Select Activity Type</label>
+        </select>
+    </div>
+</div>
+<section class="center-align section row container" id="activity-selector">
+
 
 
 
@@ -30,23 +31,25 @@
 
 
 </section>
-<div id="cities-holder" data-city="" ></div> 
+<div id="cities-holder" data-city=""></div>
 
 <section class="section row center-align container" id="detail-builder">
     <div class="input-field col s8">
         <textarea id="itin-description" type="text" name="itin-description" class="materialize-textarea validate" required="" aria-required="true"></textarea>
-        <label for="itin-description">Describe your Adventure</label>
+        <label for="itin-description">Enter a description for your itinerary</label>
     </div>
     <div class="input-field col s8">
-          <input id="itin-name" type="text" class="validate" required="" aria-required="true">
-          <label for="itin-name">and finally, give it a name!</label>
-        </div>
-        <div class="btn btn-large teal btn-flat" id="saveBtn" type="submit" >SAVE ITINERARY</div>
+        <input id="itin-name" type="text" class="validate" required="" aria-required="true">
+        <label for="itin-name">and finally, name your itinerary!</label>
+    </div>
+    <button class="btn waves-effect waves-light" type="submit" id="saveBtn" name="action" value="Log In">Save Itinerary
+        <i class="material-icons right">cloud_upload</i>
+    </button>
 </section>
 
 <div class="fixed-action-btn" id="fixed-panel">
-    <a class="btn-floating btn-large blue" id="create-activity">
-        <i class="large material-icons">mode_edit</i>
+    <a class="btn-floating btn-large blue pulse" id="create-activity">
+        <i class="large material-icons">directions_bike</i>
     </a>
 </div>
 
@@ -76,65 +79,65 @@
 <script>
     const windowURL = new URL(window.location.href);
     const city = windowURL.searchParams.get("cities");
-    
-    $('body').on('change', '#activity-dropdown', function() {
+
+    $('body').on('change', '#activity-dropdown', function () {
         act_type = $('select').val();
-        $.get('https://localhost:3000/api/builder?cities=' + city + '&typeOfActivities=' + act_type, function(data){
+        $.get('https://localhost:3000/api/builder?cities=' + city + '&typeOfActivities=' + act_type, function (data) {
             if (data.length == 0) {
                 alert("No Matches Found");
             }
             $('#activity-selector').html('');
 
-            data.forEach((activity) =>{
+            data.forEach((activity) => {
                 $('#activity-selector').append(
-                `<div data-activity="${activity.id}" class="activity-template col l3">
-                    <div style="background:url('${activity.photo}')" class="bgimg">
-                            <h4 class="activity-name">${activity.name}</h4>
-                    </div>
-                    <span class="activity-address">${activity.address}</span>
-                    <p class="activity-description">${activity.description}</p>
-
-                    <div class="add-btn btn-flat blockBtn waves-light" type="submit">ADD</div>
-                </div>`
+                    `<div data-activity="${activity.id}" class="activity-template col l3">
+                        <img src="${activity.photo}" width="100%">
+                        <h6 class="activity-name">${activity.name}</h6>
+                        <span class="activity-address">${activity.address}</span>
+                        <p class="activity-description">${activity.description}</p>
+                        <button class="blockBtn add-btn btn waves-effect" type="submit"> Add
+                            <i class="material-icons right">add</i>
+                        </button>
+                    </div>`
                 )
             })
         });
     })
 
-    $('#detail-builder').on('click', '#saveBtn', function() {
+    $('#detail-builder').on('click', '#saveBtn', function () {
         let itinBuilder = new ItinBuilder();
         console.log(itinBuilder.addOn());
-        $.post('/api/builder',  itinBuilder.addOn()).done(function(data) {
+        $.post('/api/builder', itinBuilder.addOn()).done(function (data) {
             alert("Itinerary Saved!");
             $('#itin-builder').html('');
             $('#itin-description').val('');
-             $('#itin-name').val('');
+            $('#itin-name').val('');
         })
     })
-    
+
     //when activity moves to selected box, add identifier class
-    $('body').on('click', '.add-btn', function(){
+    $('body').on('click', '.add-btn', function () {
         if ($(this).parent().parent()[0].id == 'activity-selector') {
             const activityId = $(this).parent().data('activity');
 
-            $('#itin-builder').append('<div class="selected-template col l3" data-activity="' + activityId + '" id="itin-builder">'+$(this).parent().html()+'</div>');
+            $('#itin-builder').append('<div class="selected-template col l3" data-activity="' + activityId + '" id="itin-builder">' + $(this).parent().html() + '</div>');
 
             $(this).parent().remove();
 
             $(".selected-template").find(".blockBtn").text('REMOVE');
 
-        } else if ($(this).parent().parent()[0].id == 'itin-builder'){
+        } else if ($(this).parent().parent()[0].id == 'itin-builder') {
             console.log("itin-builder");
             const activityId = $(this).parent().data('activity');
-            
-            $('#activity-selector').append('<div class="activity-template col l3" data-activity="' + activityId + '" id="activity-selector">'+$(this).parent().html()+'</div>');
+
+            $('#activity-selector').append('<div class="activity-template col l3" data-activity="' + activityId + '" id="activity-selector">' + $(this).parent().html() + '</div>');
 
             $(this).parent().remove();
 
-             $(".activity-template").find(".blockBtn").text('ADD');
+            $(".activity-template").find(".blockBtn").text('ADD');
         }
 
-    }) 
+    })
 
 </script>
 

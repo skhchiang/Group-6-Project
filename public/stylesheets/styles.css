@@ -1,53 +1,193 @@
 /* apply a natural box layout model to all elements */
 
-
 *, *:before, *:after {
-    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
-  }
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
 
-  .actBox {
-    border: 1px solid black;
-    
-  } 
-  
-  #activity-selector {
-    border: 1px dotted black;
-  }
+*:focus{
+  outline:none;
+}
 
-  #itin-builder {
-    border: 1px dotted black;
-  }
+h2 {
+  font-weight: bolder;
+}
 
-  .test-template {
-    border: 1px dotted black;
-     margin: 5% 10%;
-     padding: 20px;
-  }
-  
-  .content {
-      position: relative; 
-      list-style-type:none;
-    
-  }
-  
-  .chip {
-      display: inline-block;
-      padding: 0 15px;
-      
-      font-size: 14px;
-      line-height: 30px;
-      border-radius: 25px;
-      background-color: #f1f1f1;
-  }
-  
-  .activity-template {
-    border: 1px dotted blue;
-  }
-  
-  .activity-selector {
-    border: 1px solid black;
-  }
+h6 {
+  font-weight: bold;
+}
 
-  .itin-builder {
-    border: 1px solid black;
+p{
+  overflow: hidden;
+}
+
+.card-large {
+  height: 1000px;
+}
+
+.container {
+  padding: 10px 20px 10px 0;
+}
+
+#profile-itins {
+  margin-top: 10px;
+  color: white !important;
+}
+
+#profile-itins h2 {
+  color: black;
+}
+
+#result-selector {
+  margin-top: 10px;
+  color: white !important;
+}
+
+
+.bgimg .chip {
+  background-color: teal !important;
+}
+
+
+
+
+.itin-box {
+  text-align: left;
+  margin: 20px 0;
+}
+
+.itin-box .btn{
+  color: teal !important;
+}
+
+.itin-box .row {
+  padding-bottom: 20px !important;
+
+}
+
+
+.collapsible-header {
+  color: teal !important;
+}
+
+.collapsible-body {
+  color: teal !important;
+}
+
+/* .chip {
+  backgcolor: teal !important;
+} */
+
+.itin-box .row {
+  margin:0;
+}
+
+.activity-partial {
+  color: white !important;
+  margin: 0 !important;
+}
+
+
+.activity-partial .col {
+  padding: 0 !important;
+
+}
+
+
+#front-logo {
+  padding: 20px;
+}
+
+/* #itin-builder {
+  border: 1px dotted teal;
+} */
+
+#search-form {
+  padding: 20px;
+}
+
+.test-template {
+  border: 1px dotted black;
+  margin: 5% 10%;
+  padding: 20px;
+}
+.activity_photo{
+  width: 100%;
+}
+.content {
+  position: relative;
+  list-style-type: none;
+}
+
+.chip {
+  display: inline-block;
+  padding: 0 15px;
+  font-size: 14px;
+  line-height: 30px;
+  border-radius: 25px;
+  background-color: #009688;
+  color: #ffffff;
+}
+
+.activity-template {
+  border: 2px solid teal;
+  margin: 0 10px !important;
+  padding: 30px;
+}
+
+.activity-selector {
+  padding: 0 !important;
+}
+
+
+
+
+/* 
+.activity-selector {
+  border: 1px solid black;
+} */
+
+/* .itin-builder {
+  border: 1px solid black;
+} */
+
+/* Animations */
+
+.ani-bounce:hover img {
+  animation: bounce 1s;
+}
+
+@keyframes bounce {
+  0%, 10%, 50%, 60%, 100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  20%, 70%, 90% {
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px);
+  }
+  30%, 80% {
+    -webkit-transform: translateY(-20px);
+    transform: translateY(-20px);
+  }
+}
+
+/* Video */
+video#bgvideo {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  background: url(placeholder.jpg) no-repeat;
+  background-size: cover;
+  opacity: 0.1;
   }

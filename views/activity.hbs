@@ -1,54 +1,57 @@
-<form class="section row center-align container" id="activity-builder" action="/api/activity/upload" method="POST" encType="multipart/form-data">
-    <div class="input-field col l10" id="activity-dropdown">
-        <select name="typeOfActivities" >
-            <option value="" disabled selected>Select Activity Type (Required)</option>
-            <option value="Museums">Museums</option>
-            <option value="Religious Sites">Religious Sites</option>
-            <option value="Square">Squares and Plazas</option>
-            <option value="Parks & Gardens">Parks and Gardens</option>
-            <option value="Markets">Markets</option>
-            <option value="Natural Attractions">Natural Attractions</option>
-            <label>Select Activity Type</label>
-        </select>
+<link rel="stylesheet" href="stylesheets/styles.css" />
+
+<div class="container center-align">
+    <h2>Create your own activity</h2>
+    <div class="ani-bounce">
+        <img src="/images/activity.png">
     </div>
-    <div class="input-field col l10 form-group">
-        <input id="acti-name" type="text" name="name" class="validate" required="" aria-required="true" placeholder="Activity Name (Required)">
-        <label for="acti-name">What is it? </label>
-    </div>
-
-    <div class="input-field col l10 form-group">
-        <textarea id="acti-city" type="text" name="cities" class="materialize-textarea validate" required="" aria-required="true"
-            placeholder="City (Required)"></textarea>
-
-        <textarea id="acti-address" type="text" name="address" class="materialize-textarea validate" required="" aria-required="true"
-            placeholder="Address (Required)"></textarea>
-        <label for="acti-address">Where is it?</label>
-    </div>
-
-    <div class="input-field col l10 form-group">
-        <textarea id="acti-description" type="text" name="description" class="materialize-textarea validate" required="" aria-required="true"
-            placeholder="Describe your Activity (Required)"></textarea>
-        <label for="acti-description">How is it?</label>
-    </div>
-
-
-
-    <div class="file-field input-field col l5">
-        <div class="btn">
-            <span>Upload</span>
-            <input type="file" name="profile" multiple>
+    <form class="section row container" id="activity-builder" action="/api/activity/upload" method="POST" encType="multipart/form-data">
+        <div class="input-field" id="activity-dropdown">
+            <select name="typeOfActivities">
+                <option value="" disabled selected>Select Activity Type (Required)</option>
+                <option value="Museums">Museums</option>
+                <option value="Religious Sites">Religious Sites</option>
+                <option value="Square">Squares and Plazas</option>
+                <option value="Parks & Gardens">Parks and Gardens</option>
+                <option value="Markets">Markets</option>
+                <option value="Natural Attractions">Natural Attractions</option>
+                <label>Select Activity Type</label>
+            </select>
         </div>
-        <div class="file-path-wrapper">
-            <input class="file-path validate" type="text" placeholder="Upload a photo of it! (Required)">
+        <div class="input-field form-group">
+            <input id="acti-name" type="text" name="name" class="validate" required="" aria-required="true" placeholder="Activity Name (Required)">
+            <label for="acti-name">What is it? </label>
         </div>
 
+        <div class="input-field form-group">
+            <textarea id="acti-city" type="text" name="cities" class="materialize-textarea validate" required="" aria-required="true"
+                placeholder="City (Required)"></textarea>
 
+            <textarea id="acti-address" type="text" name="address" class="materialize-textarea validate" required="" aria-required="true"
+                placeholder="Address (Required)"></textarea>
+            <label for="acti-address">Where is it?</label>
+        </div>
 
-    </div>
+        <div class="input-field form-group">
+            <textarea id="acti-description" type="text" name="description" class="materialize-textarea validate" required="" aria-required="true"
+                placeholder="Describe your Activity (Required)"></textarea>
+            <label for="acti-description">How is it?</label>
+        </div>
 
-    <input class="btn btn-large teal btn-flat" id="saveBtn" type="submit" value="CREATE ACTIVITY" />
-
-</form>
+        <div class="file-field input-field col l5">
+            <div class="btn">
+                <span>Upload</span>
+                <input type="file" name="profile" multiple>
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text" placeholder="Upload a photo of it! (Required)">
+            </div>
+        </div>
+        <button class="btn waves-effect waves-light" type="submit" id="saveBtn" name="action" value="CREATE ACTIVITY">CREATE
+            <i class="material-icons right">cloud_upload</i>
+        </button>
+    </form>
+</div>
 
 
 

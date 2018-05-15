@@ -2,71 +2,106 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <!--Import Google Icon Font-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
         crossorigin="anonymous">
-    <!-- Bootstrap -->
-    {{!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"> --}}
-      <!-- Compiled and minified JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
-      <!-- Local Stylesheet -->
-    <link rel="stylesheet" href="stylesheets/styles.css"/>
-    <script src="js/itinBuilder.js"></script>
-    <script src="js/activityBuilder.js"></script>
-  <title>24hr Adventures</title>
+    <!-- Local Stylesheet -->
+    <link rel="stylesheet" href="stylesheets/styles.css" />
+
+    <title>Daytinerary</title>
 </head>
 
+
 <body id="home" class="scrollspy">
-<!--NAVBAR-->
+    <!--NAVBAR-->
     <div class="navbar-fixed">
         <nav class="teal">
             <div class="nav-wrapper">
-                <a href="/" class="brand-logo">24hr Adventure</a>
+                <div class="ani-bounce">
+                    <a href="/" class="brand-logo right">
+                        <img src="/images/daytinerary_small.png">Daytinerary
+                    </a>
+                </div>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger">
                     <i class="material-icons">more_horiz </i>
                 </a>
-                <ul class="right hide-on-med-and-down">
+                <ul class="left hide-on-med-and-down">
                     <li>
                         <a href="/signup">Signup</a>
                     </li>
                     <li>
                         <a href="/login">Login</a>
                     </li>
-                      <li>
-                        <a href="/profile" id="profile-link" >Profile</a>
+                    <li>
+                        <a href="/profile" id="profile-link">Profile</a>
+                    {{!-- </li>
+                    <li>
+                        <a href="/builder" class="itin-build">Build Itinerary</a>
                     </li>
-
+                    <li>
+                        <a href="/activity">Create Activity</a>
+                    </li> --}}
                 </ul>
             </div>
         </nav>
     </div>
-    
+    <ul class="sidenav" id="mobile-demo">
+        <li>
+            <a href="/">Search</a>
+        </li>
+        <li>
+            <a href="/signup">Signup</a>
+        </li>
+        <li>
+            <a href="/login">Login</a>
+        </li>
+        <li>
+            <a href="/profile">Profile</a>
+        </li>
+        {{!-- <li>
+            <a href="/builder" class="itin-build">Build Itinerary</a>
+        </li>
+        <li>
+            <a href="/activity">Create Activity</a>
+        </li> --}}
+    </ul>
 
-
-  {{{body}}}
-
-   
-
+    {{{body}}}
 
     <!-- FOOTER -->
     <footer class="page-footer teal">
-        <div class="container">
-            <div class="row">
-                <div class="col l6 s12">
-                    <h5 class="white-text">Contact Us</h5>
-                    <i class="small fab fa-facebook-square"> &nbsp </i>
-                    <i class="small  fab fa-weixin"> &nbsp </i>
-                    <i class="small fab fa-instagram"> &nbsp </i>
-                    <i class="small far fa-envelope"> &nbsp </i>
-                    <i class="small fab fa-google-plus-g"> &nbsp </i>
+        <h4 class="white-text center-align">Contact Us</h4>
+        <div class="row">
+            <div class="container">
+                <div class="col l5 s12">
+                    <form action="mailto:info@daytinerary.com?Subject=Daytinerary%20Website" method="post" enctype="text/plain">
+                        <h6>Comments or Suggestions?</h6>
+                        <input name="name" type="text" class="feedbackInput" placeholder='name'>
+                        <input name="email" type="text" class="feedbackInput" placeholder='email'>
+                        <textarea name="text" class="feedbackInput" placeholder='comments or suggestions' style="color: #ffffff"></textarea>
+                        <button for="search" class="submitButton btn waves-effect white teal-text" type="submit"> Send via email
+                            <i class="material-icons right">mail</i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="container">
+                <div class="col l2">
+                    <p> &nbsp</p>
+                </div>
+            </div>
+            <div class="container">
+                <div class="col l5 s12">
+                    <i class="medium fab fa-facebook-square">&nbsp</i>
+                    <i class="medium fab fa-instagram">&nbsp</i>
+                    <i class="medium far fa-envelope">&nbsp</i>
                 </div>
             </div>
         </div>
@@ -77,19 +112,19 @@
             </div>
         </div>
     </footer>
-
-
-
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <!-- Latest compiled and minified Bootstrap JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-   
+
     <!-- Compiled and minified Materialize -->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.js"></script>
-   
- 
-  
+
+    <script>
+        const sideNav = document.querySelector('.sidenav');
+        M.Sidenav.init(sideNav, {});
+    </script>
+
+
 
 </body>
 

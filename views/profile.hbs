@@ -1,47 +1,66 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" />
+{{!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" /> --}}
 <link rel="stylesheet" href="/stylesheets/styles.css" />
 
 
 <!--SAVED ITINERARIES-->
 <div class="container center-align" id="profile-itins">
-    <h3>User's Saved Itineraries</h3>
-
-
+    <h2>Saved Itineraries</h2>
+    <img src="/images/itinerary.png">
 </div>
 
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
+{{!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script> --}}
+    <!-- Compiled and minified Materialize -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.js"></script>
 <!-- Compiled and minified JavaScript -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
-<!-- Compiled and minified Materialize -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.js"></script>
+
 
 
 <script>
     $(document).ready(function () {
+        
+
+      
+
+      
+     //  $('.collapsible').collapsible();
+ 
+
+
+
         $.get('https://localhost:3000/api/profile', function (data) {
+            
             data.forEach((itin) => {
+
+            const elems = document.querySelectorAll('.collapsible');
+            M.Collapsible.init(elems, {});
+
                 $('#profile-itins').append(
-                    `<div id="itin-${itin.id}" data-itin="${itin.id}" class="row">
+                    `<div id="itin-${itin.id}" data-itin="${itin.id}" class="row itin-box z-depth-4">
                         <div style="background:url('${itin.photo ? itin.photo : ''}')" class="col l6 bgimg" >
                             <h4>${itin.name}</h4>
+                            <div class="col l10" data-chip="chipper">
                         </div>
-                    <div class="col l6" data-chip="chipper">
+                    
            
                     </div>
   
-                    <div class="row">
-                        <div class="col l6">
-                            <p>${itin.description}</p>
-                        </div>
-                    <div class="col l6">
-                        <div class="add-btn  btn waves-effect waves-light btn-large" type="submit" id="itin-saver">SAVE</div>
+                    <div class="row teal">
+                        <div class="col l6 left">
+                            <p>Description<br>${itin.description}</p>
+                        
+                   
+                        <button class="right add-btn  btn waves-effect waves-light white" type="submit" id="itin-remover">REMOVE
+                            <i class="material-icons right">delete</i>
+                        </button>
                     </div>
                 </div>
-                <div class="row activity-partial" data-id="${itin.id}">
-                </div>
+                <ul class="row activity-partial collapsible col l12 center-align" data-id="${itin.id}">
+                    
+                </ul>
             </div>`
                 )
 
@@ -55,18 +74,25 @@
                 Array.from(actSet).map(data => {
                   console.log("data", data);
                     $(`#itin-${itin.id} div[data-chip=chipper]`).append(
-                        `<div class="chip">${data}</div>`
+                        `<div class="chip white ">${data}</div>`
                     )
                 })
 
                 itin.activities.forEach((activity) => {
+                    
+            const elems = document.querySelectorAll('.collapsible');
+            M.Collapsible.init(elems, {});
+
                     $(`[data-id=${itin.id}]`).append(
-                        `<div class="col m6 actBox section">
-                        <img src=${activity.activity_photo}>
+                        `<li class="col l6">
+                        <div class="collapsible-header">${activity.activity_name}</div>
+                        <div class="col l12 actBox section collapsible-body" >
+                        <img width='100%'  src=${activity.activity_photo}>
                         <h4>${activity.activity_name}</h4>
                         <span>${activity.activity_address}</span>
                         <p>${activity.activity_description}</p>
-                    </div>`
+                    </div>
+                    </li>`
                     )
                 })
             })
@@ -75,5 +101,12 @@
         })
     })
 
-
 </script>
+
+<script>
+    $('#profile-itins').on('click', '#itin-remover', function () {
+        $(this).parent().parent().parent().hide();
+        alert("Itinerary Removed!")
+    })
+</script>
+

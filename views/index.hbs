@@ -1,32 +1,44 @@
-{{!--
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" /> --}}
 <link rel="stylesheet" href="/stylesheets/styles.css" />
-
+<div id="hero">
+    <video playsinline autoplay muted loop poster="placeholder.jpg" id="bgvideo" width="x" height="y">
+        <source src="/videos/tuktuk.mp4" type="video/mp4">
+    </video>
+</div>
 <!--MAIN SEARCH BAR and ACTIVITY DROPDOWN SELECTION-->
-<div class="container center-align" id="search-form">
-    <form action="" method="get">
-        <input id="search" type="text" name="city-input" class="section-search center scrollspy">
-        <label>Enter a City</label>
-    </form>
-    <div class="container">
-        <div class="input-field col l6" id="search-dropdown">
-            <select>
-                <option value="" disabled selected>Select Activity Type</option>
-                <option value="Museums">Museums</option>
-                <option value="Religious Sites">Religious Sites</option>
-                <option value="Square">Squares and Plazas</option>
-                <option value="Parks & Gardens">Parks and Gardens</option>
-                <option value="Markets">Markets</option>
-                <option value="Natural Attractions">Natural Attractions</option>
-                <label>Select Activity Type</label>
-            </select>
+<div class="container center-align" id="front-logo">
+    <h2>Daytinerary</h2>
+    <img src="/images/daytinerary_medium.png">
+    <h5>Travel plans for a day</h5>
+
+    <!--MAIN SEARCH BAR and ACTIVITY DROPDOWN SELECTION-->
+    <div class="center-align" id="search-form">
+        <div class="container">
+            <div class="col l6">
+                <form action="" method="get">
+                    <input id="search" type="text" name="city-input" class="section-search center scrollspy">
+                    <label>Enter a City "e.g. Bangkok"</label>
+                </form>
+            </div>
         </div>
-    </div>
-    <div>
-        <div for="search" class="submitButton waves-effect waves-light btn-large btn-flat" type="submit" id="search-btn">SEARCH</div>
+        <div class="container">
+            <div class="input-field col l6" id="search-dropdown">
+                <select>
+                    <option value="" disabled selected>Select Activity Type</option>
+                    <option value="Museums">Museums</option>
+                    <option value="Religious Sites">Religious Sites</option>
+                    <option value="Square">Squares and Plazas</option>
+                    <option value="Parks & Gardens">Parks and Gardens</option>
+                    <option value="Markets">Markets</option>
+                    <option value="Natural Attractions">Natural Attractions</option>
+                    <label>Select Activity Type</label>
+                </select>
+            </div>
+        </div>
+        <button for="search" class="submitButton btn waves-effect" type="submit" id="search-btn"> Search
+            <i class="material-icons right">search</i>
+        </button>
     </div>
 </div>
-
 <section class="container" id="result-selector">
 
 
@@ -36,18 +48,18 @@
 
 </section>
 <div class="fixed-action-btn" id="fixed-panel">
-    <a class="btn-floating btn-large red" id="create-itin">
-        <i class="large material-icons">mode_edit</i>
+    <a class="btn-floating btn-large red pulse" id="create-itin">
+        <i class="large material-icons">build</i>
     </a>
 </div>
 
 
-
+<!-- Compiled and minified Materialize -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.js"></script>
 <!-- Compiled and minified JavaScript -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
-<!-- Compiled and minified Materialize -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.js"></script>
+
 
 <!-- Compiled and minified Materialize -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.js"></script>
@@ -62,76 +74,93 @@
 
 
 <script>
+    $(document).ready(function () {
 
-    $('#search-form').on('click', '#search-btn', function () {
-        let act_type = $('#search-dropdown').find('select').val();
-        let city = $('input').val();
 
-        if (act_type == '' || city == '') {
-            alert("Please fill out a destination and a an activity type")
-        }
-        $.get('https://localhost:3000/api/result?cities=' + city + '&typeOfActivities=' + act_type, function (data) {
-            if (data.length == 0) {
-               alert("No Matching Itineries Found");
+        $('#search-form').on('click', '#search-btn', function () {
+            let act_type = $('#search-dropdown').find('select').val();
+            let city = $('input').val();
+
+            if (act_type == '' || city == '') {
+                alert("Please fill out a destination and a an activity type")
             }
-            //console.log(data);
-            $('#result-selector').html('');
+            $.get('https://localhost:3000/api/result?cities=' + city + '&typeOfActivities=' + act_type, function (data) {
+                if (data.length == 0) {
+                    alert("No Matching Itineries Found");
+                }
+                //console.log(data);
+                $('#result-selector').html('');
 
-            let actSet = new Set();
-            
-            data.forEach((itin) => {
-               // console.log(itin);
-                $('#result-selector').append(
-                    `<div id="itin-${itin.id}" data-itin="${itin.id}" class="row">
-                        <div style="background:url(${itin.photo})" class="col l6 bgimg" >
+                let actSet = new Set();
+
+                data.forEach((itin) => {
+                    // console.log(itin);
+
+                    const elems = document.querySelectorAll('.collapsible');
+                    M.Collapsible.init(elems, {});
+
+                    $('#result-selector').append(
+                        `<div id="itin-${itin.id}" data-itin="${itin.id}" class="row itin-box z-depth-4">
+                        <div style="background:url('${itin.photo ? itin.photo : ''}')" class="col l6 bgimg" >
                             <h4>${itin.name}</h4>
+                            <div class="col l10" data-chip="chipper">
                         </div>
-                    <div class="col l6" data-chip="chipper">
+                    
            
                     </div>
   
-                    <div class="row">
-                        <div class="col l6">
-                            <p>${itin.description}</p>
-                        </div>
-                    <div class="col l6">
-                        <div class="add-btn  btn waves-effect waves-light btn-large" type="submit" id="itin-saver">SAVE</div>
+                    <div class="row teal">
+                        <div class="col l6 left">
+                            <p>Description<br>${itin.description}</p>
+                        
+                   
+                        <button class="right add-btn  btn waves-effect waves-light white" type="submit" id="itin-saver">SAVE
+                            <i class="material-icons right">save</i>
+                        </button>
                     </div>
                 </div>
-                <div class="row activity-partial" data-id="${itin.id}">
-                </div>
-            </div>`
-                )
-                            let actSet = new Set();
-                
-                itin.activities.forEach((activity) => {
-                    actSet.add(activity.activity_type);
+                <ul class="row activity-partial collapsible col l12 center-align" data-id="${itin.id}">
                     
-                });
-
-                Array.from(actSet).map(data => {
-                 // console.log("data", data);
-                    $(`#itin-${itin.id} div[data-chip=chipper]`).append(
-                        `<div class="chip">${data}</div>`
+                </ul>
+            </div>`
                     )
-                })
+                    let actSet = new Set();
 
-                      itin.activities.forEach((activity) => {
-                      $(`[data-id=${itin.id}]`).append(
-                        `<div class="col m6 actBox section">
+                    itin.activities.forEach((activity) => {
+                        actSet.add(activity.activity_type);
+
+                    });
+
+                    Array.from(actSet).map(data => {
+                        // console.log("data", data);
+                        $(`#itin-${itin.id} div[data-chip=chipper]`).append(
+                            `<div class="chip">${data}</div>`
+                        )
+                    })
+
+                    itin.activities.forEach((activity) => {
+
+                        const elems = document.querySelectorAll('.collapsible');
+                        M.Collapsible.init(elems, {});
+
+                        $(`[data-id=${itin.id}]`).append(
+                            `<li class="col l6">
+                        <div class="collapsible-header">${activity.activity_name}</div>
+                        <div class="col l12 actBox section collapsible-body" >
                         <img src=${activity.activity_photo}>
-                        <h4>${activity.activity_name}</h4>
+                        <h5>${activity.activity_name}</h5>
                         <span>${activity.activity_address}</span>
                         <p>${activity.activity_description}</p>
-                    </div>`
-                    )
-                })
-          
-            })
+                    </div>
+                    </li>`
+                        )
+                    })
 
+                })
+
+            })
         })
     })
-
 </script>
 
 <script>
