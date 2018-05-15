@@ -15,7 +15,7 @@
 
 <script>
     $(document).ready(function () {
-        $.get('https://localhost:3000/api/profile', function (data) {
+        $.get('/api/profile', function (data) {
             data.forEach((itin) => {
                 const elems = document.querySelectorAll('.collapsible');
                 M.Collapsible.init(elems, {});

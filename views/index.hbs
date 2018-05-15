@@ -80,7 +80,7 @@
             if (act_type == '' || city == '') {
                 alert("Please fill out a destination and a an activity type")
             }
-            $.get('https://localhost:3000/api/result?cities=' + city + '&typeOfActivities=' + act_type, function (data) {
+            $.get('/api/result?cities=' + city + '&typeOfActivities=' + act_type, function (data) {
                 if (data.length == 0) {
                     alert("No Matching Itineries Found");
                 }

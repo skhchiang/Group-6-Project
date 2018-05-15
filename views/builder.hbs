@@ -71,7 +71,7 @@
 
     $('body').on('change', '#activity-dropdown', function () {
         act_type = $('select').val();
-        $.get('https://localhost:3000/api/builder?cities=' + city + '&typeOfActivities=' + act_type, function (data) {
+        $.get('/api/builder?cities=' + city + '&typeOfActivities=' + act_type, function (data) {
             if (data.length == 0) {
                 alert("No Matches Found");
             }

@@ -188,7 +188,7 @@ video#bgvideo {
   -moz-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
-  background: url(placeholder.jpg) no-repeat;
+  background: no-repeat;
   background-size: cover;
   opacity: 0.1;
   }
