@@ -18,6 +18,10 @@ h6 {
   font-weight: bold;
 }
 
+.itin-padding {
+  padding-left: 5px;
+}
+
 p{
   overflow: hidden;
 }
@@ -35,10 +39,6 @@ p{
   color: white !important;
 }
 
-#profile-itins h2 {
-  color: black;
-}
-
 #result-selector {
   margin-top: 10px;
   color: white !important;
@@ -52,19 +52,11 @@ p{
 
 
 
-.itin-box {
-  text-align: left;
-  margin: 20px 0;
-}
 
 .itin-box .btn{
   color: teal !important;
 }
 
-.itin-box .row {
-  padding-bottom: 20px !important;
-
-}
 
 
 .collapsible-header {
@@ -81,6 +73,8 @@ p{
 
 .itin-box .row {
   margin:0;
+  text-align: left;
+  margin-top: 10px;
 }
 
 .activity-partial {
@@ -89,11 +83,13 @@ p{
 }
 
 
-.activity-partial .col {
-  padding: 0 !important;
-
+.row .col {
+  padding: 0;
 }
 
+.itin-padding {
+  padding-left: 20px;
+}
 
 #front-logo {
   padding: 20px;
@@ -108,7 +104,6 @@ p{
 }
 
 .test-template {
-  border: 1px dotted black;
   margin: 5% 10%;
   padding: 20px;
 }

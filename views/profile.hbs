@@ -3,9 +3,11 @@
 
 
 <!--SAVED ITINERARIES-->
-<div class="container center-align" id="profile-itins">
-    <h2>Saved Itineraries</h2>
+<div class="container" id="profile-itins">
+    <div class="center-align">
+    <h2 class="black-text">Saved Itineraries</h2>
     <img src="/images/itinerary.png">
+    </div>
 </div>
 
 
@@ -39,25 +41,22 @@
             M.Collapsible.init(elems, {});
 
                 $('#profile-itins').append(
-                    `<div id="itin-${itin.id}" data-itin="${itin.id}" class="row itin-box z-depth-4">
-                        <div style="background:url('${itin.photo ? itin.photo : ''}')" class="col l6 bgimg" >
-                            <h4>${itin.name}</h4>
-                            <div class="col l10" data-chip="chipper">
+                    `<div id="itin-${itin.id}" data-itin="${itin.id}"class="row itin-box z-depth-4">
+                        <div class="col l6 bgimg" >
+                            <h4 class="itin-padding">${itin.name}</h4>
+                            <div class="col l10" data-chip="chipper"></div>
                         </div>
-                    
-           
-                    </div>
   
                     <div class="row teal">
                         <div class="col l6 left">
                             <p>Description<br>${itin.description}</p>
                         
                    
-                        <button class="right add-btn  btn waves-effect waves-light white" type="submit" id="itin-remover">REMOVE
+                            <button class="right add-btn  btn waves-effect waves-light white" type="submit" id="itin-remover">REMOVE
                             <i class="material-icons right">delete</i>
-                        </button>
+                            </button>
+                        </div>
                     </div>
-                </div>
                 <ul class="row activity-partial collapsible col l12 center-align" data-id="${itin.id}">
                     
                 </ul>
