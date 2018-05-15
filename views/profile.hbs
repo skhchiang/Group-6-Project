@@ -1,86 +1,61 @@
-{{!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" /> --}}
-<link rel="stylesheet" href="/stylesheets/styles.css" />
-
-
 <!--SAVED ITINERARIES-->
 <div class="container" id="profile-itins">
     <div class="center-align">
-    <h2 class="black-text">Saved Itineraries</h2>
-    <img src="/images/itinerary.png">
+        <h2 class="black-text">Saved Itineraries</h2>
+        <img src="/images/itinerary.png">
     </div>
 </div>
 
 
-{{!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script> --}}
-    <!-- Compiled and minified Materialize -->
+<!-- Compiled and minified Materialize -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.js"></script>
 <!-- Compiled and minified JavaScript -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
 
-
-
 <script>
     $(document).ready(function () {
-        
-
-      
-
-      
-     //  $('.collapsible').collapsible();
- 
-
-
-
         $.get('https://localhost:3000/api/profile', function (data) {
-            
             data.forEach((itin) => {
-
-            const elems = document.querySelectorAll('.collapsible');
-            M.Collapsible.init(elems, {});
+                const elems = document.querySelectorAll('.collapsible');
+                M.Collapsible.init(elems, {});
 
                 $('#profile-itins').append(
                     `<div id="itin-${itin.id}" data-itin="${itin.id}"class="row itin-box z-depth-4">
                         <div class="col l6 bgimg" >
                             <h4 class="itin-padding">${itin.name}</h4>
-                            <div class="col l10" data-chip="chipper"></div>
+                            <div class="itin-padding col l10" data-chip="chipper"></div>
                         </div>
   
-                    <div class="row teal">
-                        <div class="col l6 left">
-                            <p>Description<br>${itin.description}</p>
-                        
-                   
-                            <button class="right add-btn  btn waves-effect waves-light white" type="submit" id="itin-remover">REMOVE
-                            <i class="material-icons right">delete</i>
-                            </button>
+                        <div class="row teal">
+                            <div class="col l6 left">
+                                <p>Description<br>${itin.description}</p>
+                                <button class="right add-btn  btn waves-effect waves-light white" type="submit" id="itin-remover">REMOVE
+                                <i class="material-icons right">delete</i>
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                <ul class="row activity-partial collapsible col l12 center-align" data-id="${itin.id}">
-                    
-                </ul>
-            </div>`
+                        <ul class="row activity-partial collapsible col l12 center-align" data-id="${itin.id}"></ul>
+                    </div>`
                 )
 
                 let actSet = new Set();
-                
                 itin.activities.forEach((activity) => {
                     actSet.add(activity.activity_type);
-                    
+
                 });
 
                 Array.from(actSet).map(data => {
-                  console.log("data", data);
+                    console.log("data", data);
                     $(`#itin-${itin.id} div[data-chip=chipper]`).append(
                         `<div class="chip white ">${data}</div>`
                     )
                 })
 
                 itin.activities.forEach((activity) => {
-                    
-            const elems = document.querySelectorAll('.collapsible');
-            M.Collapsible.init(elems, {});
+
+                    const elems = document.querySelectorAll('.collapsible');
+                    M.Collapsible.init(elems, {});
 
                     $(`[data-id=${itin.id}]`).append(
                         `<li class="col l6">
@@ -95,11 +70,8 @@
                     )
                 })
             })
-
-            
         })
     })
-
 </script>
 
 <script>
@@ -108,4 +80,3 @@
         alert("Itinerary Removed!")
     })
 </script>
-

@@ -7,8 +7,6 @@ class BuilderRouter {
 
   route() {
     let router = express.Router();
-
-    // router.get('/builder/:id', this.getById.bind(this));
     router.get("/", this.get.bind(this));
     router.post("/", this.post.bind(this));
 
@@ -25,8 +23,6 @@ class BuilderRouter {
   }
 
   post(req, res) {
-    // console.log("Hello World");
-    // console.log(req.body);
     return this.builderService
       .create(req.body, req.user)
       .then(arr => {

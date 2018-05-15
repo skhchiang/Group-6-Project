@@ -1,6 +1,6 @@
 class ResultService {
   constructor(knex) {
-    this.knex = knex; //class BuilderService use knex !!
+    this.knex = knex; 
   }
 
   result(cities, typeOfActivities) {

@@ -1,9 +1,10 @@
-<link rel="stylesheet" href="/stylesheets/styles.css" />
+<!-- Video hero section -->
 <div id="hero">
     <video playsinline autoplay muted loop  id="bgvideo" width="x" height="y">
         <source src="/videos/tuktuk.mp4" type="video/mp4">
     </video>
 </div>
+
 <!--MAIN SEARCH BAR and ACTIVITY DROPDOWN SELECTION-->
 <div class="container center-align" id="front-logo">
     <h2>Daytinerary</h2>
@@ -39,14 +40,11 @@
         </button>
     </div>
 </div>
+
 <section class="container" id="result-selector">
 
-
-
-
-
-
 </section>
+
 <div class="fixed-action-btn" id="fixed-panel">
     <a class="btn-floating btn-large red pulse tooltipped" data-position="left" data-tooltip="Create a New Itinerary!"id="create-itin">
         <i class="large material-icons">build</i>
@@ -56,13 +54,10 @@
 
 <!-- Compiled and minified Materialize -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.js"></script>
-<!-- Compiled and minified JavaScript -->
+
+<!-- Compiled and minified Jquery -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
-
-
-<!-- Compiled and minified Materialize -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.js"></script>
 
 <script>
     const selector = document.querySelector('select');
@@ -89,13 +84,11 @@
                 if (data.length == 0) {
                     alert("No Matching Itineries Found");
                 }
-                //console.log(data);
                 $('#result-selector').html('');
 
                 let actSet = new Set();
 
                 data.forEach((itin) => {
-                    // console.log(itin);
 
                     const elems = document.querySelectorAll('.collapsible');
                     M.Collapsible.init(elems, {});
@@ -106,23 +99,20 @@
                         <div class="col l6 bgimg" >
                             <h4 class="itin-padding">${itin.name}</h4>
                             <div class="col l10" data-chip="chipper">
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row teal">
-                        <div class="col l6 left">
-                            <p>Description<br>${itin.description}</p>
-                        
-                   
-                        <button class="right add-btn  btn waves-effect waves-light white" type="submit" id="itin-saver">SAVE
-                            <i class="material-icons right">save</i>
-                        </button>
-                    </div>
-                </div>
-                <ul class="row activity-partial collapsible col l12 center-align " data-id="${itin.id}">
-                    
-                </ul>
-            </div>`
+                        <div class="row teal">
+                            <div class="col l6 left">
+                                <p>Description<br>${itin.description}</p>
+                                <button class="right add-btn  btn waves-effect waves-light white" type="submit" id="itin-saver">SAVE
+                                    <i class="material-icons right">save</i>
+                                </button>
+                            </div>
+                        </div>
+                        <ul class="row activity-partial collapsible col l12 center-align " data-id="${itin.id}">                    
+                        </ul>
+                    </div>`
                     )
                     let actSet = new Set();
 
@@ -144,20 +134,18 @@
                         M.Collapsible.init(elems, {});
 
                         $(`[data-id=${itin.id}]`).append(
-                            `<li class="col l6 ">
-                        <div class="collapsible-header">${activity.activity_name}</div>
-                        <div class="col l12 actBox collapsible-body" >
-                        <img src=${activity.activity_photo}>
-                        <h5>${activity.activity_name}</h5>
-                        <span>${activity.activity_address}</span>
-                        <p>${activity.activity_description}</p>
-                    </div>
-                    </li>`
+                        `<li class="col l6 ">
+                            <div class="collapsible-header">${activity.activity_name}</div>
+                            <div class="col l12 actBox collapsible-body" >
+                                <img src=${activity.activity_photo}>
+                                <h5>${activity.activity_name}</h5>
+                                <span>${activity.activity_address}</span>
+                                <p>${activity.activity_description}</p>
+                            </div>
+                        </li>`
                         )
                     })
-
                 })
-
             })
         })
     })

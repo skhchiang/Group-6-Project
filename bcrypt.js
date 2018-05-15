@@ -17,14 +17,12 @@ module.exports.hashPassword = (plainTextPassword) => {
     });
 };
 
-
 module.exports.checkPassword = (plainTextPassword, hashedPassword) => {
     return new Promise((resolve, reject) => {
         bcrypt.compare(plainTextPassword, hashedPassword, (err, match) => {
-            if(err) {
+            if (err) {
                 reject(err);
             }
-
             resolve(match);
         });
     });

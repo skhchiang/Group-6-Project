@@ -131,6 +131,12 @@ p{
   padding: 30px;
 }
 
+.selected-template {
+  border: 2px solid teal;
+  margin: 0 10px !important;
+  padding: 30px;
+}
+
 .activity-selector {
   padding: 0 !important;
 }

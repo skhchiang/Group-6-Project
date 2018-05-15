@@ -5,9 +5,7 @@ const path = require("path");
 const storage = multer.memoryStorage()
 const upload = multer({ dest: '../public/images', storage: storage });
 
-
 class ActivityRouter {
-
 
   constructor(activityService, knex) {
     this.uploadDirectory = path.join(__dirname, '../', "public", "images");
@@ -17,7 +15,6 @@ class ActivityRouter {
 
   route() {
     let router = express.Router();
-    // router.post("/", this.post.bind(this));
     router.get("/", this.get.bind(this));
     router.post("/upload", upload.single('profile'), this.add.bind(this));
     return router;
@@ -26,7 +23,6 @@ class ActivityRouter {
   get(req, res) {
     res.render("activity", {});
   }
-
  
   add(req, res) {
     console.log(req.body, "req.file", req.file.buffer)
@@ -59,7 +55,6 @@ class ActivityRouter {
       })
       .then((pathName) => {
          res.redirect('/')
-        // res.json({path: pathName,name:req.body.name,description:req.body.description,address:req.body.address,typeOfActivities:req.body.typeOfActivities,cities:req.body.cities})
       })
       .catch(err => {
         res.status(500).json(err);
@@ -75,7 +70,6 @@ class ActivityRouter {
         if (err) {
           return reject(err);
         }
-       // return this.knex("activities").insert({ photo: pathName}).then((result, err) => {
           if (err) {
             console.log(err);
             reject(err);
@@ -83,23 +77,9 @@ class ActivityRouter {
             console.log(name)
             resolve (name);
           }
-          //return pathName;
         });
       })
     };
   }
-
-//   readFile(file) {
-//     return (new Promise((resolve, reject) => {
-//       fs.readFile(path.join(this.uploadDirectory, file), (err, body) => {
-//         if (err) {
-//           console.log(err);
-//           return reject(err);
-//         }
-//         resolve(body);
-//       });
-//     }));
-//   }
-// }
 
 module.exports = ActivityRouter;

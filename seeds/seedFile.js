@@ -5,7 +5,7 @@ exports.seed = (knex, Promise) => {
   let Activities = fs.readJsonSync(path.join(__dirname, "/activities.json"));
   let Cities = fs.readJsonSync(path.join(__dirname, "/cityList.json"));
   let TypesOfActivities = fs.readJsonSync(path.join(__dirname, "/attractionTypeList.json"));
-  
+
   return knex("cities").insert(Cities)
     .then(() => {
       return knex("typeOfActivities").insert(TypesOfActivities);

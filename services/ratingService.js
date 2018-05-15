@@ -1,12 +1,9 @@
 
 
 class RatingService {
-    constructor(knex) {
-      this.knex = knex; //class BuilderService use knex !!
-    }
-  
-    
+  constructor(knex) {
+    this.knex = knex;
   }
-  
-  module.exports = RatingService;
-  
+}
+
+module.exports = RatingService;

@@ -2,7 +2,7 @@ var Promise = require("bluebird");
 
 class BuilderService {
   constructor(knex) {
-    this.knex = knex; //class BuilderService use knex !!
+    this.knex = knex;
   }
 
   search(cities, typeOfActivities) {
