@@ -29,6 +29,7 @@ class ActivityRouter {
     this.writeFile(req.file.originalname, req.file.buffer)
       .then((fileName)=>{
         console.log("fileName:", fileName)
+        // [REVIEW] The frontend should pass the IDs of the city and type instead of the name
         this.knex
           .first("id")
           .from("cities")
@@ -62,6 +63,7 @@ class ActivityRouter {
   }
 
 
+  // [REVIEW] put this kind of "utils" function into a util file because this has nothing to do with activity / router
   writeFile(name, body) {
     console.log("writeFile Buffer", body);
     return new Promise((resolve, reject) => {

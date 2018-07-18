@@ -8,6 +8,9 @@ module.exports = (app, knex) => {
     app.use(passport.initialize());
     app.use(passport.session());
 
+
+
+
     passport.use('local-login', new LocalStrategy(
         async (email, password, done) => {
             try{

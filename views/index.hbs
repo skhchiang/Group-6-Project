@@ -93,6 +93,8 @@
                     const elems = document.querySelectorAll('.collapsible');
                     M.Collapsible.init(elems, {});
 
+
+// [REVIEW] XSS Cross-Site Scripting
                     $('#result-selector').append(
                     `
                     <div id="itin-${itin.id}" data-itin="${itin.id}" class="row itin-box z-depth-4">
@@ -153,11 +155,14 @@
 
 <script>
     $('#result-selector').on('click', '#itin-saver', function () {
+
+        // [REVIEW] disable button
         var saved_itin = {};
         var itinId = $(this).parent().parent().parent().data('itin');
         console.log(itinId);
         saved_itin.id = itinId;
         $.post('/api/result', saved_itin).done(function (data) {
+            // [REVIEW] enable button
             alert("Itinerary Saved!");
         })
     })
